@@ -20,11 +20,20 @@ class Welcome extends CI_Controller {
 	 */
 	public function Index()
 	{
+<<<<<<< HEAD
 <<<<<<< .merge_file_a05060
 		$data['body'] = "blog/welcome_message";
 		custom_layout($data);
 =======
 		$this->load->view('blog/welcome_message');
 >>>>>>> .merge_file_a05940
+=======
+<<<<<<< HEAD
+		$this->load->view('blog/welcome_message');
+=======
+		$data['body'] = "blog/welcome_message";
+		custom_layout($data);
+>>>>>>> d2af1226ed22e91f3abe8a4fcd8a9319e6ec20cb
+>>>>>>> master
 	}
 }
