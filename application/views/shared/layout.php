@@ -6,8 +6,12 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<<<<<<< HEAD
       <title><?php echo $title == null ? "Aplikasi Admin Pondok Web" : $title; ?></title>
-      <title><?php echo $title; ?></title>
+=======
+    <title><?php echo $title; ?></title>
+>>>>>>> d2af1226ed22e91f3abe8a4fcd8a9319e6ec20cb
+
       <!-- Bootstrap CSS -->
       <link href="<?php echo base_url()."assets/adminLte/"?>css/bootstrap.min.css" rel="stylesheet">
       <!-- bootstrap theme -->
@@ -96,6 +100,7 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
+<<<<<<< HEAD
                             <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Diri" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./dataSaya">Data Diri Anda</a></li>
                             <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Tabungan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./saldo">Tabungan Mingguan Anda</a></li>
                             <?php if($level_user == 3) {?>
@@ -103,8 +108,8 @@
                             <?php }?>
                         </ul>
                     </li>
-                    <?php if($level_user ==1){ ?>
                     <li class="sub-menu <?php echo $menu == "Akademik" ? "active" : "" ?>">
+=======
                           <li class="<?php echo $menu == "Admin" && $submenu == "Adm_list_user" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./userList">List User</a></li>
                           <li class="<?php echo $menu == "Admin" && $submenu == "Adm_karyawan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./karyawanList">List Data Karyawan</a></li>
                           <li class="<?php echo $menu == "Admin" && $submenu == "Adm_Admin" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./indexAdmin">List Data Admin</a></li>
@@ -145,12 +150,14 @@
                   </li>
                   <?php if($level_user <3){?>
                     <li class="sub-menu <?php echo $menu == "Referensi" ? "active" : "" ?>">
+>>>>>>> d2af1226ed22e91f3abe8a4fcd8a9319e6ec20cb
                         <a href="javascript:;">
                             <i class="icon_id-2"></i>
                             <span>Data Akademik</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
+<<<<<<< HEAD
                           <li class="<?php echo $menu == "Akademik" && $submenu == "A_Bayanat" ? "active" : "" ?>"><a href="#">For Bayanat</a></li>
                           <li class="<?php echo $menu == "Akademik" && $submenu == "A_Rekap" ? "active" : "" ?>"><a href="#">For Rekap</a></li>
                           <li class="<?php echo $menu == "Akademik" && $submenu == "A_Rapor" ? "active" : "" ?>"><a href="#">For Rapor</a></li>
@@ -193,6 +200,7 @@
                         <a href="#">
                             <i class="icon-cog"></i>
                             <span>Log Proses</span>
+=======
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Hari" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_hari">Referensi - Hari</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Beasiswa" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_beasiswa">Referensi - Beasiswa</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Jadwal" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_jadwal">Referensi - Jadwal</a></li>
@@ -224,6 +232,7 @@
                         <a href="<?php echo base_url(''); ?>./postingBlog">
                             <i class="icon-star"></i>
                             <span>Posting Blog</span>
+>>>>>>> d2af1226ed22e91f3abe8a4fcd8a9319e6ec20cb
                         </a>
                     </li>
                     <?php if($level_user == 1 || $level_user ==2) {?>
@@ -246,11 +255,13 @@
                             <span>Logout</span>
                         </a>
                     </li>
+<<<<<<< HEAD
                 </ul>
                 <!-- sidebar menu end-->
             </div>
         </aside>
         <!--sidebar end-->
+=======
                   <?php } ?>
                   <?php if($level_user == 1) {?>
                     <li class="<?php echo $menu == "Mtest" ? "active" : "" ?>">
@@ -271,6 +282,8 @@
           </div>
       </aside>
       <!--sidebar end-->
+>>>>>>> d2af1226ed22e91f3abe8a4fcd8a9319e6ec20cb
+
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
