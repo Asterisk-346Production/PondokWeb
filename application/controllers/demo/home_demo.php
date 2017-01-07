@@ -7,7 +7,7 @@ class Home_Demo extends CI_Controller {
 	{
 		parent::__construct();
 		if ( ! $this->session->userdata('logged_in'))
-        { 
+        {
             redirect();
         }
 	}
@@ -16,7 +16,13 @@ class Home_Demo extends CI_Controller {
 	{
 		$data['id_user'] = $this->session->userdata('id_user');
 		$data['level_user'] = $this->session->userdata('level_user');
-		$this->load->view('admin/home_demo',$data);
+
+		$data['title'] = "Dashboard Pondok Web";
+		$data['menu'] = "Dashboard";
+		$data['body'] = "admin/home_demo";
+
+		// $this->load->view('admin/home_demo',$data);
+		$this->load->view('shared/layout', $data);
 	}
 
 }
