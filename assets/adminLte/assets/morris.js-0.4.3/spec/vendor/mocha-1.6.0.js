@@ -4535,10 +4535,10 @@ var ignore = ['node_modules', '.git'];
 
 exports.escape = function(html){
   return String(html)
-    .replace(/&/g, '&')
-    .replace(/"/g, '"')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
     .replace(/</g, '&lt;')
-    .replace(/>/g, '>');
+    .replace(/>/g, '&gt;');
 };
 
 /**
@@ -4769,7 +4769,7 @@ exports.parseQuery = function(qs){
 function highlight(js) {
   return js
     .replace(/</g, '&lt;')
-    .replace(/>/g, '>')
+    .replace(/>/g, '&gt;')
     .replace(/\/\/(.*)/gm, '<span class="comment">//$1</span>')
     .replace(/('.*?')/gm, '<span class="string">$1</span>')
     .replace(/(\d+\.\d+)/gm, '<span class="number">$1</span>')

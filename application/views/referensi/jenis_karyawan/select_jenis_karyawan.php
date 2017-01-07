@@ -19,7 +19,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Custom styles -->
     <link href="<?php echo base_url()."assets/adminLte/"?>css/style.css" rel="stylesheet">
     <link href="<?php echo base_url()."assets/adminLte/"?>css/style-responsive.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css"> -->
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
@@ -241,16 +240,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- javascripts -->
     <script src="<?php echo base_url('assets/adminLte/js/jquery.js'); ?>"></script>
     <script src="<?php echo base_url('assets/adminLte/js/bootstrap.min.js'); ?>"></script>
-   <script type="text/javascript" src="<?php echo base_url('assets/datatable/js/jquery.dataTables.min.js');?>"></script>
     <!-- nice scroll -->
     <script src="<?php echo base_url('assets/adminLte/js/jquery.scrollTo.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/adminLte/js/jquery.nicescroll.js'); ?>" type="text/javascript"></script>
 	<!--custome script for all page-->
     <script src="<?php echo base_url('assets/adminLte/js/scripts.js'); ?>"></script>
-      <script>
-              $(document).ready(function() {
-               $('#sample_2').DataTable();
-              } );
-            </script>
+
   </body>
 </html>

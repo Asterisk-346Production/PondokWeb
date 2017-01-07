@@ -2092,7 +2092,7 @@
 			// added to the filter wrapper if needed (submit button for example)
 			nFilter._DT_Input = jqFilter[0];
 		
-			jqFilter.val( oPreviousSearch.sSearch.replace('"','"') );
+			jqFilter.val( oPreviousSearch.sSearch.replace('"','&quot;') );
 			jqFilter.bind( 'keyup.DT', function(e) {
 				/* Update all other filter input elements for the new display */
 				var n = oSettings.aanFeatures.f;
@@ -8530,7 +8530,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "fnFormatNumber": function ( iIn ) {
-		 *          if ( iIn < 1000 ) {
+		 *          if ( iIn &lt; 1000 ) {
 		 *            return iIn;
 		 *          } else {
 		 *            var 
@@ -8538,8 +8538,8 @@
 		 *              a=s.split(""), out="", 
 		 *              iLen=s.length;
 		 *            
-		 *            for ( var i=0 ; i<iLen ; i++ ) {
-		 *              if ( i%3 === 0 && i !== 0 ) {
+		 *            for ( var i=0 ; i&lt;iLen ; i++ ) {
+		 *              if ( i%3 === 0 &amp;&amp; i !== 0 ) {
 		 *                out = "'"+out;
 		 *              }
 		 *              out = a[iLen-i-1]+out;
@@ -9628,7 +9628,7 @@
 		 *     <li>The following options are allowed:	
 		 *       <ul>
 		 *         <li>'l' - Length changing</li
-		 *         ><li>'f' - Filtering input</li>
+		 *         <li>'f' - Filtering input</li>
 		 *         <li>'t' - The table!</li>
 		 *         <li>'i' - Information</li>
 		 *         <li>'p' - Pagination</li>
@@ -9643,15 +9643,15 @@
 		 *     </li>
 		 *     <li>The following syntax is expected:
 		 *       <ul>
-		 *         <li>'<' and '>' - div elements</li>
-		 *         <li>'<"class" and '>' - div with a class</li>
-		 *         <li>'<"#id" and '>' - div with an ID</li>
+		 *         <li>'&lt;' and '&gt;' - div elements</li>
+		 *         <li>'&lt;"class" and '&gt;' - div with a class</li>
+		 *         <li>'&lt;"#id" and '&gt;' - div with an ID</li>
 		 *       </ul>
 		 *     </li>
 		 *     <li>Examples:
 		 *       <ul>
-		 *         <li>'<"wrapper"flipt>'</li>
-		 *         <li>'<lf<t>ip>'</li>
+		 *         <li>'&lt;"wrapper"flipt&gt;'</li>
+		 *         <li>'&lt;lf&lt;t&gt;ip&gt;'</li>
 		 *       </ul>
 		 *     </li>
 		 *   </ul>
@@ -9663,7 +9663,7 @@
 		 *  @example
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
-		 *        "sDom": '<"top"i>rt<"bottom"flp><"clear">'
+		 *        "sDom": '&lt;"top"i&gt;rt&lt;"bottom"flp&gt;&lt;"clear"&gt;'
 		 *      } );
 		 *    } );
 		 */
