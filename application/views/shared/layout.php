@@ -21,9 +21,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
-      <script src="http://192.168.1.73/rentalmobil/assets/js/html5shiv.js"></script>
-      <script src="http://192.168.1.73/rentalmobil/assets/js/respond.min.js"></script>
-      <script src="http://192.168.1.73/rentalmobil/assets/js/lte-ie7.js"></script>
+      <script src="<?php echo base_url()."assets/adminLte/"?>js/html5shiv.js"></script>
+      <script src="<?php echo base_url()."assets/adminLte/"?>js/respond.min.js"></script>
+      <script src="<?php echo base_url()."assets/adminLte/"?>js/lte-ie7.js"></script>
     <![endif]-->
 
     <!-- javascripts -->
