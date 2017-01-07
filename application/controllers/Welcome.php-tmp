@@ -1,3 +1,5 @@
+
+Warning: Module 'oci8' already loaded in Unknown on line 0
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -18,8 +20,7 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function Index()
-	{
+	public function Index() {
 		$this->load->view('blog/welcome_message');
 	}
 }
