@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		table, th, td{
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<script>
+			function myFunction() {
+			  // Declare variables 
+			  var input, filter, table, tr, td, i;
+			  input = document.getElementById("myInput");
+			  filter = input.value.toUpperCase();
+			  table = document.getElementById("myTable");
+			  tr = table.getElementsByTagName("tr");
+
+			  // Loop through all table rows, and hide those who don't match the search query
+			  for (i = 0; i < tr.length; i++) {
+			    td = tr[i].getElementsByTagName("td")[0];
+			    if (td) {
+			      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+			        tr[i].style.display = "";
+			      } else {
+			        tr[i].style.display = "none";
+			      }
+			    } 
+			  }
+			}
+</script>
+<input type="text" name="myInput" id="myInput" onkeyup="myFunction()" placeholder="cari...">
+<table style="width:100%" id="myTable">
+	<tr>
+		<th>No</th>
+		<th>No Induk</th>
+		<th>Nama</th>
+		<th>Nama Arab</th>
+		<th>Wali</th>
+		<th>Daerah</th>
+		<th>Ipa</th>
+		<th>Pkn</th>
+		<th>IPS</th>
+		<th>Jumlah</th>
+		<th>Rata - rata</th>
+		<th>Awal</th>
+		<th>Total</th>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>15.16.07.002</td>
+		<td>Abdul Fattah</td>
+		<td>عبد الفتح</td>
+		<td>عبد الفتح</td>
+		<td>عبد الفتح</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>15.16.07.002</td>
+		<td>Abdul Fattuh</td>
+		<td>عبد الفتح</td>
+		<td>عبد الفتح</td>
+		<td>عبد الفتح</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+	</tr>
+	<tr>
+		<td>3</td>
+		<td>15.16.07.002</td>
+		<td>Abdul Fatteh</td>
+		<td>عبد الفتح</td>
+		<td>عبد الفتح</td>
+		<td>عبد الفتح</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>15.16.07.002</td>
+		<td>Abdul Fattih</td>
+		<td>عبد الفتح</td>
+		<td>عبد الفتح</td>
+		<td>عبد الفتح</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+		<td>75</td>
+	</tr>
+</table>
+</body>
+</html>
