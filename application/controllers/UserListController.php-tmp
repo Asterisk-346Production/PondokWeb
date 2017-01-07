@@ -1,0 +1,80 @@
+
+Warning: Module 'oci8' already loaded in Unknown on line 0
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class UserList extends CI_Controller {
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('admin_model');
+		if (!$this->session->userdata('logged_in')) {
+			redirect();
+		}
+	}
+
+	public function index() {
+		$data = $this->admin_model->getListUserAdmin();
+		$this->load->view('blog/welcome_message', $data);
+	}
+
+	public function addUser() {
+		$this->load->view('admin/admin_user_list/insertUser');
+	}
+
+	public function createNewUser() {
+		$this->form_validation->set_rules('username', 'username', 'trim|required|is_unique[list_user.id_user]');
+		$this->form_validation->set_rules('password', 'password', 'trim|required');
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('error_message', 'Some field is Invalid');
+			redirect('UserList/addUser');
+		} else {
+			$data = array(
+				'id_user'     => $this->input->post('username'),
+				'pass_user'   => $this->input->post('password'),
+				'level_user'  => $this->input->post('levelUser'),
+				'blokir_user' => $this->input->post('blokirUser')
+			);
+			$this->admin_model->insertListUserAdmin($data);
+			redirect('UserList');
+		}
+	}
+
+	public function editUser() {
+		$id           = $this->uri->segment(3);
+		$data['slug'] = $this->crud->readupdate_pemilik($id);
+		$this->load->view('updateUser', $data);
+	}
+
+	public function doUpdateUser() {
+		$this->form_validation->set_rules('password', 'password', 'trim|required');
+		$dataPassawordUser = $this->input->post('password');
+		// $data['']
+
+		$id = $this->input->post('id');
+		if ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('error_message', 'Some field is Invalid');
+			redirect('UserList/editUser', $id);
+		} else {
+			$data = array(
+				'pass_user'   => $this->input->post('password'),
+				'level_user'  => $this->input->post('levelUser'),
+				'blokir_user' => $this->input->post('blokirUser')
+			);
+			$this->admin_model->updateListUserAdmin($id, $data);
+			redirect('UserList');
+		}
+	}
+
+	public function blokirUser() {
+
+	}
+
+	public function deleteUser() {
+
+	}
+
+}
+
+/* End of file UserListController */
+/* Location: ./application/controllers/UserListController */
