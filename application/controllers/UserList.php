@@ -14,9 +14,10 @@ class UserList extends CI_Controller {
 
 	public function index()
 	{
+		$data['level_user'] = $this->session->userdata('level_user');
+		$data['id_user'] = $this->session->userdata('id_user');
 		$data['admin'] = $this->admin_model->getListUserAdmin();
-		$levels = $this->session->userdata('level_user');
-		if($levels == 1){
+		if($data['level_user'] == 1){
 			$data['menu'] = "Admin";
 			$data['submenu'] = "Adm_list_user";
 			$data['body'] = "blog/welcome_message";

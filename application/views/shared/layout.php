@@ -81,6 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="javascript:;">
                             <i class="icon-user"></i>
                             <span>Data Admin</span>
+                            <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
                           <li class="<?php echo $menu == "Admin" && $submenu == "Adm_list_user" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./userList">List User</a></li>
