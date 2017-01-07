@@ -164,30 +164,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <section id="main-content">
           <section class="wrapper">
             <!-- page start-->
-            <!-- <script>
-                  function myFunction() {
-                    // Declare variables 
-                    var input, filter, table, tr, td, i;
-                    input = document.getElementById("myInput");
-                    filter = input.value.toUpperCase();
-                    table = document.getElementById("sample_2");
-                    tr = table.getElementsByTagName("tr");
-
-                    // Loop through all table rows, and hide those who don't match the search query
-
-                    for (i = 0; i < tr.length; i++) {
-                      td = tr[i].getElementsByTagName("td")[2];
-                      if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                          tr[i].style.display = "";
-                        } else {
-                          tr[i].style.display = "none";
-                        }
-                      } 
-                    }
-                  }
-            </script> -->
-
 			<div class="row">
                   <div class="col-lg-12">
                      <section class="panel">
@@ -245,6 +221,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo base_url('assets/adminLte/js/jquery.nicescroll.js'); ?>" type="text/javascript"></script>
 	<!--custome script for all page-->
     <script src="<?php echo base_url('assets/adminLte/js/scripts.js'); ?>"></script>
-
+    <!-- datatable -->
+    <script type="text/javascript" src="<?php echo base_url('assets/adminLte/assets/data-tables/jquery.dataTables.js')?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/adminLte/assets/data-tables/DT_bootstrap.js')?>"></script>
+    <script src="<?php echo base_url('assets/adminLte/js/dynamic-table.js')?>"></script>
   </body>
 </html>
