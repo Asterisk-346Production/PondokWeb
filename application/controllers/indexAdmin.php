@@ -5,25 +5,21 @@ class IndexAdmin extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$level_user_for_valid = $this->session->userdata('level_user');
-		if ( !$this->session->userdata('logged_in') && $level_user_for_valid ==1)
-        { 
-            redirect();
-        }
+		if ( !$this->session->userdata('logged_in') || $this->session->userdata('level_user') != 1)
+    {
+      redirect();
+    }
 		// $this->load->model('');
 		// $this->load->helper('date');
 	}
 
 	public function index()
 	{
-		$levels = $this->session->userdata('level_user');
-		if($levels == 1){
-			$this->load->view('admin/home');
-		}else{
-			redirect();
-		}
+		$data['menu'] = "Admin";
+		$data['submenu'] = "Adm_Admin";
+		$data['body'] = "admin/home";
+		custom_layout($data);
 	}
-
 }
 
 /* End of file indexAdmin.php */

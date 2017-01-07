@@ -17,14 +17,26 @@ class Referensi_jenis_santri extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Santri";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Santri";
+		$data['body'] = "referensi/jenis_santri/select_jenis_santri";
+
 		$data['m_jenis_santri'] = $this->M_jenis_santri->selectReferensiJenisSantri();
-		$this->load->view('referensi/jenis_santri/select_jenis_santri', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisSantri(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_santri/insert_jenis_santri', $data);
+
+		$data['title'] = "Add Referensi Jenis Santri";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Santri";
+		$data['body'] = "referensi/jenis_santri/insert_jenis_santri";
+		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisSantri(){
@@ -63,10 +75,17 @@ class Referensi_jenis_santri extends CI_Controller {
 	public function updateReferensiJenisSantri(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Santri";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Santri";
+		$data['body'] = "referensi/jenis_santri/update_jenis_santri";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_santri'] = $this->M_jenis_santri->preUpdateReferensiJenisSantri($id);
-		$this->load->view('referensi/jenis_santri/update_jenis_santri', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJenisSantri(){

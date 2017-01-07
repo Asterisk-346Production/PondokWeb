@@ -17,14 +17,26 @@ class Referensi_jenis_ruangan extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Ruangan";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Ruangan";
+		$data['body'] = "referensi/jenis_ruangan/select_jenis_ruangan";
+
 		$data['m_jenis_ruangan'] = $this->M_jenis_ruangan->selectReferensiJenisRuangan();
-		$this->load->view('referensi/jenis_ruangan/select_jenis_ruangan', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisRuangan(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_ruangan/insert_jenis_ruangan', $data);
+
+		$data['title'] = "Add Referensi Jenis Ruangan";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Ruangan";
+		$data['body'] = "referensi/jenis_ruangan/insert_jenis_ruangan";
+		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisRuangan(){
@@ -67,10 +79,17 @@ class Referensi_jenis_ruangan extends CI_Controller {
 	public function updateReferensiJenisRuangan(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Ruangan";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Ruangan";
+		$data['body'] = "referensi/jenis_ruangan/update_jenis_ruangan";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_ruangan'] = $this->M_jenis_ruangan->preUpdateReferensiJenisRuangan($id);
-		$this->load->view('referensi/jenis_ruangan/update_jenis_ruangan', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJenisruangan(){

@@ -17,14 +17,26 @@ class Referensi_jenis_wali extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Wali";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Wali";
+		$data['body'] = "referensi/jenis_wali/select_jenis_wali";
+
 		$data['m_jenis_wali'] = $this->M_jenis_wali->selectReferensiJenisWali();
-		$this->load->view('referensi/jenis_wali/select_jenis_wali', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisWali(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_wali/insert_jenis_wali', $data);
+
+		$data['title'] = "Add Referensi Jenis Wali";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Wali";
+		$data['body'] = "referensi/jenis_wali/insert_jenis_wali";
+		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisWali(){
@@ -65,10 +77,17 @@ class Referensi_jenis_wali extends CI_Controller {
 	public function updateReferensiJenisWali(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Wali";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Wali";
+		$data['body'] = "referensi/jenis_wali/update_jenis_wali";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_wali'] = $this->M_jenis_wali->preUpdateReferensiJenisWali($id);
-		$this->load->view('referensi/jenis_wali/update_jenis_wali', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJeniswali(){

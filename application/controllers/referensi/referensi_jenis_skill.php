@@ -17,14 +17,26 @@ class Referensi_jenis_skill extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Skill";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Skill";
+		$data['body'] = "referensi/jenis_skill/select_jenis_skill";
+
 		$data['m_jenis_skill'] = $this->M_jenis_skill->selectReferensiJenisSkill();
-		$this->load->view('referensi/jenis_skill/select_jenis_skill', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisSkill(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_skill/insert_jenis_skill', $data);
+
+		$data['title'] = "Add Referensi Jenis Skill";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Skill";
+		$data['body'] = "referensi/jenis_skill/insert_jenis_skill";
+		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisSkill(){
@@ -63,10 +75,17 @@ class Referensi_jenis_skill extends CI_Controller {
 	public function updateReferensiJenisSkill(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Skill";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Skill";
+		$data['body'] = "referensi/jenis_skill/update_jenis_skill";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_skill'] = $this->M_jenis_skill->preUpdateReferensiJenisSkill($id);
-		$this->load->view('referensi/jenis_skill/update_jenis_skill', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJenisSkill(){

@@ -17,7 +17,10 @@ class Mtest extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('mtes/input', $data);
+
+		$data['menu'] = "Mtest";
+		$data['body'] = "mtes/input";
+		custom_layout($data);
 	}
 
   public function htmlto()

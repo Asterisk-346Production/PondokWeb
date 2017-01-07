@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Mtest extends CI_Controller {
@@ -17,7 +17,11 @@ class Mtest extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('mtes/input', $data);
+
+		$data['menu'] = "Mtest";
+		$data['body'] = "mtes/input";
+
+		custom_layout($data);
 	}
 
   public function htmlto()
@@ -26,21 +30,20 @@ class Mtest extends CI_Controller {
 		$data['detail'] = $this->input->post('dtt');
 		$data['other'] = $this->input->post('orm');
 
-
 		$html = $this->load->view('mtes/getto', $data);
 
 		$mpdf = new mPDF();
-		
+
 		$html = $this->load->view('mtes/getto', $data, true);
 		$stylesheet = file_get_contents(base_url().'/assets/adminLte/css/bootstrap.min.css');
 		$stylesheet .= file_get_contents(base_url().'/assets/adminLte/css/bootstrap-theme.css');
 		$stylesheet .= file_get_contents(base_url().'/assets/adminLte/css/style.css');
 		$stylesheet .= file_get_contents(base_url().'/assets/adminLte/css/style-responsive.css');
-		
+
 		$mpdf->WriteHTML($stylesheet,1);
 		$mpdf->WriteHTML($html,2);
 		$mpdf->Output(time()."-download.pdf", "D");
-		
+
 		redirect('mtest');
 	}
 
@@ -48,7 +51,13 @@ class Mtest extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('mtes/blanko', $data);
+
+		$data['title'] = "Blanko Test";
+		$data['menu'] = "Mtest";
+		$data['body'] = "mtes/blanko";
+
+		// $this->load->view('mtes/blanko', $data);
+		$this->load->view('shared/layout', $data);
 	}
 
 	public function printBlanko(){
@@ -58,4 +67,3 @@ class Mtest extends CI_Controller {
 		$data = $this->load->model('Model File');
 	}
 }
- -->

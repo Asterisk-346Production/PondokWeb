@@ -6,7 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<<<<<<< HEAD
       <title><?php echo $title == null ? "Aplikasi Admin Pondok Web" : $title; ?></title>
+=======
+    <title><?php echo $title; ?></title>
+>>>>>>> d2af1226ed22e91f3abe8a4fcd8a9319e6ec20cb
 
       <!-- Bootstrap CSS -->
       <link href="<?php echo base_url()."assets/adminLte/"?>css/bootstrap.min.css" rel="stylesheet">
@@ -96,6 +100,7 @@
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
+<<<<<<< HEAD
                             <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Diri" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./dataSaya">Data Diri Anda</a></li>
                             <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Tabungan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./saldo">Tabungan Mingguan Anda</a></li>
                             <?php if($level_user == 3) {?>
@@ -104,12 +109,55 @@
                         </ul>
                     </li>
                     <li class="sub-menu <?php echo $menu == "Akademik" ? "active" : "" ?>">
+=======
+                          <li class="<?php echo $menu == "Admin" && $submenu == "Adm_list_user" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./userList">List User</a></li>
+                          <li class="<?php echo $menu == "Admin" && $submenu == "Adm_karyawan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./karyawanList">List Data Karyawan</a></li>
+                          <li class="<?php echo $menu == "Admin" && $submenu == "Adm_Admin" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./indexAdmin">List Data Admin</a></li>
+                        </ul>
+                    </li>
+                  <?php }?>
+                  <li class="sub-menu <?php echo $menu == "Pribadi" ? "active" : "" ?>">
+                      <a href="javascript:;">
+                          <i class="icon-user"></i>
+                          <span>Data Saya</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Diri" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./dataSaya">Data Diri Anda</a></li>
+                          <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Tabungan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./saldo">Tabungan Mingguan Anda</a></li>
+                          <?php if($level_user == 3) {?>
+                            <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Rapor" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./rapor">Data Nilai Rapor Anda</a></li>
+                          <?php }?>
+                      </ul>
+                  </li>
+                  <li class="sub-menu <?php echo $menu == "Akademik" ? "active" : "" ?>">
+                      <a href="javascript:;">
+                          <i class="icon_id-2"></i>
+                          <span>Data Akademik</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Bayanat" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/bayanat">Bayanat</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Rekap" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/rekap">Rekap Nilai</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Rapor" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/rapor">Rapor</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Absen" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/absensi">Absensi</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Guru" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/guru">Guru</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Santri" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/santri">Santri</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Ruangan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/ruangan">Ruangan</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Kelas" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/kelas">Kelas</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_KelasJadwal" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/kelasJadwal">Kelas Jadwal</a></li>
+                      </ul>
+                  </li>
+                  <?php if($level_user <3){?>
+                    <li class="sub-menu <?php echo $menu == "Referensi" ? "active" : "" ?>">
+>>>>>>> d2af1226ed22e91f3abe8a4fcd8a9319e6ec20cb
                         <a href="javascript:;">
                             <i class="icon_id-2"></i>
                             <span>Data Akademik</span>
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
+<<<<<<< HEAD
                           <li class="<?php echo $menu == "Akademik" && $submenu == "A_Bayanat" ? "active" : "" ?>"><a href="#">For Bayanat</a></li>
                           <li class="<?php echo $menu == "Akademik" && $submenu == "A_Rekap" ? "active" : "" ?>"><a href="#">For Rekap</a></li>
                           <li class="<?php echo $menu == "Akademik" && $submenu == "A_Rapor" ? "active" : "" ?>"><a href="#">For Rapor</a></li>
@@ -152,6 +200,39 @@
                         <a href="#">
                             <i class="icon-cog"></i>
                             <span>Log Proses</span>
+=======
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Hari" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_hari">Referensi - Hari</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Beasiswa" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_beasiswa">Referensi - Beasiswa</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Jadwal" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_jadwal">Referensi - Jadwal</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Jam" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_jam">Referensi - Jam</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Karyawan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_karyawan">Referensi - Karyawan</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Kompetensi" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_kompetensi">Kompetensi</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Kelas" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_kelas">Referensi - Kelas</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Pelajaran" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_pelajaran">Referensi - Pelajaran</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Pembayaran" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_pembayaran">Referensi - Pembayaran</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Pendidikan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_pendidikan">Referensi - Pendidikan</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Ruangan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_ruangan">Referensi - Ruangan</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Santri" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_santri">Referensi - Santri</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Skill" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_skill">Referensi - Skill</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Status" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_status">Referensi - Status</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Transaksi" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_transaksi">Referensi - Transaksi</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Ujian" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_transaksi">Referensi - Ujian</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Wali" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_wali">Referensi - Wali</a></li>
+                        </ul>
+                    </li>
+                  <?php }?>
+                  <li class="<?php echo $menu == "Log" ? "active" : "" ?>">
+                      <a href="<?php echo base_url(''); ?>./">
+                          <i class="icon-cog"></i>
+                          <span>Log Proses</span>
+                      </a>
+                  </li>
+                  <?php if($level_user == 1 || $level_user == 2) {?>
+                    <li class="<?php echo $menu == "Blog" ? "active" : "" ?>">
+                        <a href="<?php echo base_url(''); ?>./postingBlog">
+                            <i class="icon-star"></i>
+                            <span>Posting Blog</span>
+>>>>>>> d2af1226ed22e91f3abe8a4fcd8a9319e6ec20cb
                         </a>
                     </li>
                     <?php if($level_user == 1 || $level_user ==2) {?>
@@ -174,11 +255,34 @@
                             <span>Logout</span>
                         </a>
                     </li>
+<<<<<<< HEAD
                 </ul>
                 <!-- sidebar menu end-->
             </div>
         </aside>
         <!--sidebar end-->
+=======
+                  <?php } ?>
+                  <?php if($level_user == 1) {?>
+                    <li class="<?php echo $menu == "Mtest" ? "active" : "" ?>">
+                        <a href="<?php echo base_url(''); ?>./mtest">
+                            <i class="icon-star"></i>
+                            <span>List Testing</span>
+                        </a>
+                    </li>
+                  <?php } ?>
+                  <li>
+                      <a href="<?php echo base_url(''); ?>./login/logout">
+                          <i class="icon-signout"></i>
+                          <span>Logout</span>
+                      </a>
+                  </li>
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+>>>>>>> d2af1226ed22e91f3abe8a4fcd8a9319e6ec20cb
 
         <!--main content start-->
         <section id="main-content">

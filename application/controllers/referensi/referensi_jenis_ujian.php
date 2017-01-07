@@ -17,14 +17,26 @@ class Referensi_jenis_ujian extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Ujian";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Ujian";
+		$data['body'] = "referensi/jenis_ujian/select_jenis_ujian";
+
 		$data['m_jenis_ujian'] = $this->M_jenis_ujian->selectReferensiJenisUjian();
-		$this->load->view('referensi/jenis_ujian/select_jenis_ujian', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisUjian(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_ujian/insert_jenis_ujian', $data, FALSE);
+
+		$data['title'] = "Add Referensi Jenis Ujian";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Ujian";
+		$data['body'] = "referensi/jenis_ujian/insert_jenis_ujian";
+		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisUjian(){
@@ -65,10 +77,17 @@ class Referensi_jenis_ujian extends CI_Controller {
 	public function updateReferensiJenisujian(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Ujian";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Ujian";
+		$data['body'] = "referensi/jenis_ujian/update_jenis_ujian";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_ujian'] = $this->M_jenis_ujian->preUpdateReferensiJenisUjian($id);
-		$this->load->view('referensi/jenis_ujian/update_jenis_ujian', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJenisUjian(){

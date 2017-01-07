@@ -7,17 +7,20 @@ class UserList extends CI_Controller {
 		parent::__construct();
 		$this->load->model('admin_model');
 		if ( ! $this->session->userdata('logged_in'))
-        { 
-            redirect();
-        }
+    {
+      redirect();
+    }
 	}
 
 	public function index()
 	{
-		$data = $this->admin_model->getListUserAdmin();
+		$data['admin'] = $this->admin_model->getListUserAdmin();
 		$levels = $this->session->userdata('level_user');
 		if($levels == 1){
-			$this->load->view('blog/welcome_message', $data);
+			$data['menu'] = "Admin";
+			$data['submenu'] = "Adm_list_user";
+			$data['body'] = "blog/welcome_message";
+			custom_layout($data);
 		}else{
 			redirect();
 		}
@@ -26,13 +29,17 @@ class UserList extends CI_Controller {
 	public function addUser(){
 		$data['id_user'] = $this->session->userdata('id_user');
 		$data['level_user'] = $this->session->userdata('level_user');
-		$this->load->view('admin/admin_user_list/insertUser',$data);
+
+		$data['menu'] = "Admin";
+		$data['submenu'] = "Adm_list_user";
+		$data['body'] = "admin/admin_user_list/insertUser";
+		custom_layout($data);
 	}
 
 	public function createNewUser(){
 		$this->form_validation->set_rules('username', 'username', 'trim|required|is_unique[list_user.id_user]');
 		$this->form_validation->set_rules('password', 'password', 'trim|required');
-		
+
 		if($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('error_message', 'Some field is Invalid');
 			redirect('UserList/addUser');
@@ -53,7 +60,11 @@ class UserList extends CI_Controller {
 		$data['id_user'] = $this->session->userdata('id_user');
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['slug'] = $this->admin_model->readUpdateUserList($id);
-		$this->load->view('updateUser', $data);
+
+		$data['menu'] = "Admin";
+		$data['submenu'] = "Adm_list_user";
+		$data['body'] = "updateUser";
+		custom_layout($data);
 	}
 
 	public function doUpdateUser(){
@@ -87,7 +98,6 @@ class UserList extends CI_Controller {
 		$this->admin_model->deleteListUserAdmin($id);
 		redirect('UserList');
 	}
-
 }
 
 /* End of file UserListController */

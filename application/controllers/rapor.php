@@ -7,18 +7,21 @@ class Rapor extends CI_Controller {
 	{
 		parent::__construct();
 		if ( ! $this->session->userdata('logged_in'))
-        { 
-            redirect();
-        }
+    {
+      redirect();
+    }
 	}
 
 	public function index()
 	{
 		$data['id_user'] = $this->session->userdata('id_user');
 		$data['level_user'] = $this->session->userdata('level_user');
- 		$this->load->view('sistemAkademik/raporSelect',$data);
-	}
 
+		$data['menu'] = "Pribadi";
+		$data['submenu'] = "P_Rapor";
+		$data['body'] = "sistemAkademik/raporSelect";
+		custom_layout($data);
+	}
 }
 
 /* End of file rapor.php */

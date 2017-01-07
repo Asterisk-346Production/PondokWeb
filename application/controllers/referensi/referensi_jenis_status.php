@@ -17,14 +17,26 @@ class Referensi_jenis_status extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Status";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Skill";
+		$data['body'] = "referensi/jenis_status/select_jenis_status";
+
 		$data['m_jenis_status'] = $this->M_jenis_status->selectReferensiJenisStatus();
-		$this->load->view('referensi/jenis_status/select_jenis_status', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisStatus(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_status/insert_jenis_status', $data);
+
+		$data['title'] = "Add Referensi Jenis Status";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Skill";
+		$data['body'] = "referensi/jenis_status/insert_jenis_status";
+		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisStatus(){
@@ -63,10 +75,17 @@ class Referensi_jenis_status extends CI_Controller {
 	public function updateReferensiJenisstatus(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Status";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Skill";
+		$data['body'] = "referensi/jenis_status/update_jenis_status";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_status'] = $this->M_jenis_status->preUpdateReferensiJenisStatus($id);
-		$this->load->view('referensi/jenis_status/update_jenis_status', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJenisStatus(){

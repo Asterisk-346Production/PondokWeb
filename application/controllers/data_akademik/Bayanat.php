@@ -17,13 +17,23 @@ class Bayanat extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('bayanat/select_bayanat', $data);
+
+		$data['title'] = "List Bayanat";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_Bayanat";
+		$data['body'] = "bayanat/select_bayanat";
+		custom_layout($data);
 	}
 
 	public function addBayanat(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('bayanat/insert_bayanat', $data);
+
+		$data['title'] = "Add Data Bayanat";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_Bayanat";
+		$data['body'] = "bayanat/insert_bayanat";
+		custom_layout($data);
 	}
 
 	public function doAddBayanat(){
@@ -33,7 +43,12 @@ class Bayanat extends CI_Controller {
 	public function updateBayanat(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('bayanat/update_bayanat', $data);
+
+		$data['title'] = "Update Data Bayanat";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_Bayanat";
+		$data['body'] = "bayanat/update_bayanat";
+		custom_layout($data);
 	}
 
 	public function doUpadteBayanat(){
@@ -41,7 +56,6 @@ class Bayanat extends CI_Controller {
 	}
 
 	public function deleteBayanat(){
-
 		$id = $this->uri->segment(4);
 		$this->M_jenis_karyawan->deleteReferensiJenisKaryawan($id);
 
@@ -53,7 +67,7 @@ class Bayanat extends CI_Controller {
 				'id_rekam'=>$this->session->userdata('id_user'));
 		$this->M_log->recordLog($dataLog);
 
-		redirect('bayanat/bayanat');	
+		redirect('data_akademik/bayanat');
 	}
 }
 

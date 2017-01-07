@@ -17,14 +17,26 @@ class Referensi_jenis_karyawan extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Karyawan";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Karyawan";
+		$data['body'] = "referensi/jenis_karyawan/select_jenis_karyawan";
+
 		$data['m_jenis_karyawan'] = $this->M_jenis_karyawan->selectReferensiJenisKaryawan();
-		$this->load->view('referensi/jenis_karyawan/select_jenis_karyawan', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisKaryawan(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_karyawan/insert_jenis_karyawan', $data);
+
+		$data['title'] = "Add Referensi Jenis Karyawan";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Karyawan";
+		$data['body'] = "referensi/jenis_karyawan/insert_jenis_karyawan";
+		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisKaryawan(){
@@ -61,14 +73,21 @@ class Referensi_jenis_karyawan extends CI_Controller {
 			redirect('referensi/referensi_jenis_karyawan');
 		}
 	}
-	
+
 	public function updateReferensiJenisKaryawan(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Karyawan";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Karyawan";
+		$data['body'] = "referensi/jenis_karyawan/update_jenis_karyawan";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_karyawan'] = $this->M_jenis_karyawan->preUpdateReferensiJenisKaryawan($id);
-		$this->load->view('referensi/jenis_karyawan/update_jenis_karyawan', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJenisKaryawan(){
