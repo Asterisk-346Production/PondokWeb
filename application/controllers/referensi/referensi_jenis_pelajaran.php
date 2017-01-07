@@ -17,14 +17,26 @@ class Referensi_jenis_pelajaran extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Pelajaran";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Pelajaran";
+		$data['body'] = "referensi/jenis_pelajaran/select_jenis_pelajaran";
+
 		$data['m_jenis_pelajaran'] = $this->M_jenis_pelajaran->selectReferensiJenisPelajaran();
-		$this->load->view('referensi/jenis_pelajaran/select_jenis_pelajaran', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisPelajaran(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_pelajaran/insert_jenis_pelajaran', $data);
+
+		$data['title'] = "Add Referensi Jenis Pelajaran";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Pelajaran";
+		$data['body'] = "referensi/jenis_pelajaran/insert_jenis_pelajaran";
+		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisPelajaran(){
@@ -63,10 +75,17 @@ class Referensi_jenis_pelajaran extends CI_Controller {
 	public function updateReferensiJenisPelajaran(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Pelajaran";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Pelajaran";
+		$data['body'] = "referensi/jenis_pelajaran/update_jenis_pelajaran";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_pelajaran'] = $this->M_jenis_pelajaran->preUpdateReferensiJenisPelajaran($id);
-		$this->load->view('referensi/jenis_pelajaran/update_jenis_pelajaran', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJenisPelajaran(){

@@ -58,21 +58,5 @@
         </tr>
     </tbody>
   </table>
-
-  <!-- <table>
-    <tr>
-      <td>Nama</td>
-      <td><?php echo $nama ?></td>
-    </tr>
-    <tr>
-      <td>Detail</td>
-      <td><?php echo $detail ?></td>
-    </tr>
-    <tr>
-      <td>Other Details</td>
-      <td><?php echo $other ?></td>
-    </tr>
-  </table> -->
-
 </body>
 </html>

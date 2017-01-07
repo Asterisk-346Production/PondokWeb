@@ -17,14 +17,26 @@ class Referensi_jenis_pembayaran extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Pembayaran";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Pembayaran";
+		$data['body'] = "referensi/jenis_pembayaran/select_jenis_pembayaran";
+
 		$data['m_jenis_pembayaran'] = $this->M_jenis_pembayaran->selectReferensiJenisPembayaran();
-		$this->load->view('referensi/jenis_pembayaran/select_jenis_pembayaran', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisPembayaran(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_pembayaran/insert_jenis_pembayaran', $data);
+
+		$data['title'] = "Add Referensi Jenis Pembayaran";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Pembayaran";
+		$data['body'] = "referensi/jenis_pembayaran/insert_jenis_pembayaran";
+		custom_layout($data);
 	}
 
 	public function doInsertJenisPembayaran(){
@@ -59,10 +71,17 @@ class Referensi_jenis_pembayaran extends CI_Controller {
 	public function updateReferensiJenisPembayaran(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Pembayaran";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Pembayaran";
+		$data['body'] = "referensi/jenis_pembayaran/update_jenis_pembayaran";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_pembayaran'] = $this->M_jenis_pembayaran->preUpdateReferensiJenispembayaran($id);
-		$this->load->view('referensi/jenis_pembayaran/update_jenis_pembayaran', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJenisPembayaran(){

@@ -7,30 +7,32 @@ class DataAsrma extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('asrama_model');
-		if(! $this->session->userdata('logged_in')){
+		if(! $this->session->userdata('logged_in') || $this->session->userdata('level_user') != 3){
 			redirect('');
 		}
 	}
+
 	public function index()
 	{
-		if($this->session->userdata('level_user') == 3){
-			redirect();
-		}else{
-			$data['level_user'] = $this->session->userdata('level_user');
-			$data['id_user'] = $this->session->userdata('id_user');
-			$this->load->view('asrama/asramaSelect', $data);
-		}
+		$data['level_user'] = $this->session->userdata('level_user');
+		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Asrama";
+		$data['body'] = "asrama/asramaSelect";
+		custom_layout($data);
 	}
 
 	public function addAsrma(){
-		$this->load->view('asrama/asramaInsert', $data);
+		$data['title'] = "Add Asrama";
+		$data['body'] = "asrama/asramaInsert";
+		custom_layout($data);
 	}
 
 	public function createAsrma(){
 		$this->form_validation->set_rules('namaAsrama', 'namaAsrama', 'trim|required|min_length[5]|max_length[12]');
 		$this->form_validation->set_rules('alamatAsrama', 'alamatAsrama', 'trim|required|min_length[5]|max_length[12]');
 		$this->form_validation->set_rules('jumlahKamar', 'jumlahKamar', 'trim|required|min_length[5]|max_length[12]');
-		
+
 		if ($this->form_validation->run() == FALSE) {
 			$this->session->set_flashdata('error_message', 'Some field is Invalid');
 			redirect('addAsrma');
@@ -47,15 +49,14 @@ class DataAsrma extends CI_Controller {
 	}
 
 	public function updateAsrama(){
-		if($this->session->userdata('level_user') == 3){
-			redirect();
-		}else{
-			$id = $this->uri->segment(3);
-			$data['level_user'] = $this->session->userdata('level_user');
-			$data['id_user'] = $this->session->userdata('id_user');
-			$data['slug'] = $this->asrama_model->readUpdateAsrama($id);
-			$this->load->view('asrama/asramaUpdate', $data);
-		}
+		$id = $this->uri->segment(3);
+		$data['level_user'] = $this->session->userdata('level_user');
+		$data['id_user'] = $this->session->userdata('id_user');
+		$data['slug'] = $this->asrama_model->readUpdateAsrama($id);
+
+		$data['title'] = "Update Asrama";
+		$data['body'] = "asrama/asramaUpdate";
+		custom_layout($data);
 	}
 
 	public function doUpdateAsrama(){
@@ -83,7 +84,6 @@ class DataAsrma extends CI_Controller {
 		$this->asrama_model->deleteKaryawan($id);
 		redirect('karyawan');
 	}
-
 }
 
 /* End of file dataAsrma.php */

@@ -3,17 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
-	 public function __construct()
+	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('M_Login');
 		if ($this->session->userdata('logged_in')) {
 			$allowed = array('logout');
 			if ( ! in_array($this->router->fetch_method(), $allowed)) {
-				// redirect('indexAdmin');
 				redirect('demo/home_demo');
 			}
-        }
+    }
 	}
 
 	public function index()
@@ -38,7 +37,6 @@ class Login extends CI_Controller {
 				$sess_array = array();
 				foreach ($result as $row) {
 					$sess_array =array(
-						# code...
 						'id_list_user'=> $row['id_list_user'],
 						'id_user' => $row['id_user'],
 						'level_user' => $row['level_user'],
@@ -46,7 +44,6 @@ class Login extends CI_Controller {
 					);
 					$this->session->set_userdata($sess_array);
 				}
-				// redirect('indexAdmin');
 				redirect('demo/home_demo');
 			}else{
 				$this->session->set_flashdata('error_message', 'Invalid Username or Password');
@@ -56,16 +53,8 @@ class Login extends CI_Controller {
 	}
 
 	public function logout() {
-		/*$sess = array(
-			'id',
-			'typeuser',
-			'idkary',
-			'logged_in'=> FALSE
-		);
-		$this->session->unset_userdata($sess);*/
 		$this->session->sess_destroy();
 		redirect('Login');
-
 	}
 }
 

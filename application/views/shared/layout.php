@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title><?php echo $title == null ? "Aplikasi Admin Pondok Web" : $title; ?></title>
+    <title><?php echo $title; ?></title>
 
     <!-- Bootstrap CSS -->
     <link href="<?php echo base_url()."assets/adminLte/"?>css/bootstrap.min.css" rel="stylesheet">
@@ -83,9 +83,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span>Data Admin</span>
                         </a>
                         <ul class="sub">
-                          <li class="<?php echo $menu == "Admin" && $submenu == "A_list_user" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./userList">List User</a></li>
-                          <li class="<?php echo $menu == "Admin" && $submenu == "A_karyawan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./karyawanList">List Data Karyawan</a></li>
-                          <li class="<?php echo $menu == "Admin" && $submenu == "A_Admin" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./adminList">List Data Admin</a></li>
+                          <li class="<?php echo $menu == "Admin" && $submenu == "Adm_list_user" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./userList">List User</a></li>
+                          <li class="<?php echo $menu == "Admin" && $submenu == "Adm_karyawan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./karyawanList">List Data Karyawan</a></li>
+                          <li class="<?php echo $menu == "Admin" && $submenu == "Adm_Admin" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./indexAdmin">List Data Admin</a></li>
                         </ul>
                     </li>
                   <?php }?>
@@ -110,15 +110,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                        <li class="<?php echo $menu == "Akademik" && $submenu == "A_Bayanat" ? "active" : "" ?>"><a href="#">For Bayanat</a></li>
-                        <li class="<?php echo $menu == "Akademik" && $submenu == "A_Rekap" ? "active" : "" ?>"><a href="#">For Rekap</a></li>
-                        <li class="<?php echo $menu == "Akademik" && $submenu == "A_Rapor" ? "active" : "" ?>"><a href="#">For Rapor</a></li>
-                        <li class="<?php echo $menu == "Akademik" && $submenu == "A_Absen" ? "active" : "" ?>"><a href="#">For Absen</a></li>
-                        <li class="<?php echo $menu == "Akademik" && $submenu == "A_Guru" ? "active" : "" ?>"><a href="#">For Guru</a></li>
-                        <li class="<?php echo $menu == "Akademik" && $submenu == "A_Santri" ? "active" : "" ?>"><a href="#">For Santri</a></li>
-                        <li class="<?php echo $menu == "Akademik" && $submenu == "A_Ruangan" ? "active" : "" ?>"><a href="#">For Ruangan</a></li>
-                        <li class="<?php echo $menu == "Akademik" && $submenu == "A_Kelas" ? "active" : "" ?>"><a href="#">For Kelas</a></li>
-                        <li class="<?php echo $menu == "Akademik" && $submenu == "A_KelasJadwal" ? "active" : "" ?>"><a href="#">For Kelas_Jadwal</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Bayanat" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/bayanat">Bayanat</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Rekap" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/rekap">Rekap Nilai</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Rapor" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/rapor">Rapor</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Absen" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/absensi">Absensi</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Guru" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/guru">Guru</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Santri" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/santri">Santri</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Ruangan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/ruangan">Ruangan</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Kelas" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/kelas">Kelas</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_KelasJadwal" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/kelasJadwal">Kelas Jadwal</a></li>
                       </ul>
                   </li>
                   <?php if($level_user <3){?>
@@ -129,13 +129,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Hari" ? "active" : "" ?>"><a href="#">Referensi - Hari</a></li>
-                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Beasiswa" ? "active" : "" ?>"><a href="#">Referensi - Beasiswa</a></li>
-                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Jadwal" ? "active" : "" ?>"><a href="#">Referensi - Jadwal</a></li>
-                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Jam" ? "active" : "" ?>"><a href="#">Referensi - Jam</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Hari" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_hari">Referensi - Hari</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Beasiswa" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_beasiswa">Referensi - Beasiswa</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Jadwal" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_jadwal">Referensi - Jadwal</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Jam" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_jam">Referensi - Jam</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Karyawan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_karyawan">Referensi - Karyawan</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Kompetensi" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_kompetensi">Kompetensi</a></li>
-                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Kelas" ? "active" : "" ?>"><a href="#">Referensi - Kelas</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Kelas" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_kelas">Referensi - Kelas</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Pelajaran" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_pelajaran">Referensi - Pelajaran</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Pembayaran" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_pembayaran">Referensi - Pembayaran</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Pendidikan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_pendidikan">Referensi - Pendidikan</a></li>
@@ -143,18 +143,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Santri" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_santri">Referensi - Santri</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Skill" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_skill">Referensi - Skill</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Status" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_status">Referensi - Status</a></li>
-                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Transaksi" ? "active" : "" ?>"><a href="#">Referensi - Transaksi</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Transaksi" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_transaksi">Referensi - Transaksi</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Ujian" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_transaksi">Referensi - Ujian</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Wali" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_wali">Referensi - Wali</a></li>
                         </ul>
                     </li>
                   <?php }?>
                   <li class="<?php echo $menu == "Log" ? "active" : "" ?>">
-                      <a href="#">
+                      <a href="<?php echo base_url(''); ?>./">
                           <i class="icon-cog"></i>
                           <span>Log Proses</span>
                       </a>
                   </li>
-                  <?php if($level_user == 1 || $level_user ==2) {?>
+                  <?php if($level_user == 1 || $level_user == 2) {?>
                     <li class="<?php echo $menu == "Blog" ? "active" : "" ?>">
                         <a href="<?php echo base_url(''); ?>./postingBlog">
                             <i class="icon-star"></i>
@@ -167,7 +168,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span>Config Blog</span>
                         </a>
                     </li>
-                  <?php }?>
+                  <?php } ?>
+                  <?php if($level_user == 1) {?>
+                    <li class="<?php echo $menu == "Mtest" ? "active" : "" ?>">
+                        <a href="<?php echo base_url(''); ?>./mtest">
+                            <i class="icon-star"></i>
+                            <span>List Testing</span>
+                        </a>
+                    </li>
+                  <?php } ?>
                   <li>
                       <a href="<?php echo base_url(''); ?>./login/logout">
                           <i class="icon-signout"></i>

@@ -17,14 +17,26 @@ class Referensi_jenis_kompetensi extends CI_Controller {
 	{
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "List Referensi Jenis Kompetensi";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Kompetensi";
+		$data['body'] = "referensi/jenis_kompetensi/select_jenis_kompetensi";
+
 		$data['m_jenis_kompetensi'] = $this->M_jenis_kompetensi->selectReferensiJenisKomptensi();
-		$this->load->view('referensi/jenis_kompetensi/select_jenis_kompetensi', $data);
+
+		custom_layout($data);
 	}
 
 	public function addReferensiJenisKompetensi(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
-		$this->load->view('referensi/jenis_kompetensi/insert_jenis_kompetensi', $data);
+
+		$data['title'] = "Add Referensi Jenis Kompetensi";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Kompetensi";
+		$data['body'] = "referensi/jenis_kompetensi/insert_jenis_kompetensi";
+		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisKompetensi(){
@@ -60,10 +72,17 @@ class Referensi_jenis_kompetensi extends CI_Controller {
 	public function updateReferensiJenisKompetensi(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
+
+		$data['title'] = "Update Referensi Jenis Kompetensi";
+		$data['menu'] = "Referensi";
+		$data['submenu'] = "R_Kompetensi";
+		$data['body'] = "referensi/jenis_kompetensi/update_jenis_kompetensi";
+
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
 		$data['m_jenis_komptensi'] = $this->M_jenis_kompetensi->preUpdateReferensiJenisKompetensi($id);
-		$this->load->view('referensi/jenis_kompetensi/update_jenis_kompetensi', $data);
+
+		custom_layout($data);
 	}
 
 	public function doUpdateReferensiJenisKompetensi(){
