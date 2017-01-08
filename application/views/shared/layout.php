@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       </a>
                       <ul class="sub">
                           <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Diri" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./dataSaya">Data Diri Anda</a></li>
-                          <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Tabungan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./saldo">Tabungan Mingguan Anda</a></li>
+                          <li  class="<?php echo $menu == "Pribadi" && $submenu == "P_Tabungan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./saldo" style ="font-size: 75%;">Tabungan Mingguan Anda</a></li>
                           <?php if($level_user == 3) {?>
                             <li class="<?php echo $menu == "Pribadi" && $submenu == "P_Rapor" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./rapor">Data Nilai Rapor Anda</a></li>
                           <?php }?>
