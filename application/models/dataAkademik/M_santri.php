@@ -11,10 +11,20 @@ class M_santri extends CI_Model {
 	public function selectTdSantri(){
 		$this->db->select('*');
 		$this->db->from('td_santri');
-		$this->db->join('tr_jenis_santri','tr_jenis_santri.id_jns_santri = td_santri.id_jns_santri', 'left');
+		$this->db->join('tr_jenis_santri','td_santri.id_jns_santri = tr_jenis_santri.id_jns_santri');
 		$query =  $this->db->get();
 		return $query->result_array();
 	}
+
+
+
+	// public function selectTdSantri(){
+
+
+	// 	$query = 
+
+	// 	return $query->result_array();
+	// }
 
 	public function addTdSantri($data){
 		$this->db->insert('td_santri', $data);

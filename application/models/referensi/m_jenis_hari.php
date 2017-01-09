@@ -10,28 +10,28 @@ class M_jenis_hari extends CI_Model {
 	
 	public function selectReferensiJenisHari(){
 		$this->db->select('*');
-		$query = $this->db->get('tr_jenis_hari');
+		$query = $this->db->get('tr_hari');
 		return $query->result_array();
 	}
 
 	public function addReferensiJenisHari($data){
-		$this->db->insert('tr_jenis_hari',$data);
+		$this->db->insert('tr_hari',$data);
 	}
 
 	public function updateReferensiJenisHari($data, $id){
 		$this->db->where('id_jns_hari', $id);
-		$this->db->update('tr_jenis_hari', $data);
+		$this->db->update('tr_hari', $data);
 	}
 
 	public function preUpdateReferensiJenisHari($id) {
 		$this->db->where('id_jns_hari', $id);
-		$query = $this->db->get('tr_jenis_hari');
+		$query = $this->db->get('tr_hari');
 		return $query->result_array();
 	}
 
 	public function deleteReferensiJenisKHari($id){
 		$this->db->where('id_jns_hari', $id);
-		$this->db->delete('tr_jenis_hari');
+		$this->db->delete('tr_hari');
 	}
 }
 

@@ -6,8 +6,8 @@ class Santri extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->$this->load->model('log/m_log');
-		$this->$this->load->model('dataAkademik/M_santri');
+		$this->load->model('log/m_log');
+		$this->load->model('dataAkademik/M_santri');
 		if(!$this->session->userdata('logged_in'))
 		{
 			redirect();
@@ -21,7 +21,7 @@ class Santri extends CI_Controller {
 
 		$data['title'] = 'Data Santri';
 		// $data['body'] ='dataAkademik/selectSantri';
-		$data['body'] ='blog/welcome';
+		$data['body'] ='blog/welcome_message';
 		$data['M_data_santri'] = $this->M_santri->selectTdSantri();
 		custom_layout($data); 
 	} 

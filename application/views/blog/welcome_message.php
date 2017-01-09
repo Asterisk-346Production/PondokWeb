@@ -6,6 +6,6 @@
 
 	<p>The corresponding controller for this page is found at:</p>
 	<code>application/controllers/Welcome.php</code>
-
+	<?php var_dump($M_data_santri); ?>
 	<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 </div>
