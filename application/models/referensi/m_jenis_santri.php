@@ -18,6 +18,22 @@ class M_jenis_santri extends CI_Model {
 	$this->db->insert('tr_jenis_santri',$data);
 	}
 
+	public function updateReferensiJenisSantri($data, $id){
+		$this->db->where('id_jns_pelajaran', $id);
+		$this->db->update('tr_jenis_pelajaran', $data);
+	}
+
+	public function preUpdateReferensiJenisSantri($id) {
+		$this->db->where('id_jns_santri', $id);
+		$query = $this->db->get('tr_jenis_santri');
+		return $query->result_array();
+	}
+
+	public function deleteReferensiJenisSantri($id){
+		$this->db->where('id_jns_santri', $id);
+		$this->db->delete('tr_jenis_santri');
+	}
+
 }
 
 /* End of file m_jenis_kompetensi.php */

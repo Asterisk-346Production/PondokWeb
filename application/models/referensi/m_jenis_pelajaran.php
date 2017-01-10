@@ -18,6 +18,22 @@ class M_jenis_pelajaran extends CI_Model {
 	$this->db->insert('tr_jenis_pelajaran',$data);
 	}
 
+	public function updateReferensiJenisPelajaran($data, $id){
+		$this->db->where('id_jns_pelajaran', $id);
+		$this->db->update('tr_jenis_pelajaran', $data);
+	}
+
+	public function preUpdateReferensiJenisPelajaran($id) {
+		$this->db->where('id_jns_pelajaran', $id);
+		$query = $this->db->get('tr_jenis_pelajaran');
+		return $query->result_array();
+	}
+
+	public function deleteReferensiJenisPelajaran($id){
+		$this->db->where('id_jns_pelajaran', $id);
+		$this->db->delete('tr_jenis_pelajaran');
+	}
+
 }
 
 /* End of file m_jenis_kompetensi.php */

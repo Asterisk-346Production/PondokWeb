@@ -21,12 +21,18 @@ class M_santri extends CI_Model {
 		$this->db->update('td_santri', $data);
 	}
 
+	public function preUpdateTdSantri($nis) {
+		$this->db->where('nis', $nis);
+		$query = $this->db->get('td_santri');
+		return $query->result_array();
+	}
+
 	public function addTdSantri($data){
 		$this->db->insert('td_santri', $data);
 	}
 
-	public function deleteSantri($id,$nis){
-		$this->db->where('id_td_santri', $id);
+	public function deleteSantri($nis){
+		// $this->db->where('id_td_santri', $id);
 		$this->db->where('nis', $nis);
 		$this->db->delete('td_santri');
 	}

@@ -18,6 +18,22 @@ class M_jenis_skill extends CI_Model {
 	$this->db->insert('tr_jenis_skill',$data);
 	}
 
+	public function updateReferensiJenisSkill($data, $id){
+		$this->db->where('id_jns_skill', $id);
+		$this->db->update('tr_jenis_skill', $data);
+	}
+
+	public function preUpdateReferensiJenisSkill($id) {
+		$this->db->where('id_jns_skill', $id);
+		$query = $this->db->get('tr_jenis_skill');
+		return $query->result_array();
+	}
+
+	public function deleteReferensiJenisSkill($id){
+		$this->db->where('id_jns_skill', $id);
+		$this->db->delete('tr_jenis_skill');
+	}
+
 }
 
 /* End of file m_jenis_kompetensi.php */

@@ -18,6 +18,22 @@ class M_jenis_pembayaran extends CI_Model {
 	$this->db->insert('tr_jenis_pembayaran',$data);
 	}
 
+	public function updateReferensiJenisPembayaran($data, $id){
+		$this->db->where('id_jns_pembayaran', $id);
+		$this->db->update('tr_jenis_pembayaran', $data);
+	}
+
+	public function preUpdateReferensiJenisPembayaran($id) {
+		$this->db->where('id_jns_pembayaran', $id);
+		$query = $this->db->get('tr_jenis_pembayaran');
+		return $query->result_array();
+	}
+
+	public function deleteReferensiJenisPembayaran($id){
+		$this->db->where('id_jns_pembayaran', $id);
+		$this->db->delete('tr_jenis_pembayaran');
+	}
+
 }
 
 /* End of file m_jenis_kompetensi.php */

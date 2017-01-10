@@ -18,6 +18,21 @@ class M_jenis_wali extends CI_Model {
 	$this->db->insert('tr_jenis_wali',$data);
 	}
 
+	public function updateReferensiJenisWali($data, $id){
+		$this->db->where('id_jns_wali', $id);
+		$this->db->update('tr_jenis_wali', $data);
+	}
+
+	public function preUpdateReferensiJenisWali($id) {
+		$this->db->where('id_jns_wali', $id);
+		$query = $this->db->get('tr_jenis_wali');
+		return $query->result_array();
+	}
+
+	public function deleteReferensiJenisWali($id){
+		$this->db->where('id_jns_wali', $id);
+		$this->db->delete('tr_jenis_wali');
+	}
 }
 
 /* End of file m_jenis_kompetensi.php */

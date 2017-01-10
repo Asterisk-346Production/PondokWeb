@@ -18,6 +18,21 @@ class M_jenis_status extends CI_Model {
 	$this->db->insert('tr_jenis_status',$data);
 	}
 
+	public function updateReferensiJenisStatus($data, $id){
+		$this->db->where('id_jns_status', $id);
+		$this->db->update('tr_jenis_status', $data);
+	}
+
+	public function preUpdateReferensiJenisStatus($id) {
+		$this->db->where('id_jns_status', $id);
+		$query = $this->db->get('tr_jenis_status');
+		return $query->result_array();
+	}
+
+	public function deleteReferensiJenisStatus($id){
+		$this->db->where('id_jns_status', $id);
+		$this->db->delete('tr_jenis_status');
+	}
 }
 
 /* End of file m_jenis_kompetensi.php */
