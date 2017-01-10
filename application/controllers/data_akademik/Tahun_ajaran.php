@@ -71,13 +71,13 @@ class Tahun_ajaran extends CI_Controller {
 				'keterangan'=>'berhasil',
 				'id_rekam'=>$this->session->userdata('id_user'));
 			$data = array(
-				'tahun_awal' => $tahun_awal->format('yyyy'),
-				'tahun_akhir' => $tahun_akhir->format('yyyy'),
+				'tahun_awal' => $tahun_awal->format('Y'),
+				'tahun_akhir' => $tahun_akhir->format('Y'),
 				'tgl_awal' => $tanggal_awal,
 				'tgl_akhir' => $tanggal_akhir
 				);
 			$this->M_jenis_jam->addTdTahunAjaran($data);
-			$this->M_log->recordLog($dataLog);
+			$this->m_log->recordLog($dataLog);
 
 			redirect('data_akademik/tahun_ajaran');
 		}
@@ -100,46 +100,62 @@ class Tahun_ajaran extends CI_Controller {
 	}
 
 	public function doUpdateTdTahunAjaran(){
-		$id = $this->input->post('id');
-		$this->form_validation->set_rules('jam_awal', 'jam_awal', 'required');
-		$this->form_validation->set_rules('jam_akhir', 'jam_akhir', 'required');
+		$data['level_user'] = $this->session->userdata('level_user');
+		$data['id_user'] = $this->session->userdata('id_user');
 
-		$jam_awal = $this->input->post('jam_awal');
-		$jam_akhir = $this->input->post('jam_akhir');
+		$this->form_validation->set_rules('tanggal_awal', 'tanggal_awal', 'required');
+		$this->form_validation->set_rules('tanggal_akhir', 'tanggal_akhir', 'required');
 
-		$date_awal = new DateTime($jam_awal);
-		$date_akhir = new DateTime($jam_akhir);
+		$tanggal_awal = $this->input->post('tanggal_awal');
+		$tanggal_akhir = $this->input->post('tanggal_akhir');
+
+		$tahun_awal = new DateTime($tanggal_awal);
+		$tahun_akhir = new DateTime($tanggal_akhir);
 		
 		if ($this->form_validation->run() == FALSE ) {
 			$this->session->set_flashdata('error', 'fail to insert data, try insert again');
 			$dataLog = array(
 				'id_proses'=>'1',
 				'nama_proses'=>'update data',
-				'nama_form' => 'referensi_jenis_jam',
+				'nama_form' => 'dataAkademik : tahun_ajaran',
 				'keterangan'=>'gagal',
 				'id_rekam'=>$this->session->userdata('id_user'));
-			$this->M_log->recordLog($dataLog);
-			redirect('referensi/referensi_jenis_jam/updateReferensiJenisjam');
+			$this->m_log->recordLog($dataLog);
+			redirect('data_akademik/tahun_ajaran/updateTdTahunAjaran');
 		} else {
 			$dataLog = array(
 				'id_proses'=>'1',
 				'nama_proses'=>'update data',
-				'nama_form' => 'referensi_jenis_jam',
+				'nama_form' => 'dataAkademik : tahun_ajaran',
 				'keterangan'=>'berhasil',
 				'id_rekam'=>$this->session->userdata('id_user'));
 			$data = array(
-				'jam_awal' => $date_awal->format('H'),
-				'menit_awal' => $date_awal->format('i'),
-				'jam_akhir' => $date_akhir->format('H'),
-				'menit_akhir' => $date_akhir->format('i')
+				'tahun_awal' => $tahun_awal->format('Y'),
+				'tahun_akhir' => $tahun_akhir->format('Y'),
+				'tgl_awal' => $tanggal_awal,
+				'tgl_akhir' => $tanggal_akhir
 				);
-			$this->M_jenis_jam->updateReferensiJenisjam($data,$id);
-			$this->M_log->recordLog($dataLog);
+			$this->M_jenis_jam->updateTdTahunAjaran($data,$id);
+			$this->m_log->recordLog($dataLog);
 
-			redirect('referensi/referensi_jenis_jam');
+			redirect('data_akademik/tahun_ajaran');
 		}
 	}
 
+	public function deleteTdTahunAjaran(){
+		$id = $this->uri->segment(4);
+		$this->M_jenis_jam->deleteTdTahunAjaran($id);
+
+		$dataLog = array(
+				'id_proses'=>'1',
+				'nama_proses'=>'delete data',
+				'nama_form' => 'dataAkademik : tahun_ajaran',
+				'keterangan'=>'berhasil',
+				'id_rekam'=>$this->session->userdata('id_user'));
+		$this->M_log->recordLog($dataLog);
+
+		redirect('data_akademik/tahun_ajaran');
+	}
 }
 
 /* End of file Tahun_ajaran.php */
