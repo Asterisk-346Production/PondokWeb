@@ -87,7 +87,7 @@ class Ruangan extends CI_Controller {
 		}
 	}
 
-	public function updateRuangan(){
+	public function updateTdRuangan(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
 
@@ -105,8 +105,59 @@ class Ruangan extends CI_Controller {
 	}
 
 	public function doUpdateRuangan(){
+		$id = $this->input->post('id');
+		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+		$this->form_validation->set_rules('nama_ar', 'nama_ar', 'trim|required');
+		$this->form_validation->set_rules('alias', 'alias', 'trim|required');
+		$this->form_validation->set_rules('ur_alias', 'ur_alias', 'trim|required');
+		$this->form_validation->set_rules('kapasitas', 'kapasitas', 'trim|required');
+		$this->form_validation->set_rules('id_jns_ruangan', 'id_jns_ruangan', 'trim|required');
+		if ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('error', 'fail to insert data, try insert again');
+			$dataLog = array(
+				'id_proses'=>'1',
+				'nama_proses'=>'insert data',
+				'nama_form' => 'data_akademik : ruangan',
+				'keterangan'=>'gagal',
+				'id_rekam'=>$this->session->userdata('id_user'));
+			$this->M_log->recordLog($dataLog);
+			redirect('data_akademik/ruangan/updateRuangan');
+		} else {
+			$dataLog = array(
+				'id_proses'=>'1',
+				'nama_proses'=>'insert data',
+				'nama_form' => 'data_akademik : ruangan',
+				'keterangan'=>'berhasil',
+				'id_rekam'=>$this->session->userdata('id_user'));
+			$data = array(
+				'nama' => $this->input->post('nama'),
+				'nama_ar' => $this->input->post('nama_ar'),
+				'alias' => $this->input->post('alias'),
+				'ur_alias' => $this->input->post('ur_alias'),
+				'kapasitas' => $this->input->post('kapasitas'),
+				'id_jns_ruangan' => $this->input->post('id_jns_ruangan')
+				);
+			$this->M_ruangan->updateTdruangan($id,$data);
+			$this->m_log->recordLog($dataLog);
 
-		
+			redirect('data_akademik/ruangan');
+		}
+
+	}
+
+	public function deleteTdRuangan(){
+		$id = $this->uri->segment(4);
+		$this->M_ruangan->deleteRuangan($id);
+
+		$dataLog = array(
+				'id_proses'=>'1',
+				'nama_proses'=>'delete data',
+				'nama_form' => 'data_akademik : ruangan',
+				'keterangan'=>'berhasil',
+				'id_rekam'=>$this->session->userdata('id_user'));
+		$this->m_log->recordLog($dataLog);
+
+		redirect('data_akademik/ruangan');
 	}
 
 }

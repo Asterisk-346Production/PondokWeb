@@ -21,7 +21,6 @@
             </tr>
           </thead>
           <tbody>
-           <?php var_dump($M_data_ruangan); ?>
             <?php $no=0; foreach ($M_data_ruangan as $data): ?>
               <tr>
                 <td><?php echo ++$no; ?></td>
@@ -34,8 +33,8 @@
                 <td><?php echo $data['ur_alias']; ?></td>
                 <td><?php echo $data['kapasitas']; ?></td>
                 <td><div class="btn-group">
-                  <a class="btn btn-success" href="<?php echo base_url().'data_akademik/ruangan/updateruangan/'.$data['id_ruangan']; ?>"><i class="icon_pencil-edit"></i></a>
-                  <a class="btn btn-danger" href="<?php echo base_url().'data_akademik/ruangan/deleteruangan/'.$data['id_ruangan']; ?>"><i class="icon_close_alt2"></i></a>
+                  <a class="btn btn-success" href="<?php echo base_url().'data_akademik/ruangan/updateTdRuangan/'.$data['id_ruangan']; ?>"><i class="icon_pencil-edit"></i></a>
+                  <a class="btn btn-danger" href="<?php echo base_url().'data_akademik/ruangan/deleteTdRuangan/'.$data['id_ruangan']; ?>"><i class="icon_close_alt2"></i></a>
                 </div></td>
               </tr>
             <?php endforeach; ?>
