@@ -108,7 +108,7 @@ class Santri extends CI_Controller {
 		$data['slug']= $this->uri->segment(4);
 
 		$id = $this->uri->segment(4);
-		$data['m_jenis_santri']	= $this->m_jenis_santri->selectReferensiJenisSantri();
+		$data['m_jenis_santri']	= $this->M_jenis_santri->selectReferensiJenisSantri();
 		$data['m_santri'] = $this->M_santri->preUpdateTdSantri($id);
 
 		custom_layout($data);
@@ -159,7 +159,7 @@ class Santri extends CI_Controller {
 				'tgl_akhir' => $this->input->post('tgl_akhir'),
 				'tgl_awal' => $this->input->post('tgl_awal'),
 				);
-			$this->M_santri->addTdSantri($nis,$data);
+			$this->M_santri->updateTdSantri($nis,$data);
 			$this->m_log->recordLog($dataLog);
 
 			redirect('data_akademik/santri');
@@ -177,7 +177,7 @@ class Santri extends CI_Controller {
 				'nama_form' => 'data_akademik : santri',
 				'keterangan'=>'berhasil',
 				'id_rekam'=>$this->session->userdata('id_user'));
-		$this->M_log->recordLog($dataLog);
+		$this->m_log->recordLog($dataLog);
 
 		redirect('data_akademik/santri');
 	}
