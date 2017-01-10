@@ -87,7 +87,7 @@ class Santri extends CI_Controller {
 				'daerah_ar' => $this->input->post('daerah_ar'),
 				'tgl_awal' => $this->input->post('tgl_awal'),
 				'tgl_akhir' => $this->input->post('tgl_akhir'),
-				'tgl_awal' => $this->input->post('tgl_awal'),
+				'tgl_awal' => $this->input->post('tgl_awal')
 				);
 			$this->M_santri->addTdSantri($data);
 			$this->m_log->recordLog($dataLog);

@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-lg-12">
     <section class="panel">
-      <header class="panel-heading">Insert Jenis Keterangan</header>
+      <header class="panel-heading">Insert Jenis Ruangan</header>
       <div class="panel-body">
-        <?php foreach ($m_jenis_keterangan as $data): ?>
-          <?php echo form_open(base_url('referensi/referensi_jenis_keterangan/doUpdateReferensiJenisKompetensi'), 'class="form-horizontal "'); ?>
+        <?php foreach ($m_jenis_ruangan as $data): ?>
+          <?php echo form_open(base_url('referensi/referensi_jenis_ruangan/doUpdateReferensiJenisRuangan'), 'class="form-horizontal "'); ?>
           <input name="id" type="hidden" id="id" value="<?php echo $slug; ?>">
           <div class="form-group">
             <label class="col-sm-2 control-label">Uraian Jenis Ruangan</label>

@@ -27,8 +27,8 @@
                 <td><?php echo $data['uraian_en'];?></td>
                 <td><?php echo $data['keterangan'];?></td>
                 <td><div class="btn-group">
-                  <a class="btn btn-success" href="<?php echo base_url().'referensi/referensi_jenis_ruangan/update_jenis_ruangan/'.$data['id_jns_ruangan']; ?>"><i class="icon_pencil-edit"></i></a>
-                  <a class="btn btn-danger" href="<?php echo base_url().'referensi/referensi_jenis_ruangan/delete_jenis_ruangan/'.$data['id_jns_ruangan']; ?>"><i class="icon_close_alt2"></i></a>
+                  <a class="btn btn-success" href="<?php echo base_url().'referensi/referensi_jenis_ruangan/updateReferensiJenisRuangan/'.$data['id_jns_ruangan']; ?>"><i class="icon_pencil-edit"></i></a>
+                  <a class="btn btn-danger" href="<?php echo base_url().'referensi/referensi_jenis_ruangan/deleteJenisRuangan/'.$data['id_jns_ruangan']; ?>"><i class="icon_close_alt2"></i></a>
                 </div></td>
               </tr>
             <?php endforeach; ?>
