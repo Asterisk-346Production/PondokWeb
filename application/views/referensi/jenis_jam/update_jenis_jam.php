@@ -16,7 +16,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Jam Akhir Pelajaran</label>
               <div class="col-sm-10">
-                <input name="jam_akhir" type="text" required="required" class="form-control" id="jam_akhir" maxlength="60" value ="<?php echo $data['jam_akhir'] ?>">
+                <input name="jam_akhir" type="time" required="required" class="form-control" id="jam_akhir" maxlength="60" value ="<?php echo $data['jam_akhir'] ?>">
                 <span class="help-block"><?php echo form_error('jam_akhir'); ?></span>
               </div>
             </div>

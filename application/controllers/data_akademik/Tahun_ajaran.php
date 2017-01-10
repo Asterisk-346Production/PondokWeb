@@ -1,15 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Referensi_jenis_jam extends CI_Controller {
+class Tahun_ajaran extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('referensi/M_jenis_jam');
-		$this->load->model('log/M_log');
-		if(! $this->session->userdata('logged_in')){
-			redirect('');
+		$this->load->model('log/m_log');
+		$this->load->model('dataAkademik/M_tahun_ajaran');
+		if(!$this->session->userdata('logged_in'))
+		{
+			redirect();
 		}
 	}
 
@@ -18,87 +19,87 @@ class Referensi_jenis_jam extends CI_Controller {
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
 
-		$data['title'] = "List Referensi Jenis jam";
-		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_jam";
-		$data['body'] = "referensi/jenis_jam/select_jenis_jam";
+		$data['title'] = "List Tahun Ajaran";
+		$data['menu'] = "Data Akademik";
+		$data['submenu'] = "Tahun Ajaran";
+		$data['body'] = "dataAkademik/tahun_ajaran/select_Tahun_ajaran";
 
-		$data['m_jenis_jam'] = $this->M_jenis_jam->selectReferensiJenisjam();
+		$data['m_tahun_ajaran'] = $this->M_tahun_ajaran->selectTdTahunAjaran();
 
 		custom_layout($data);
 	}
 
-	public function addReferensiJenisjam(){
+	public function addTdTahunAjaran(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
 
-		$data['title'] = "Add Referensi Jenis jam";
-		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_jam";
-		$data['body'] = "referensi/jenis_jam/insert_jenis_jam";
+		$data['title'] = "Insert Tahun AJaran";
+		$data['menu'] = "Data Akademik";
+		$data['submenu'] = "Tahun Ajaran";
+		$data['body'] = "data_akademik/tahun_ajaran/insert_tahun_ajaran";
 		custom_layout($data);
 	}
 
-	public function doInsertReferensiJenisjam(){
+	public function doInsertTdTahunAjaran(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
 
-		$this->form_validation->set_rules('jam_awal', 'jam_awal', 'required');
-		$this->form_validation->set_rules('jam_akhir', 'jam_akhir', 'required');
+		$this->form_validation->set_rules('tanggal_awal', 'tanggal_awal', 'required');
+		$this->form_validation->set_rules('tanggal_akhir', 'tanggal_akhir', 'required');
 
-		$jam_awal = $this->input->post('jam_awal');
-		$jam_akhir = $this->input->post('jam_akhir');
+		$tanggal_awal = $this->input->post('tanggal_awal');
+		$tanggal_akhir = $this->input->post('tanggal_akhir');
 
-		$date_awal = new DateTime($jam_awal);
-		$date_akhir = new DateTime($jam_akhir);
+		$tahun_awal = new DateTime($tanggal_awal);
+		$tahun_akhir = new DateTime($tanggal_akhir);
 
 		if ($this->form_validation->run() == FALSE ) {
 			$this->session->set_flashdata('error', 'fail to insert data, try insert again');
 			$dataLog = array(
 				'id_proses'=>'1',
 				'nama_proses'=>'insert data',
-				'nama_form' => 'referensi_jenis_jam',
+				'nama_form' => 'data akademik : Tahun Ajaran',
 				'keterangan'=>'gagal',
 				'id_rekam'=>$this->session->userdata('id_user'));
 			$this->M_log->recordLog($dataLog);
-			redirect('referensi/referensi_jenis_jam/addReferensiJenisjam');
+			redirect('data_akademik/tahun_ajaran/addTdTahunAjaran');
 		} else {
 			$dataLog = array(
 				'id_proses'=>'1',
 				'nama_proses'=>'insert data',
-				'nama_form' => 'referensi_jenis_jam',
+				'nama_form' => 'data akademik : Tahun Ajaran',
 				'keterangan'=>'berhasil',
 				'id_rekam'=>$this->session->userdata('id_user'));
 			$data = array(
-				'jam_awal' => $date_awal->format('H'),
-				'menit_awal' => $date_awal->format('i'),
-				'jam_akhir' => $date_akhir->format('H'),
-				'menit_akhir' => $date_akhir->format('i')
+				'tahun_awal' => $tahun_awal->format('yyyy'),
+				'tahun_akhir' => $tahun_akhir->format('yyyy'),
+				'tgl_awal' => $tanggal_awal,
+				'tgl_akhir' => $tanggal_akhir
 				);
-			$this->M_jenis_jam->addReferensiJenisjam($data);
+			$this->M_jenis_jam->addTdTahunAjaran($data);
 			$this->M_log->recordLog($dataLog);
 
-			redirect('referensi/referensi_jenis_jam');
+			redirect('data_akademik/tahun_ajaran');
 		}
 	}
 
-	public function updateReferensiJenisjam(){
+	public function updateTdTahunAjaran(){
 		$data['level_user'] = $this->session->userdata('level_user');
 		$data['id_user'] = $this->session->userdata('id_user');
 
-		$data['title'] = "Update Referensi Jenis jam";
-		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_jam";
-		$data['body'] = "referensi/jenis_jam/update_jenis_jam";
+		$data['title'] = "Update Tahun Ajaran";
+		$data['menu'] = "Data Akdemik";
+		$data['submenu'] = "tahun jaran";
+		$data['body'] = "dataAkademik/tahun_ajaran/update_tahun_ajaran";
 
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
-		$data['m_jenis_jam'] = $this->M_jenis_jam->preUpdateReferensiJenisjam($id);
+		$data['m_jenis_jam'] = $this->M_jenis_jam->preUpdateTdTahunAjaran($id);
 
 		custom_layout($data);
 	}
 
-	public function doUpdateReferensiJenisjam(){
+	public function doUpdateTdTahunAjaran(){
 		$id = $this->input->post('id');
 		$this->form_validation->set_rules('jam_awal', 'jam_awal', 'required');
 		$this->form_validation->set_rules('jam_akhir', 'jam_akhir', 'required');
@@ -139,22 +140,7 @@ class Referensi_jenis_jam extends CI_Controller {
 		}
 	}
 
-	public function deleteReferensiJenisjam(){
-		$id = $this->uri->segment(4);
-		$this->M_jenis_jam->deleteReferensiJenisjam($id);
-
-		$dataLog = array(
-				'id_proses'=>'1',
-				'nama_proses'=>'delete data',
-				'nama_form' => 'referensi_jenis_jam',
-				'keterangan'=>'berhasil',
-				'id_rekam'=>$this->session->userdata('id_user'));
-		$this->M_log->recordLog($dataLog);
-
-		redirect('referensi/referensi_jenis_jam');
-	}
-
 }
 
-/* End of file referensi_jenis_jam.php */
-/* Location: ./application/controllers/referensi/referensi_jenis_jam.php */
+/* End of file Tahun_ajaran.php */
+/* Location: ./application/controllers/data_akademik/Tahun_ajaran.php */
