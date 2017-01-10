@@ -16,15 +16,10 @@ class M_santri extends CI_Model {
 		return $query->result_array();
 	}
 
-
-
-	// public function selectTdSantri(){
-
-
-	// 	$query = 
-
-	// 	return $query->result_array();
-	// }
+	public function updateTdSantri($nis,$data){
+		$this->db->where('nis', $nis);
+		$this->db->update('td_santri', $data);
+	}
 
 	public function addTdSantri($data){
 		$this->db->insert('td_santri', $data);

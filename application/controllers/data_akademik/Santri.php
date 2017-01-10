@@ -20,11 +20,17 @@ class Santri extends CI_Controller {
 		$data['id_user'] = $this->session->userdata('id_user');
 
 		$data['title'] = 'Data Santri';
-		// $data['body'] ='dataAkademik/selectSantri';
-		$data['body'] ='blog/welcome_message';
+		$data['body'] ='dataAkademik/santri/selectSantri';
+		// $data['body'] = 'blog/welcome_message';
 		$data['M_data_santri'] = $this->M_santri->selectTdSantri();
 		custom_layout($data); 
 	} 
+
+	public function addSantri(){
+		$data['level_user'] = $this->session->userdata('level_user');
+		$data['id_user'] = $this->session->userdata('id_user');
+		$data['title'];
+	}
 }
 
 /* End of file Santri.php */
