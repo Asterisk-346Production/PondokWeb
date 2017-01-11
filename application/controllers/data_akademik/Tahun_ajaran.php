@@ -94,7 +94,7 @@ class Tahun_ajaran extends CI_Controller {
 
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
-		$data['m_jenis_jam'] = $this->M_jenis_jam->preUpdateTdTahunAjaran($id);
+		$data['m_tahun_ajaran'] = $this->M_jenis_jam->preUpdateTdTahunAjaran($id);
 
 		custom_layout($data);
 	}
