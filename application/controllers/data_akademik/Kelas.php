@@ -50,7 +50,7 @@ class Kelas extends CI_Controller {
 				'keterangan'=>'gagal',
 				'id_rekam'=>$this->session->userdata('id_user'));
 			$this->M_log->recordLog($dataLog);
-			redirect('data_akademik/kelas/addkelas');
+			redirect('data_akademik/kelas/addKelas');
 		} else {
 			$dataLog = array(
 				'id_proses'=>'1',
@@ -66,15 +66,15 @@ class Kelas extends CI_Controller {
 			$this->M_kelas->addTdkelas($data);
 			$this->m_log->recordLog($dataLog);
 
-			redirect('data_akademik/kelas');
+			redirect('data_akademik/Kelas');
 		}
 	}
 
-	public function updatekelas(){
+	public function updateKelas(){
 		$data['title'] = "Update Data kelas";
 		$data['menu'] = "Akademik";
-		$data['submenu'] = "Ac_kelas";
-		$data['body'] = "dataAkademik/kelas/update_kelas";
+		$data['submenu'] = "Ac_Kelas";
+		$data['body'] = "dataAkademik/kelas/update_Kelas";
 		$data['slug']= $this->uri->segment(4);
 
 		$id = $this->uri->segment(4);
@@ -100,7 +100,7 @@ class Kelas extends CI_Controller {
 				'keterangan'=>'gagal',
 				'id_rekam'=>$this->session->userdata('id_user'));
 			$this->M_log->recordLog($dataLog);
-			redirect('data_akademik/kelas/updatekelas');
+			redirect('data_akademik/kelas/updateKelas');
 		} else {
 			$dataLog = array(
 				'id_proses'=>'1',
@@ -115,10 +115,10 @@ class Kelas extends CI_Controller {
 				'id_jns_kelas' => $this->input->post('id_jns_kelas'),
 				'tempat_lahir' => $this->input->post('tempat_lahir'),
 				);
-			$this->M_kelas->updateTdkelas($nis,$data);
+			$this->M_kelas->updateTdKelas($nis,$data);
 			$this->m_log->recordLog($dataLog);
 
-			redirect('data_akademik/kelas');
+			redirect('data_akademik/Kelas');
 		}
 
 	}
@@ -135,7 +135,11 @@ class Kelas extends CI_Controller {
 				'id_rekam'=>$this->session->userdata('id_user'));
 		$this->m_log->recordLog($dataLog);
 
-		redirect('data_akademik/kelas');
+		redirect('data_akademik/Kelas');
+	}
+
+	public function kelasAllRelation(){
+		redirect();
 	}
 
 }
