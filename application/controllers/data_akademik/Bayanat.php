@@ -15,9 +15,6 @@ class Bayanat extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Bayanat";
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_Bayanat";
@@ -26,9 +23,6 @@ class Bayanat extends CI_Controller {
 	}
 
 	public function addBayanat(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Data Bayanat";
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_Bayanat";
@@ -41,9 +35,6 @@ class Bayanat extends CI_Controller {
 	}
 
 	public function updateBayanat(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Data Bayanat";
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_Bayanat";

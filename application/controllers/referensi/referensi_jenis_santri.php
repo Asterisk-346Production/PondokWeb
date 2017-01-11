@@ -15,9 +15,6 @@ class Referensi_jenis_santri extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Referensi Jenis Santri";
 		$data['menu'] = "Referensi";
 		$data['submenu'] = "R_Santri";
@@ -29,9 +26,6 @@ class Referensi_jenis_santri extends CI_Controller {
 	}
 
 	public function addReferensiJenisSantri(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Referensi Jenis Santri";
 		$data['menu'] = "Referensi";
 		$data['submenu'] = "R_Santri";
@@ -40,9 +34,6 @@ class Referensi_jenis_santri extends CI_Controller {
 	}
 
 	public function doInsertReferensiJenisSantri(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('uraian', 'uraian', 'trim|required');
 		$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 		if ($this->form_validation->run() == FALSE ) {
@@ -73,9 +64,6 @@ class Referensi_jenis_santri extends CI_Controller {
 	}
 
 	public function updateReferensiJenisSantri(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Referensi Jenis Santri";
 		$data['menu'] = "Referensi";
 		$data['submenu'] = "R_Santri";

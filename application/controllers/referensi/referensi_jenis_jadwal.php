@@ -15,12 +15,9 @@ class Referensi_jenis_jadwal extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Referensi Jenis jadwal";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_jadwal";
+		$data['submenu'] = "R_Jadwal";
 		$data['body'] = "referensi/jenis_jadwal/select_jenis_jadwal";
 
 		$data['m_jenis_jadwal'] = $this->M_jenis_jadwal->selectReferensiJenisjadwal();
@@ -29,20 +26,14 @@ class Referensi_jenis_jadwal extends CI_Controller {
 	}
 
 	public function addReferensiJenisjadwal(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Referensi Jenis jadwal";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_jadwal";
+		$data['submenu'] = "R_Jadwal";
 		$data['body'] = "referensi/jenis_jadwal/insert_jenis_jadwal";
 		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisjadwal(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('uraian', 'uraian', 'trim|required');
 		$this->form_validation->set_rules('uraian_ar', 'uraian_ar', 'trim|required');
 		$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
@@ -75,12 +66,9 @@ class Referensi_jenis_jadwal extends CI_Controller {
 	}
 
 	public function updateReferensiJenisjadwal(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Referensi Jenis jadwal";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_jadwal";
+		$data['submenu'] = "R_Jadwal";
 		$data['body'] = "referensi/jenis_jadwal/update_jenis_jadwal";
 
 		$data['slug']= $this->uri->segment(4);
@@ -137,7 +125,6 @@ class Referensi_jenis_jadwal extends CI_Controller {
 
 		redirect('referensi/referensi_jenis_jadwal');
 	}
-
 }
 
 /* End of file referensi_jenis_jadwal.php */

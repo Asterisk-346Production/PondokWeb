@@ -16,12 +16,9 @@ class Tahun_ajaran extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Tahun Ajaran";
-		$data['menu'] = "Data Akademik";
-		$data['submenu'] = "Tahun Ajaran";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_TahunAjaran";
 		$data['body'] = "dataAkademik/tahun_ajaran/select_Tahun_ajaran";
 
 		$data['m_tahun_ajaran'] = $this->M_tahun_ajaran->selectTdTahunAjaran();
@@ -30,20 +27,14 @@ class Tahun_ajaran extends CI_Controller {
 	}
 
 	public function addTdTahunAjaran(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Insert Tahun AJaran";
-		$data['menu'] = "Data Akademik";
-		$data['submenu'] = "Tahun Ajaran";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_TahunAjaran";
 		$data['body'] = "data_akademik/tahun_ajaran/insert_tahun_ajaran";
 		custom_layout($data);
 	}
 
 	public function doInsertTdTahunAjaran(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('tanggal_awal', 'tanggal_awal', 'required');
 		$this->form_validation->set_rules('tanggal_akhir', 'tanggal_akhir', 'required');
 
@@ -84,12 +75,9 @@ class Tahun_ajaran extends CI_Controller {
 	}
 
 	public function updateTdTahunAjaran(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Tahun Ajaran";
-		$data['menu'] = "Data Akdemik";
-		$data['submenu'] = "tahun jaran";
+		$data['menu'] = "Akdemik";
+		$data['submenu'] = "Ac_TahunAjaran";
 		$data['body'] = "dataAkademik/tahun_ajaran/update_tahun_ajaran";
 
 		$data['slug']= $this->uri->segment(4);
@@ -100,9 +88,6 @@ class Tahun_ajaran extends CI_Controller {
 	}
 
 	public function doUpdateTdTahunAjaran(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('tanggal_awal', 'tanggal_awal', 'required');
 		$this->form_validation->set_rules('tanggal_akhir', 'tanggal_akhir', 'required');
 
@@ -111,7 +96,7 @@ class Tahun_ajaran extends CI_Controller {
 
 		$tahun_awal = new DateTime($tanggal_awal);
 		$tahun_akhir = new DateTime($tanggal_akhir);
-		
+
 		if ($this->form_validation->run() == FALSE ) {
 			$this->session->set_flashdata('error', 'fail to insert data, try insert again');
 			$dataLog = array(

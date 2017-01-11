@@ -14,9 +14,6 @@ class DataAsrma extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Asrama";
 		$data['body'] = "asrama/asramaSelect";
 		custom_layout($data);
@@ -50,8 +47,6 @@ class DataAsrma extends CI_Controller {
 
 	public function updateAsrama(){
 		$id = $this->uri->segment(3);
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
 		$data['slug'] = $this->asrama_model->readUpdateAsrama($id);
 
 		$data['title'] = "Update Asrama";

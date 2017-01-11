@@ -15,9 +15,6 @@ class Mtest extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['menu'] = "Mtest";
 		$data['body'] = "mtes/input";
 		custom_layout($data);

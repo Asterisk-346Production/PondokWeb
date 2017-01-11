@@ -15,12 +15,9 @@ class Referensi_jenis_kelas extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Referensi Jenis kelas";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_kelas";
+		$data['submenu'] = "R_Kelas";
 		$data['body'] = "referensi/jenis_kelas/select_jenis_kelas";
 
 		$data['m_jenis_kelas'] = $this->M_jenis_kelas->selectReferensiJeniskelas();
@@ -29,20 +26,14 @@ class Referensi_jenis_kelas extends CI_Controller {
 	}
 
 	public function addReferensiJeniskelas(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Referensi Jenis kelas";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_kelas";
+		$data['submenu'] = "R_Kelas";
 		$data['body'] = "referensi/jenis_kelas/insert_jenis_kelas";
 		custom_layout($data);
 	}
 
 	public function doInsertReferensiJeniskelas(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('uraian', 'uraian', 'trim|required');
 		$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 		if ($this->form_validation->run() == FALSE ) {
@@ -73,12 +64,9 @@ class Referensi_jenis_kelas extends CI_Controller {
 	}
 
 	public function updateReferensiJeniskelas(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Referensi Jenis kelas";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_kelas";
+		$data['submenu'] = "R_Kelas";
 		$data['body'] = "referensi/jenis_kelas/update_jenis_kelas";
 
 		$data['slug']= $this->uri->segment(4);
@@ -133,7 +121,6 @@ class Referensi_jenis_kelas extends CI_Controller {
 
 		redirect('referensi/referensi_jenis_kelas');
 	}
-
 }
 
 /* End of file referensi_jenis_kelas.php */

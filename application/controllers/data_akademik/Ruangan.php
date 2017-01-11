@@ -13,29 +13,23 @@ class Ruangan extends CI_Controller {
 		{
 			redirect();
 		}
-		
+
 	}
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
-		$data['menu'] = "Data Akademik";
-		$data['submenu'] = "Ruangan";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_Ruangan";
 
 		$data['title'] = 'Data Ruangan';
 		$data['body'] ='dataAkademik/ruangan/select_Ruangan';
 		$data['M_data_ruangan'] = $this->M_ruangan->selectTdRuangan();
-		custom_layout($data); 
+		custom_layout($data);
 	}
 
 	public function addRuangan(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-		
-		$data['menu'] = "Data Akademik";
-		$data['submenu'] = "Ruangan";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_Ruangan";
 
 		$data['title'] = 'Add Data Ruangan';
 		$data['body'] ='dataAkademik/ruangan/insert_Ruangan';
@@ -45,9 +39,6 @@ class Ruangan extends CI_Controller {
 	}
 
 	public function doInsertRuangan(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
 		$this->form_validation->set_rules('nama_ar', 'nama_ar', 'trim|required');
 		$this->form_validation->set_rules('alias', 'alias', 'trim|required');
@@ -88,12 +79,9 @@ class Ruangan extends CI_Controller {
 	}
 
 	public function updateTdRuangan(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Data ruangan";
-		$data['menu'] = "Data Akademik";
-		$data['submenu'] = "ruangan";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_Ruangan";
 		$data['body'] = "dataAkademik/ruangan/update_ruangan";
 		$data['slug']= $this->uri->segment(4);
 

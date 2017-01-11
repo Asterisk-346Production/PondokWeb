@@ -15,9 +15,6 @@ class Referensi_jenis_pembayaran extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Referensi Jenis Pembayaran";
 		$data['menu'] = "Referensi";
 		$data['submenu'] = "R_Pembayaran";
@@ -29,9 +26,6 @@ class Referensi_jenis_pembayaran extends CI_Controller {
 	}
 
 	public function addReferensiJenisPembayaran(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Referensi Jenis Pembayaran";
 		$data['menu'] = "Referensi";
 		$data['submenu'] = "R_Pembayaran";
@@ -69,9 +63,6 @@ class Referensi_jenis_pembayaran extends CI_Controller {
 	}
 
 	public function updateReferensiJenisPembayaran(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Referensi Jenis Pembayaran";
 		$data['menu'] = "Referensi";
 		$data['submenu'] = "R_Pembayaran";
@@ -129,7 +120,6 @@ class Referensi_jenis_pembayaran extends CI_Controller {
 
 		redirect('referensi/referensi_jenis_pembayaran');
 	}
-
 }
 
 /* End of file referensi_jenis_pembayaran.php */
