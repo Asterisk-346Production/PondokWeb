@@ -14,9 +14,6 @@ class Saldo extends CI_Controller {
 
 	public function index()
 	{
-		$data['id_user'] = $this->session->userdata('id_user');
-		$data['level_user'] = $this->session->userdata('level_user');
-
 		$data['menu'] = "Pribadi";
 		$data['submenu'] = "P_Tabungan";
 		$data['body'] = "admin/saldo/saldoSelect";

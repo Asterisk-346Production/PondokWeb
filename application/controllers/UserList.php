@@ -14,10 +14,8 @@ class UserList extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
 		$data['admin'] = $this->admin_model->getListUserAdmin();
-		if($data['level_user'] == 1){
+		if($this->session->userdata('level_user') == 1){
 			$data['menu'] = "Admin";
 			$data['submenu'] = "Adm_list_user";
 			$data['body'] = "blog/welcome_message";
@@ -28,9 +26,6 @@ class UserList extends CI_Controller {
 	}
 
 	public function addUser(){
-		$data['id_user'] = $this->session->userdata('id_user');
-		$data['level_user'] = $this->session->userdata('level_user');
-
 		$data['menu'] = "Admin";
 		$data['submenu'] = "Adm_list_user";
 		$data['body'] = "admin/admin_user_list/insertUser";
@@ -58,8 +53,6 @@ class UserList extends CI_Controller {
 
 	public function editUser(){
 		$id = $this->uri->segment(3);
-		$data['id_user'] = $this->session->userdata('id_user');
-		$data['level_user'] = $this->session->userdata('level_user');
 		$data['slug'] = $this->admin_model->readUpdateUserList($id);
 
 		$data['menu'] = "Admin";

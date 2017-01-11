@@ -15,9 +15,6 @@ class Referensi_jenis_status extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Referensi Jenis Status";
 		$data['menu'] = "Referensi";
 		$data['submenu'] = "R_Skill";
@@ -29,9 +26,6 @@ class Referensi_jenis_status extends CI_Controller {
 	}
 
 	public function addReferensiJenisStatus(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Referensi Jenis Status";
 		$data['menu'] = "Referensi";
 		$data['submenu'] = "R_Skill";
@@ -40,9 +34,6 @@ class Referensi_jenis_status extends CI_Controller {
 	}
 
 	public function doInsertReferensiJenisStatus(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('uraian', 'uraian', 'trim|required');
 		$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 		if ($this->form_validation->run() == FALSE ) {
@@ -73,9 +64,6 @@ class Referensi_jenis_status extends CI_Controller {
 	}
 
 	public function updateReferensiJenisstatus(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Referensi Jenis Status";
 		$data['menu'] = "Referensi";
 		$data['submenu'] = "R_Skill";
@@ -133,7 +121,6 @@ class Referensi_jenis_status extends CI_Controller {
 
 		redirect('referensi/referensi_jenis_status');
 	}
-
 }
 
 /* End of file referensi_jenis_pembayaran.php */

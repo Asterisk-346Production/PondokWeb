@@ -15,12 +15,9 @@ class Referensi_jenis_beasiswa extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Referensi Jenis beasiswa";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_beasiswa";
+		$data['submenu'] = "R_Beasiswa";
 		$data['body'] = "referensi/jenis_beasiswa/select_jenis_beasiswa";
 
 		$data['m_jenis_beasiswa'] = $this->M_jenis_beasiswa->selectReferensiJenisbeasiswa();
@@ -29,20 +26,14 @@ class Referensi_jenis_beasiswa extends CI_Controller {
 	}
 
 	public function addReferensiJenisbeasiswa(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Referensi Jenis beasiswa";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_beasiswa";
+		$data['submenu'] = "R_Beasiswa";
 		$data['body'] = "referensi/jenis_beasiswa/insert_jenis_beasiswa";
 		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisbeasiswa(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('uraian', 'uraian', 'trim|required');
 		$this->form_validation->set_rules('donatur', 'donatur', 'trim|required');
 		$this->form_validation->set_rules('jumlah', 'jumlah', 'trim|required');
@@ -75,12 +66,9 @@ class Referensi_jenis_beasiswa extends CI_Controller {
 	}
 
 	public function updateReferensiJenisbeasiswa(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Referensi Jenis beasiswa";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_beasiswa";
+		$data['submenu'] = "R_Beasiswa";
 		$data['body'] = "referensi/jenis_beasiswa/update_jenis_beasiswa";
 
 		$data['slug']= $this->uri->segment(4);

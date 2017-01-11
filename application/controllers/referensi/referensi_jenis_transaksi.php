@@ -15,12 +15,9 @@ class Referensi_jenis_transaksi extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Referensi Jenis transaksi";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_transaksi";
+		$data['submenu'] = "R_Transaksi";
 		$data['body'] = "referensi/jenis_transaksi/select_jenis_transaksi";
 
 		$data['m_jenis_transaksi'] = $this->M_jenis_transaksi->selectReferensiJenistransaksi();
@@ -29,20 +26,14 @@ class Referensi_jenis_transaksi extends CI_Controller {
 	}
 
 	public function addReferensiJenistransaksi(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Referensi Jenis transaksi";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_transaksi";
+		$data['submenu'] = "R_Transaksi";
 		$data['body'] = "referensi/jenis_transaksi/insert_jenis_transaksi";
 		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenistransaksi(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('uraian', 'uraian', 'trim|required');
 		$this->form_validation->set_rules('kode', 'kode', 'trim|required');
 		if ($this->form_validation->run() == FALSE ) {
@@ -73,12 +64,9 @@ class Referensi_jenis_transaksi extends CI_Controller {
 	}
 
 	public function updateReferensiJenistransaksi(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Referensi Jenis transaksi";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_transaksi";
+		$data['submenu'] = "R_Transaksi";
 		$data['body'] = "referensi/jenis_transaksi/update_jenis_transaksi";
 
 		$data['slug']= $this->uri->segment(4);
@@ -134,7 +122,6 @@ class Referensi_jenis_transaksi extends CI_Controller {
 
 		redirect('referensi/referensi_jenis_transaksi');
 	}
-
 }
 
 /* End of file referensi_jenis_transaksi.php */

@@ -17,24 +17,18 @@ class Santri extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
-		$data['menu'] = "Data Akademik";
-		$data['submenu'] = "Santri";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_Santri";
 
 		$data['title'] = 'Data Santri';
 		$data['body'] ='dataAkademik/santri/select_Santri';
 		$data['M_data_santri'] = $this->M_santri->selectTdSantri();
-		custom_layout($data); 
-	} 
+		custom_layout($data);
+	}
 
 	public function addSantri(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-		
-		$data['menu'] = "Data Akademik";
-		$data['submenu'] = "Santri";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_Santri";
 
 		$data['title'] = 'Add Data Santri';
 		$data['body'] ='dataAkademik/santri/insert_Santri';
@@ -44,9 +38,6 @@ class Santri extends CI_Controller {
 	}
 
 	public function doInsertSantri(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('nis', 'nis', 'trim|required');
 		$this->form_validation->set_rules('nisn', 'nisn', 'trim|required');
 		$this->form_validation->set_rules('id_jns_santri', 'id_jns_santri', 'trim|required');
@@ -94,16 +85,12 @@ class Santri extends CI_Controller {
 
 			redirect('data_akademik/santri');
 		}
-
 	}
 
 	public function updateSantri(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Data Santri";
-		$data['menu'] = "Data Akademik";
-		$data['submenu'] = "Santri";
+		$data['menu'] = "Akademik";
+		$data['submenu'] = "Ac_Santri";
 		$data['body'] = "dataAkademik/santri/update_Santri";
 		$data['slug']= $this->uri->segment(4);
 
@@ -115,8 +102,6 @@ class Santri extends CI_Controller {
 	}
 
 	public function doUpdateSantri(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
 		$nis = $this->input->post('nis');
 
 		$this->form_validation->set_rules('nisn', 'nisn', 'trim|required');

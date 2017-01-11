@@ -14,13 +14,9 @@ class Home_Demo extends CI_Controller {
 
 	public function index()
 	{
-		$data['id_user'] = $this->session->userdata('id_user');
-		$data['level_user'] = $this->session->userdata('level_user');
-
 		$data['body'] = "admin/home_demo";
 		custom_layout($data);
 	}
-
 }
 
 /* End of file ikeh.php */

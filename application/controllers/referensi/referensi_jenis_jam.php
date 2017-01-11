@@ -15,12 +15,9 @@ class Referensi_jenis_jam extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Referensi Jenis jam";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_jam";
+		$data['submenu'] = "R_Jam";
 		$data['body'] = "referensi/jenis_jam/select_jenis_jam";
 
 		$data['m_jenis_jam'] = $this->M_jenis_jam->selectReferensiJenisjam();
@@ -29,20 +26,14 @@ class Referensi_jenis_jam extends CI_Controller {
 	}
 
 	public function addReferensiJenisjam(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Referensi Jenis jam";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_jam";
+		$data['submenu'] = "R_Jam";
 		$data['body'] = "referensi/jenis_jam/insert_jenis_jam";
 		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenisjam(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('jam_awal', 'jam_awal', 'required');
 		$this->form_validation->set_rules('jam_akhir', 'jam_akhir', 'required');
 
@@ -83,12 +74,9 @@ class Referensi_jenis_jam extends CI_Controller {
 	}
 
 	public function updateReferensiJenisjam(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Referensi Jenis jam";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_jam";
+		$data['submenu'] = "R_Jam";
 		$data['body'] = "referensi/jenis_jam/update_jenis_jam";
 
 		$data['slug']= $this->uri->segment(4);
@@ -108,7 +96,7 @@ class Referensi_jenis_jam extends CI_Controller {
 
 		$date_awal = new DateTime($jam_awal);
 		$date_akhir = new DateTime($jam_akhir);
-		
+
 		if ($this->form_validation->run() == FALSE ) {
 			$this->session->set_flashdata('error', 'fail to insert data, try insert again');
 			$dataLog = array(
@@ -153,7 +141,6 @@ class Referensi_jenis_jam extends CI_Controller {
 
 		redirect('referensi/referensi_jenis_jam');
 	}
-
 }
 
 /* End of file referensi_jenis_jam.php */

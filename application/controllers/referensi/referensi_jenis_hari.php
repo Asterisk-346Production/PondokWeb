@@ -15,12 +15,9 @@ class Referensi_jenis_hari extends CI_Controller {
 
 	public function index()
 	{
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "List Referensi Jenis hari";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_hari";
+		$data['submenu'] = "R_Hari";
 		$data['body'] = "referensi/jenis_hari/select_jenis_hari";
 
 		$data['m_jenis_hari'] = $this->M_jenis_hari->selectReferensiJenishari();
@@ -29,20 +26,14 @@ class Referensi_jenis_hari extends CI_Controller {
 	}
 
 	public function addReferensiJenishari(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Add Referensi Jenis hari";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_hari";
+		$data['submenu'] = "R_Hari";
 		$data['body'] = "referensi/jenis_hari/insert_jenis_hari";
 		custom_layout($data);
 	}
 
 	public function doInsertReferensiJenishari(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$this->form_validation->set_rules('uraian', 'uraian', 'trim|required');
 		$this->form_validation->set_rules('uraian_ar', 'uraian_ar', 'trim|required');
 		$this->form_validation->set_rules('uraian_en', 'uraian_en', 'trim|required');
@@ -75,12 +66,9 @@ class Referensi_jenis_hari extends CI_Controller {
 	}
 
 	public function updateReferensiJenishari(){
-		$data['level_user'] = $this->session->userdata('level_user');
-		$data['id_user'] = $this->session->userdata('id_user');
-
 		$data['title'] = "Update Referensi Jenis hari";
 		$data['menu'] = "Referensi";
-		$data['submenu'] = "R_hari";
+		$data['submenu'] = "R_Hari";
 		$data['body'] = "referensi/jenis_hari/update_jenis_hari";
 
 		$data['slug']= $this->uri->segment(4);
@@ -137,7 +125,6 @@ class Referensi_jenis_hari extends CI_Controller {
 
 		redirect('referensi/referensi_jenis_hari');
 	}
-
 }
 
 /* End of file referensi_jenis_hari.php */
