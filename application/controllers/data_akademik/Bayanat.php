@@ -10,7 +10,9 @@ class Bayanat extends CI_Controller {
 		{
 			redirect();
 		}
-		$this->load->model('bayanat/M_bayanat');
+		$this->load->model('dataAkademik/M_bayanat');
+		$this->load->model('dataAkademik/M_santri');
+		$this->load->model('dataAkademik/M_kelas_jadwal');
 	}
 
 	public function index()
@@ -27,23 +29,27 @@ class Bayanat extends CI_Controller {
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_Bayanat";
 		$data['body'] = "dataAkademik/bayanat/insert_bayanat";
+
+		$data['M_kelas_jadwal'] = $this->M_kelas_jadwal->selectTdKelasJadwal();
+		$data['M_santri'] = $this->M_santri->selectTdSantri();
+
 		custom_layout($data);
 	}
 
-	public function doAddBayanat(){
-
+	public function doInsertBayanat(){
+		redirect();
 	}
 
 	public function updateBayanat(){
 		$data['title'] = "Update Data Bayanat";
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_Bayanat";
-		$data['body'] = "bayanat/update_bayanat";
+		$data['body'] = "dataAkademik/bayanat/update_bayanat";
 		custom_layout($data);
 	}
 
 	public function doUpadteBayanat(){
-
+		redirect();
 	}
 
 	public function deleteBayanat(){
@@ -53,7 +59,7 @@ class Bayanat extends CI_Controller {
 		$dataLog = array(
 				'id_proses'=>'01',
 				'nama_proses'=>'delete data',
-				'nama_form' => 'referensi_jenis_karyawan',
+				'nama_form' => 'dataAkademik : Bayanat',
 				'keterangan'=>'berhasil',
 				'id_rekam'=>$this->session->userdata('id_user'));
 		$this->M_log->recordLog($dataLog);
