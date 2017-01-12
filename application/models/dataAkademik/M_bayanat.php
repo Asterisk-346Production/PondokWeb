@@ -22,6 +22,7 @@ class M_bayanat extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('td_bayanat');
 		$this->db->join('td_kelas_jadwal','td_bayanat.id_kelas_jadwal = td_kelas_jadwal.id_kelas_jadwal');
+		$this->db->join('td_santri','td_bayanat.nis = td_santri.nis');
 		$query =  $this->db->get();
 		return $query->result_array();
 	}

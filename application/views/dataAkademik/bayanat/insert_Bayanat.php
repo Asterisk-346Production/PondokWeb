@@ -9,7 +9,7 @@
             <div class="col-sm-10">
               <select name="nis" required id="nis" class="form-control m-bot15">
                 <?php foreach ($M_santri as $data) {
-                   echo '<option value="'.$data['nis'].'">'.$data['nis']." ".$data['nama'].'</option>';
+                   echo '<option value="'.$data['nis'].'">'.$data['nis']." - ".$data['nama'].'</option>';
                 } ?>
               </select>
               <span class="help-block"><?php //echo form_error('idtype'); ?></span>

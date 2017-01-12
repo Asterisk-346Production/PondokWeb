@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS tmp_table;
 CREATE TABLE tmp_table LIKE td_karyawan_kompentensi;
 ALTER TABLE tmp_table MODIFY COLUMN id_kopetensi int(6) AUTO_INCREMENT;
 INSERT tmp_table SELECT * FROM td_karyawan_kompentensi;
