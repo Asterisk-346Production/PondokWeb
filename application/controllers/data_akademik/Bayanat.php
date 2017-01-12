@@ -69,6 +69,7 @@ class Bayanat extends CI_Controller {
 				'nilai' => $this->input->post('nilai'),
 				'tgl_ujian' => $this->input->post('tgl_ujian')
 				);
+
 			$this->M_santri->addTdSantri($data);
 			$this->m_log->recordLog($dataLog);
 
@@ -91,7 +92,7 @@ class Bayanat extends CI_Controller {
 
 	public function deleteBayanat(){
 		$id = $this->uri->segment(4);
-		$this->M_jenis_karyawan->deleteReferensiJenisKaryawan($id);
+		$this->M_bayanat->deleteTdBayanat($id);
 
 		$dataLog = array(
 				'id_proses'=>'01',

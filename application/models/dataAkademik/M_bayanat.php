@@ -26,6 +26,11 @@ class M_bayanat extends CI_Model {
 		$query =  $this->db->get();
 		return $query->result_array();
 	}
+
+	public function deleteTdBayanat($id){
+		$this->db->where('id_bayanat', $id);
+		$this->db->delete('td_bayanat');
+	}
 }
 
 /* End of file M_bayanat.php */
