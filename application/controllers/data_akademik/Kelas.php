@@ -123,7 +123,7 @@ class Kelas extends CI_Controller {
 
 	}
 
-	public function deletekelas(){
+	public function deleteKelas(){
 		$id = $this->uri->segment(4);
 		$this->M_kelas->deletekelas($id);
 

@@ -1,5 +1,7 @@
+DROP TABLE IF EXISTS tmp_table;
+
 CREATE TABLE tmp_table LIKE td_karyawan_kompentensi;
-ALTER TABLE tmp_table MODIFY COLUMN id_kopetensi int(6) AUTO_INCREMENT PRIMARY KEY;
+ALTER TABLE tmp_table MODIFY COLUMN id_kopetensi int(6);
 INSERT tmp_table SELECT * FROM td_karyawan_kompentensi;
 DROP TABLE td_karyawan_kompentensi;
 RENAME TABLE tmp_table TO td_karyawan_kompentensi;
@@ -17,7 +19,6 @@ DROP TABLE td_kelas;
 RENAME TABLE tmp_table TO td_kelas;
 
 CREATE TABLE tmp_table LIKE td_kelas_wali;
-ALTER TABLE tmp_table MODIFY COLUMN id_kelas_wali int(11) AUTO_INCREMENT PRIMARY KEY;
 INSERT tmp_table SELECT * FROM td_kelas_wali;
 DROP TABLE td_kelas_wali;
 RENAME TABLE tmp_table TO td_kelas_wali;

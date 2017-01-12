@@ -18,7 +18,7 @@ class Bayanat extends CI_Controller {
 		$data['title'] = "List Bayanat";
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_Bayanat";
-		$data['body'] = "bayanat/select_bayanat";
+		$data['body'] = "dataAkademik/bayanat/select_bayanat";
 		custom_layout($data);
 	}
 
@@ -26,7 +26,7 @@ class Bayanat extends CI_Controller {
 		$data['title'] = "Add Data Bayanat";
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_Bayanat";
-		$data['body'] = "bayanat/insert_bayanat";
+		$data['body'] = "dataAkademik/bayanat/insert_bayanat";
 		custom_layout($data);
 	}
 
