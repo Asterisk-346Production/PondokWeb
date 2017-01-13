@@ -54,7 +54,7 @@ class Bayanat extends CI_Controller {
 				'keterangan'=>'gagal',
 				'id_rekam'=>$this->session->userdata('id_user'));
 			$this->M_log->recordLog($dataLog);
-			redirect('data_akademik/bayanat/addBantri');
+			redirect('data_akademik/bayanat/addBayanat');
 		} else {
 			$dataLog = array(
 				'id_proses'=>'1',
@@ -70,8 +70,17 @@ class Bayanat extends CI_Controller {
 				'tgl_ujian' => $this->input->post('tgl_ujian')
 				);
 
-			$this->M_santri->addTdSantri($data);
-			$this->m_log->recordLog($dataLog);
+			$insert_id =  $this->M_bayanat->addTdBayanat($data);
+			$data_nilai = array(
+				'id_kelas_jadwal' => $this->input->post('id_kelas_jadwal'),
+				'id_bayanat' => $insert_id,
+				'nis' => $this->input->post('nis'),
+				'nilai_ujian'  => $this->input->post('nilai'),
+				'nilai_akhir' => $this->input->post('nilai')
+				);
+
+			$this->M_bayanat->addTdKelasNilaionBayanat($data_nilai);
+			$this->M_log->recordLog($dataLog);
 
 			redirect('data_akademik/bayanat');
 		}

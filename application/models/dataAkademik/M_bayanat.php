@@ -15,7 +15,7 @@ class M_bayanat extends CI_Model {
 	}
 
 	public function addTdKelasNilaionBayanat($data){
-		$this->db->insert('td_kelas_nilai', $object);
+		$this->db->insert('td_kelas_nilai', $data);
 	}
 
 	public function selectTdBayanat(){
