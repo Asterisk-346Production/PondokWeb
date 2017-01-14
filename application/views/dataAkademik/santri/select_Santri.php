@@ -31,7 +31,7 @@
                 <td><?php echo $data['nisn'];?></td>
                 <td><?php echo $data['nama'];?></td>
                 <td><?php echo $data['nama_ar'];?></td>
-                <td><?php echo $data['keterangan'];?></td>
+                <td><?php echo $data['uraian'];?></td>
                 <td><?php echo $data['tempat_lahir'];?></td>
                 <td><?php echo $data['tgl_lahir'];?></td>
                 <td><?php echo $data['daerah'];?></td>

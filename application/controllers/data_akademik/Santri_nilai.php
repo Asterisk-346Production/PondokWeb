@@ -27,6 +27,18 @@ class Santri_nilai extends CI_Controller {
 		custom_layout($data);
 	}
 
+	public function detail(){
+		$id = $this->uri->segment(4);
+		$data['menu'] ="Akademik";
+		$data['submenu'] = "Data Nilai Santri";
+
+		$data['title'] = 'Data Nilai Santri';
+		$data['body'] = 'dataAkademik/santri_nilai/select_santri_nilai_detail';
+
+		$data['M_data_santri_nilai_detail'] = $this->M_Santri_nilai->selectTdSantriNilaiWhere($id);
+		custom_layout($data);
+	}
+
 	public function addTdSantriNilai(){
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_SantriNilai";
@@ -56,6 +68,13 @@ class Santri_nilai extends CI_Controller {
 					$this->M_log->recordLog($dataLog);
 					redirect('data_akademik/santri_nilai/addTdSantri_nilai');
 				} else {
+					$max_value = $this->M_santri_nilai->countJumlahJenisPelajaran();
+					for($i = 0; $i < $max_value; $i++){
+						//code insert here
+					$id_jns_pelajaran =  "id_jns_pelajaran$i";
+					$jenis_jadwal =  "jenis_jadwal$i";
+					$nilai =  "nilai$i";
+						
 					$dataLog = array(
 						'id_proses'=>'1',
 						'nama_proses'=>'insert data',
@@ -64,33 +83,36 @@ class Santri_nilai extends CI_Controller {
 						'id_rekam'=>$this->session->userdata('id_user'));
 					$data = array(
 						'nis' => $this->input->post('nis'),
-						'id_jns_pelajaran' => $this->input->post('nomor'),
-						'id_jns_jadwal' => $this->input->post('id_kelas_jadwal'),
-						'nilai_akhir' => $this->input->post('nilai')
+						'id_jns_pelajaran' => $this->input->post($id_jns_pelajaran),
+						'id_jns_jadwal' => $this->input->post($jenis_jadwal),
+						'nilai_akhir' => $this->input->post($nilai)
 						);
 
-					$insert_id =  $this->M_santri_nilai->addTdsantri_nilai($data);
+					$insert_id =  $this->M_santri_nilai->addTdSantriNilai($data);
 					$data_nilai = array(
-						'id_kelas_jadwal' => $this->input->post('id_kelas_jadwal'),
+						'id_kelas_jadwal' => $this->input->post($jenis_jadwal),
 						'id_santri_nilai' => $insert_id,
 						'nis' => $this->input->post('nis'),
-						'nilai_ujian'  => $this->input->post('nilai'),
-						'nilai_akhir' => $this->input->post('nilai')
+						'nilai_ujian'  => $this->input->post($nilai),
+						'nilai_akhir' => $this->input->post($nilai)
 						);
 
-					$this->M_santri_nilai->addTdKelasNilaionsantri_nilai($data_nilai);
+					$this->M_santri_nilai->addTdKelasNilaionSantriNilai($data_nilai);
 					$this->M_log->recordLog($dataLog);
-
+					}
 					redirect('data_akademik/santri_nilai');
 				}
 			}
 		}
 
 	public function updateTdSantriNilai(){
+		$id = $this->uri->segment(4);
 		$data['title'] = "Update Data Bayanat";
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_SantriNilai";
+		$data['M_data_santri_nilai'] =  $this->M_santri_nilai->preUpdateTdSantriNilai($id);
 		$data['body'] = "dataAkademik/bayanat/update_bayanat";
+
 		custom_layout($data);
 	}
 

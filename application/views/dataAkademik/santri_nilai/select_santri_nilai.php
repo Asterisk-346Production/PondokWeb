@@ -27,7 +27,7 @@
                 <td><?php echo $data['jadwal'];?></td>
                 <td><?php echo $data['nilai_akhir'];?></td>
                 <td><div class="btn-group">
-                  <a class="btn btn-success" href="<?php echo base_url().'data_akademik/santri_nilai/updateTdSantriNilai/'.$data['id']; ?>"><i class="icon_pencil-edit"></i></a>
+                  <a class="btn btn-success" href="<?php echo base_url().'data_akademik/santri_nilai/detail/'.$data['id']; ?>"><i class="icon_pencil-edit"></i></a>
                   <a class="btn btn-danger" href="<?php echo base_url().'data_akademik/santri_nilai/deleteSantriNilai/'.$data['id']; ?>"><i class="icon_close_alt2"></i></a>
                 </div></td>
               </tr>

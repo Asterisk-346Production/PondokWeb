@@ -15,17 +15,20 @@
             <span class="help-block"><?php echo form_error('nis'); ?></span>
           </div>
         </div>
-        <?php foreach ($M_jenis_pelajaran as $jp_list) { ?>
+        <?php 
+        $i = 0;
+        foreach ($M_jenis_pelajaran as $jp_list) { 
+          $i++;?>
         <div class="row">
           <label class="col-sm-3 control-label"><?php echo $jp_list['uraian']; ?></label>
-          <input name="id" type="hidden" id="id" value="<?php echo $jp_list['id_jns_pelajaran']; ?>">
+          <input name="id_jns_pelajaran<?php echo $i; ?>" type="hidden" id="id_jns_pelajaran<?php echo $i; ?>" value="<?php echo $jp_list['id_jns_pelajaran']; ?>">
           <div class="col-sm-9">
             <div class="form-group">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label class="col-sm-4 control-label">Jenis Jadwal</label>
                   <div class="col-sm-8">
-                    <select name="jenis_jadwal" required id="jenis_jadwal" class="form-control m-bot15">
+                    <select name="jenis_jadwal<?php echo $i; ?>" required id="jenis_jadwal<?php echo $i; ?>" class="form-control m-bot15">
                       <?php foreach ($M_jenis_jadwal as $jj_list) {
                          echo '<option value="'.$jj_list['id_jns_jadwal'].'">'.$jj_list['uraian'].'</option>';
                       } ?>
@@ -37,7 +40,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <div class="col-sm-12">
-                    <input name="nilai_akhir" type="text" required="required" class="form-control" id="nilai_akhir" maxlength="3" placeholder="Nilai Akhir">
+                    <input name="nilai_akhir<?php echo $i; ?>" type="text" required="required" class="form-control" id="nilai_akhir<?php echo $i; ?>" maxlength="3" placeholder="Nilai Akhir">
                     <span class="help-block"><?php echo form_error('nilai_akhir'); ?></span>
                   </div>
                 </div>

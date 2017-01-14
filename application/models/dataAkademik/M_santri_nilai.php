@@ -19,6 +19,23 @@ class M_santri_nilai extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function countJumlahJenisPelajaran(){
+		$query = $this->db->get('tr_jenis_pelajaran');
+		return $query->num_rows();
+
+	}
+
+	public function selectTdSantriNilaiWhere($id){
+		$this->db->select('s.nis as nis, s.nama as santri,s.nisn as nisn, jp.uraian as pelajaran, jj.uraian as jadwal, sn.nilai_akhir as nilai_akhir, sn.id_santri_nilai as id,*');
+		$this->db->from('td_santri_nilai as sn');
+		$this->db->join('tr_jenis_pelajaran as jp', 'sn.id_jns_pelajaran = jp.id_jns_pelajaran');
+		$this->db->join('tr_jenis_jadwal as jj', 'sn.id_jns_jadwal = jj.id_jns_jadwal');
+		$this->db->join('td_santri as s', 'sn.nis = s.nis');
+		$this->db->where('nis', $id);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	public function addTdSantriNilai($data){
 		$this->db->insert('td_santri_nilai', $data);
 		$insert_id = $this->db->insert_id();
