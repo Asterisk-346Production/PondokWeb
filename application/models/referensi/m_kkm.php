@@ -12,7 +12,7 @@ class M_kkm extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('tr_kkm');
 		$this->db->join('td_tahun_ajaran', 'tr_kkm.id_ta = td_tahun_ajaran.id_ta');
-		$this->db->join('tr_jenis_pelajaran', 'tr_kkm.id_jns_pelajaran = td_tahun_ajaran.id_jns_pelajaran');
+		$this->db->join('tr_jenis_pelajaran', 'tr_kkm.id_jns_pelajaran = tr_jenis_pelajaran.id_jns_pelajaran');
 		$query = $this->db->get();
 		return $query->result_array();
 	}
@@ -25,7 +25,7 @@ class M_kkm extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('tr_kkm');
 		$this->db->join('td_tahun_ajaran', 'tr_kkm.id_ta = td_tahun_ajaran.id_ta');
-		$this->db->join('tr_jenis_pelajaran', 'tr_kkm.id_jns_pelajaran = td_tahun_ajaran.id_jns_pelajaran');
+		$this->db->join('tr_jenis_pelajaran', 'tr_kkm.id_jns_pelajaran = tr_jenis_pelajaran.id_jns_pelajaran');
 		$this->db->where('id_kkm', $id);
 		$query = $this->db->get();
 		return $query->result_array();
