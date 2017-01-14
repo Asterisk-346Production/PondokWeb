@@ -22,7 +22,7 @@ class Referensi_kkm extends CI_Controller {
 		$data['submenu'] = "R_KKM";
 		$data['body'] = "referensi/kkm/select_kkm";
 
-		$data['m_jenis_beasiswa'] = $this->M_kkm->selectTrKKM();
+		$data['m_kkm'] = $this->M_kkm->selectTrKKM();
 
 		custom_layout($data);
 	}
@@ -93,7 +93,9 @@ class Referensi_kkm extends CI_Controller {
 
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
-		$data['m_jenis_jadwal'] = $this->M_jenis_jadwal->preUpdateTrKKM($id);
+		$data['m_kkm'] = $this->M_kkm->preUpdateTrKKM($id);
+		$data['m_jenis_pelajaran'] = $this->M_jenis_pelajaran->selectReferensiJenisPelajaran();
+		$data['m_tahun_ajaran'] = $this->M_tahun_ajaran->selectTdTahunAjaran();
 
 		custom_layout($data);
 	}
