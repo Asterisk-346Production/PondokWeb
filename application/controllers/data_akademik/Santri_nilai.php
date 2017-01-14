@@ -31,7 +31,7 @@ class Santri_nilai extends CI_Controller {
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_SantriNilai";
 		$data['title'] = 'Data Nilai Santri';
-		$data['body'] ='dataAkademik/santri_nilai/select_santri_nilai';
+		$data['body'] ='dataAkademik/santri_nilai/insert_santri_nilai';
 		$data['M_santri'] = $this->M_santri->selectTdSantri();
 		$data['M_jenis_pelajaran'] = $this->M_jenis_pelajaran->selectReferensiJenisPelajaran();
 		$data['M_jenis_jadwal'] = $this->M_jenis_jadwal->selectReferensiJenisJadwal();
@@ -40,9 +40,6 @@ class Santri_nilai extends CI_Controller {
 
 	public function doInsertSantriNilai(){
 		$this->form_validation->set_rules('nis', 'nis', 'trim|required');
-		$this->form_validation->set_rules('id_jns_pelajaran', 'id_jns_pelajaran', 'trim|required');
-		$this->form_validation->set_rules('id_jns_jadwal', 'id_jns_jadwal', 'trim|required');
-		$this->form_validation->set_rules('nilai_akhir', 'nilai_akhir', 'trim|required');
 
 		if($this->input->post('nilai_akhir') >= 100){
 			$this->session->set_flashdata('error', 'nilai cannot be more than 100');
