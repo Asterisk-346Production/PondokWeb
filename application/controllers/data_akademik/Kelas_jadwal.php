@@ -66,7 +66,15 @@ class Kelas_jadwal extends CI_Controller {
 			$this->M_log->recordLog($dataLog);
 			redirect('data_akademik/bayanat/addBayanat');
 		} else {
-			# code...
+			$dataLog = array(
+				'id_proses'=>'1',
+				'nama_proses'=>'insert data',
+				'nama_form' => 'data_akademik : tdKelasJadwal &  tdKelasJadwalDetail',
+				'keterangan'=>'berhasil',
+				'id_rekam'=>$this->session->userdata('id_user'));
+			$data = array(
+				''
+				);
 		}
 	}
 
