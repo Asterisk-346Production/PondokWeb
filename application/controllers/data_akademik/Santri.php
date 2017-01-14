@@ -9,6 +9,7 @@ class Santri extends CI_Controller {
 		$this->load->model('log/m_log');
 		$this->load->model('dataAkademik/M_santri');
 		$this->load->model('referensi/M_jenis_santri');
+		
 		if(!$this->session->userdata('logged_in'))
 		{
 			redirect();
