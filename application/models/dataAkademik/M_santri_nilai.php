@@ -10,11 +10,11 @@ class M_santri_nilai extends CI_Model {
 	}
 
 	public function selectTdSantriNilai(){
-		$this->db->select('*');
-		$this->db->from('td_santri_nilai');
-		$this->db->join('tr_jenis_pelajaran', 'td_santri_nilai.id_jns_pelajaran = tr_jenis_pelajaran.id_jns_pelajaran');
-		$this->db->join('tr_jenis_jadwal', 'td_santri_nilai.id_jns_jadwal = tr_jenis_jadwal.id_jns_jadwal');
-		$this->db->join('td_santri', 'td_santri_nilai.nis = td_santri.nis');
+		$this->db->select('s.nis as nis, s.nama as santri, jp.uraian as pelajaran, jj.uraian as jadwal, sn.nilai_akhir as nilai_akhir, sn.id_santri_nilai as id');
+		$this->db->from('td_santri_nilai as sn');
+		$this->db->join('tr_jenis_pelajaran as jp', 'sn.id_jns_pelajaran = jp.id_jns_pelajaran');
+		$this->db->join('tr_jenis_jadwal as jj', 'sn.id_jns_jadwal = jj.id_jns_jadwal');
+		$this->db->join('td_santri as s', 'sn.nis = s.nis');
 		$query = $this->db->get();
 		return $query->result_array();
 	}

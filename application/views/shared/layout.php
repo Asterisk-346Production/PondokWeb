@@ -117,6 +117,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Absen" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/absensi">Absensi</a></li>
                         <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Guru" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/guru">Guru</a></li>
                         <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Santri" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/santri">Santri</a></li>
+                        <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_SantriNilai" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/santri_nilai">Santri Nilai</a></li>
                         <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Ruangan" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/ruangan">Ruangan</a></li>
                         <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_Kelas" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/kelas">Kelas</a></li>
                         <li class="<?php echo $menu == "Akademik" && $submenu == "Ac_KelasJadwal" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./data_akademik/kelasJadwal">Kelas Jadwal</a></li>
