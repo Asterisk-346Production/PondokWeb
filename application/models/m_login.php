@@ -10,9 +10,10 @@ class M_Login extends CI_Model {
 	}
 
 	public function getUserPass($data){
-		$condition = "id_user ='" . $data['username'] . "' AND pass_user ='" . $data['password'] . "' AND blokir_user ='T'";
 		$this->db->select('*');
-		$this->db->where($condition);
+		$this->db->where('id_user', $data['username']);
+		$this->db->where('pass_user', $data['password']);
+		$this->db->where('blokir_user', 'T');
 		$query = $this->db->get('list_user');
 		
 		if ($query->num_rows() == 1) {
@@ -23,12 +24,12 @@ class M_Login extends CI_Model {
 	}
 
 	public function getUserInformation($data){
-		$condition = "id_user ='" . $data['username'] . "' AND pass_user ='" . $data['password'] . "' AND blokir_user ='T'";
 		$this->db->select('id_list_user');
 		$this->db->select('id_user');
 		$this->db->select('level_user');
-		// $this->db->select('blokir_user');
-		$this->db->where($condition);
+		$this->db->where('id_user', $data['username']);
+		$this->db->where('pass_user', $data['password']);
+		$this->db->where('blokir_user', 'T');
 		$query = $this->db->get('list_user');
 		return $query->result_array();
 	}
