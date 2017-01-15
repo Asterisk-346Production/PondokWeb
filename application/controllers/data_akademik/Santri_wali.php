@@ -36,7 +36,7 @@ class Santri_wali extends CI_Controller {
 		$data['title'] = 'Add Data Wali Santri';
 		$data['body'] ='dataAkademik/santri_wali/insert_Santri_wali';
 
-		$data['M_data_santri'] = $data['M_data_santri'] = $this->M_santri->selectTdSantri();
+		$data['M_data_santri'] = $this->M_santri->selectTdSantri();
 		$data['M_jenis_santri_wali'] = $this->M_jenis_wali->selectReferensiJenisWali();
 		custom_layout($data);
 	}
@@ -95,7 +95,7 @@ class Santri_wali extends CI_Controller {
 		$data['slug']= $this->uri->segment(4);
 
 		$id = $this->uri->segment(4);
-		$data['M_jenis_santri_wali']	= $this->M_jenis_wali->selectReferensiJenisWali();
+		$data['M_jenis_santri_wali'] = $this->M_jenis_wali->selectReferensiJenisWali();
 		$data['m_santri_wali'] = $this->M_santri->preUpdateTdSantriWali($id);
 
 		custom_layout($data);
