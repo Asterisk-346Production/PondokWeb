@@ -114,6 +114,11 @@ class Santri_nilai extends CI_Controller {
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_SantriNilai";
 		$data['M_data_santri_nilai'] =  $this->M_santri_nilai->preUpdateTdSantriNilai($id);
+		$data['M_data_santri'] = $this->M_santri->preUpdateTdSantri($id);
+		$data['M_kelas_jadwal'] = $this->M_kelas_jadwal->selectTdKelasJadwal();
+		$data['M_jenis_pelajaran'] = $this->M_jenis_pelajaran->selectReferensiJenisPelajaran();
+		$data['M_jenis_jadwal'] = $this->M_jenis_jadwal->selectReferensiJenisJadwal();
+
 		$data['body'] = "dataAkademik/bayanat/update_bayanat";
 
 		custom_layout($data);
@@ -121,7 +126,7 @@ class Santri_nilai extends CI_Controller {
 
 	public function deleteSantriNilai(){
 		$id = $this->uri->segment(4);
-		$this->M_bayanat->deleteTdBayanat($id);
+		$this->M_santri_nilai->deleteTdSantriNilai($id);
 
 		$dataLog = array(
 				'id_proses'=>'01',
