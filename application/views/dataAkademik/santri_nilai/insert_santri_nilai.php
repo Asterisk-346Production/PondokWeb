@@ -15,6 +15,17 @@
             <span class="help-block"><?php echo form_error('nis'); ?></span>
           </div>
         </div>
+           <div class="form-group">
+          <label class="col-sm-2 control-label">Pilih Jadwal Kelas</label>
+            <div class="col-sm-10">
+              <select name="id_kelas_jadwal" required id="id_kelas_jadwal" class="form-control m-bot15">
+                <?php foreach ($M_kelas_jadwal as $data) {
+                   echo '<option value="'.$data['id_kelas_jadwal'].'">'.$data['tgl_ujian'].'</option>';
+                } ?>
+              </select>
+              <span class="help-block"><?php //echo form_error('idtype'); ?></span>
+          </div>
+        </div>
         <?php 
         $i = 0;
         foreach ($M_jenis_pelajaran as $jp_list) { 

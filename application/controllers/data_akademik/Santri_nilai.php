@@ -13,6 +13,7 @@ class Santri_nilai extends CI_Controller {
 		$this->load->model('dataAkademik/M_santri');
 		$this->load->model('dataAkademik/M_santri_nilai');
 		$this->load->model('referensi/M_jenis_pelajaran');
+		$this->load->model('dataAkademik/M_kelas_jadwal');
 		$this->load->model('referensi/M_jenis_jadwal');
 	}
 
@@ -46,6 +47,7 @@ class Santri_nilai extends CI_Controller {
 		$data['title'] = 'Data Nilai Santri';
 		$data['body'] ='dataAkademik/santri_nilai/insert_santri_nilai';
 		$data['M_santri'] = $this->M_santri->selectTdSantri();
+		$data['M_kelas_jadwal'] = $this->M_kelas_jadwal->selectTdKelasJadwal();
 		$data['M_jenis_pelajaran'] = $this->M_jenis_pelajaran->selectReferensiJenisPelajaran();
 		$data['M_jenis_jadwal'] = $this->M_jenis_jadwal->selectReferensiJenisJadwal();
 		custom_layout($data);
@@ -91,7 +93,7 @@ class Santri_nilai extends CI_Controller {
 
 					$insert_id =  $this->M_santri_nilai->addTdSantriNilai($data);
 					$data_nilai = array(
-						'id_kelas_jadwal' => $this->input->post($jenis_jadwal),
+						'id_kelas_jadwal' => $this->input->post('id_kelas_jadwal'),
 						'id_santri_nilai' => $insert_id,
 						'nis' => $this->input->post('nis'),
 						'nilai_ujian'  => $this->input->post($nilai),
