@@ -26,12 +26,15 @@ class M_santri_nilai extends CI_Model {
 	}
 
 	public function selectTdSantriNilaiWhere($id){
-		$this->db->select('s.nis as nis, s.nama as santri,s.nisn as nisn, jp.uraian as pelajaran, jj.uraian as jadwal, sn.nilai_akhir as nilai_akhir, sn.id_santri_nilai as id,*');
+		$this->db->select('sn.*,jp.*,jj.*,s.*,js.*,jp.uraian as nm_pelajaran, jj.uraian_ar as uraian_ar_jadwal, js.keterangan as keterangan_jj,
+			jj.uraian as jenis_jadwal');
 		$this->db->from('td_santri_nilai as sn');
 		$this->db->join('tr_jenis_pelajaran as jp', 'sn.id_jns_pelajaran = jp.id_jns_pelajaran');
 		$this->db->join('tr_jenis_jadwal as jj', 'sn.id_jns_jadwal = jj.id_jns_jadwal');
 		$this->db->join('td_santri as s', 'sn.nis = s.nis');
-		$this->db->where('nis', $id);
+		$this->db->join('tr_jenis_santri as js', 's.id_jns_santri = js.id_jns_santri');
+		$this->db->where('sn.nis', $id);
+		// $this->db->where('sn.id_santri_nilai', $id);
 		$query = $this->db->get();
 		return $query->result_array();
 	}

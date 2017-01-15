@@ -22,8 +22,11 @@ class M_santri extends CI_Model {
 	}
 
 	public function preUpdateTdSantri($nis) {
+		$this->db->select('*');
+		$this->db->from('td_santri');
+		$this->db->join('tr_jenis_santri', 'td_santri.id_jns_santri = tr_jenis_santri.id_jns_santri');
 		$this->db->where('nis', $nis);
-		$query = $this->db->get('td_santri');
+		$query = $this->db->get();
 		return $query->result_array();
 	}
 

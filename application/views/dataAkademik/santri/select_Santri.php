@@ -39,7 +39,8 @@
                 <td><?php echo $data['tgl_awal'];?></td>
                 <td><?php echo $data['tgl_akhir'];?></td>
                 <td><div class="btn-group">
-                  <a class="btn btn-success" href="<?php echo base_url().'data_akademik/santri/updateSantri/'.$data['nis']; ?>"><i class="icon_pencil-edit"></i></a>
+                  <!-- <a class="btn btn-success" href="<?php echo base_url().'data_akademik/santri/updateSantri/'.$data['nis']; ?>"><i class="icon_pencil-edit"></i></a> -->
+                  <a class="btn btn-success" href="<?php echo base_url().'data_akademik/santri_nilai/detail/'.$data['nis']; ?>"><i class="icon_pencil-edit"></i></a>
                   <a class="btn btn-danger" href="<?php echo base_url().'data_akademik/santri/deleteSantri/'.$data['nis']; ?>"><i class="icon_close_alt2"></i></a>
                 </div></td>
               </tr>

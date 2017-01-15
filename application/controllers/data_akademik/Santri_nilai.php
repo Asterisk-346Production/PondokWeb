@@ -35,7 +35,8 @@ class Santri_nilai extends CI_Controller {
 		$data['title'] = 'Data Nilai Santri';
 		$data['body'] = 'dataAkademik/santri_nilai/select_santri_nilai_detail';
 
-		$data['M_data_santri_nilai_detail'] = $this->M_Santri_nilai->selectTdSantriNilaiWhere($id);
+		$data['M_data_santri'] = $this->M_santri->preUpdateTdSantri($id);
+		$data['M_data_santri_nilai_detail'] = $this->M_santri_nilai->selectTdSantriNilaiWhere($id);
 		custom_layout($data);
 	}
 
@@ -69,11 +70,11 @@ class Santri_nilai extends CI_Controller {
 					redirect('data_akademik/santri_nilai/addTdSantri_nilai');
 				} else {
 					$max_value = $this->M_santri_nilai->countJumlahJenisPelajaran();
-					for($i = 0; $i < $max_value; $i++){
+					for($i = 1; $i <= $max_value; $i++){
 						//code insert here
-					$id_jns_pelajaran =  "id_jns_pelajaran$i";
-					$jenis_jadwal =  "jenis_jadwal$i";
-					$nilai =  "nilai$i";
+					$id_jns_pelajaran =  "id_jns_pelajaran".$i;
+					$jenis_jadwal =  "jenis_jadwal".$i;
+					$nilai =  "nilai_akhir".$i;
 						
 					$dataLog = array(
 						'id_proses'=>'1',
@@ -114,10 +115,6 @@ class Santri_nilai extends CI_Controller {
 		$data['body'] = "dataAkademik/bayanat/update_bayanat";
 
 		custom_layout($data);
-	}
-
-	public function doUpadteBayanat(){
-		redirect();
 	}
 
 	public function deleteSantriNilai(){
