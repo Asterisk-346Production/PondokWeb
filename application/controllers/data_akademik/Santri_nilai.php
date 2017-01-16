@@ -38,6 +38,9 @@ class Santri_nilai extends CI_Controller {
 
 		$data['M_data_santri'] = $this->M_santri->preUpdateTdSantri($id);
 		$data['M_data_santri_nilai_detail'] = $this->M_santri_nilai->selectTdSantriNilaiWhere($id);
+
+		$data['forSemesterTA'] = $this->M_kelas_jadwal->selectTdKelasJadwal(); // will fix later
+
 		custom_layout($data);
 	}
 
@@ -77,7 +80,7 @@ class Santri_nilai extends CI_Controller {
 					$id_jns_pelajaran =  "id_jns_pelajaran".$i;
 					$jenis_jadwal =  "jenis_jadwal".$i;
 					$nilai =  "nilai_akhir".$i;
-						
+
 					$dataLog = array(
 						'id_proses'=>'1',
 						'nama_proses'=>'insert data',

@@ -27,11 +27,11 @@
       <?php
         $i=0; $t_smester=0;
         foreach ($data as $item):
-          $i++; $t_smester=$t_smester + $item['n_semester'];
+          $i++; $t_smester=$t_smester + $item['nilai_akhir'];
       ?>
         <tr>
           <td><?php echo $i; ?></td>
-          <td><?php echo $item['n_semester']; ?></td>
+          <td><?php echo $item['nilai_akhir']; ?></td>
           <td>Nilai Semester</td>
         </tr>
       <?php endforeach; ?>

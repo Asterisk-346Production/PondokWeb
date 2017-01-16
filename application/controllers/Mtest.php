@@ -73,7 +73,7 @@ class Mtest extends CI_Controller {
 	if($a == true){
 		$i = 0;
 		foreach($b as $item){
-			$c = $this->M_mtest->getPelajaran2($item['id_jns_pelajaran']);
+			$c = $this->M_mtest->getPelajaran2($item['id_jns_kelas']);
 			$j = 0;
 			foreach ($c as $dataItem){
 				if($i !=0 || $j != 0){
@@ -95,7 +95,7 @@ class Mtest extends CI_Controller {
 	}else{
 		$mpdf->WriteHTML("Data not available.",2);
 	}
-	
+
 		// $html = $this->load->view('mtes/getto', $data, true);
 		$mpdf->Output(time()."-download-blanko.pdf", "D");
 
