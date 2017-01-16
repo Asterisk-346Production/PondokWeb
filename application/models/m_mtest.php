@@ -9,6 +9,25 @@ class M_mtest extends CI_Model {
 		$this->load->database();
 	}
 
+	public function getSemester($semester){
+
+		$retVal = false;
+		if($semester != null){
+			$this->db->distinct();
+			$this->db->select('semester');
+			$this->db->from('td_kelas_jadwal');
+			$query = $this->db->get();
+			if($query->num_rows()> 0){
+				 $retVal = true;
+				 return $retVal;
+			}else{
+				return $retVal;
+			}
+		}else{
+			return $retVal;
+		}
+	}
+
 	public function getTA($tahun_ajaran){
 		if($tahun_ajaran == null || $tahun_ajaran == ""){
 			$month = date('n');
@@ -21,7 +40,7 @@ class M_mtest extends CI_Model {
 		$this->db->distinct();
 		$this->db->select('tahun_semester');
 		$this->db->where('tahun_semester', $tahun_ajaran);
-    $this->db->from('mtest');
+   		 $this->db->from('mtest');
 		$query = $this->db->get();
 
 		if ($query->num_rows() > 0) {
@@ -34,8 +53,19 @@ class M_mtest extends CI_Model {
 	public function getKelas(){
 		$this->db->distinct();
 		$this->db->select('kelas');
-    $this->db->from('mtest');
+    	$this->db->from('mtest');
 		$query = $this->db->get();
+
+		return $query->result_array();
+	}
+
+	public function getKelas2(){
+		$this->db->distinct();
+		$this->db->select('tr_jenis_kelas.uraian,tr_jenis_kelas.id_jns_kelas');
+		$this->db->from('td_kelas_jadwal');
+		$this->db->join('td_kelas', 'td_kelas_jadwal.id_kelas = td_kelas.id_kelas');
+    	$this->db->join('tr_jenis_kelas', 'td_kelas.id_jns_kelas = tr_jenis_kelas.id_jns_kelas');
+    	$query = $this->db->get();
 
 		return $query->result_array();
 	}
@@ -45,6 +75,16 @@ class M_mtest extends CI_Model {
 		$this->db->select('nm_pelajaran');
     $this->db->from('mtest');
 		$this->db->where('kelas', $kelas);
+		$query = $this->db->get();
+
+		return $query->result_array();
+	}
+
+	public function getPelaJaran2($id){
+		$this->db->distinct();
+		$this->db->select('uraian');
+		$this->db->from('tr_jenis_pelajaran');
+		$this->db->where('id_jns_pelajaran', $id);
 		$query = $this->db->get();
 
 		return $query->result_array();
@@ -68,6 +108,23 @@ class M_mtest extends CI_Model {
 		$query = $this->db->get('mtest');
 
 		return $query->result_array();
+	}
+
+	public function getNilaiBlanko2($id_kelas_jadwal){
+
+		// $this->M_mtest->getNilaiBlanko2($semester, $item['uraian'], $dataitem['uraian']);
+
+		$this->db->select('td_kelas_nilai.nilai_akhir');
+		$this->db->from('td_kelas_jadwal');
+		// $this->db->join('td_kelas', 'td_kelas_jadwal.id_kelas = td_kelas.id_kelas');
+		$this->db->join('td_kelas_nilai', 'td_kelas_jadwal.id_kelas_jadwal = td_kelas_nilai.id_kelas_jadwal');
+		// $this->db->join('tr_jenis_kelas', 'td_kelas.id_jns_kelas = tr_jenis_kelas.id_jns_kelas');
+		// $this->db->where('td_kelas_jadwal.id_kelas', $id_kelas);
+		// $this->db->where('td_kelas_jadwal.semester', $semester);
+		// $this->db->where('td_kelas_jadwal.id_jns_pelajaran', $id_jns_pelajaran);
+		$this->db->where('td_kelas_jadwal.id_kelas_jadwal', $id_kelas_jadwal);
+		$query =$this->db->get();
+		return $query->result_array(); 	
 	}
 
 	public function getNilaiBlanko($tahun_ajaran, $kelas, $pelajaran){
