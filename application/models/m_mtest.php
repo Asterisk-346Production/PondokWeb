@@ -162,7 +162,7 @@ class M_mtest extends CI_Model {
 		// $this->db->where('td_kelas_jadwal.id_jns_pelajaran', $id_jns_pelajaran);
 		$this->db->where('td_kelas_jadwal.id_kelas_jadwal', $id_kelas_jadwal);
 		$query =$this->db->get();
-		return $query->result_array(); 	
+		return $query->result_array();
 	}
 
 	public function getJumlahSiswa($id_kelas_jadwal){
@@ -200,5 +200,36 @@ class M_mtest extends CI_Model {
 		$query = $this->db->get('mtest');
 
 		return $query->result_array();
+	}
+
+	// for test,
+	public function pGetAllSubjects()
+	{
+		# code...
+		$query = $this->db->get('tr_jenis_pelajaran');
+		return $query->result_array();
+	}
+
+	public function pGetAllStudents()
+	{
+		# code...
+		$query = $this->db->get('td_santri');
+		return $query->result_array();
+	}
+
+	public function pGetScore($student, $subject)
+	{
+		# code...
+		$this->db->select('kn.nilai_akhir as nilai');
+		$this->db->from('td_kelas_nilai as kn');
+		$this->db->join('td_kelas_jadwal as kj', 'kn.id_kelas_jadwal = kj.id_kelas_jadwal');
+		$this->db->where('kn.nis', $student);
+		$this->db->where('kj.id_jns_pelajaran', $subject);
+		$query = $this->db->get();
+		if ($query->num_rows() == 1) {
+			return $query->result_array();
+		} else {
+			return NULL;
+		}
 	}
 }
