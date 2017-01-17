@@ -42,11 +42,46 @@ class Mtest extends CI_Controller {
 					$mpdf->WriteHTML("<pagebreak/>");
 				}
 				$i++;
-				$data['data'] = $this->M_mtest->getNilaiKelas($semester,$id_jns_jadwal);
+
+				// Set Incremental Number
+				$n = 0;
+				// Set Array Nilai
+				$score = [];
+				// Set Array All Score per Student
+				$allscore = [];
+				// Get Jenis Pelajaran List
+				$data['subject'] = $this->M_mtest->pGetAllSubjects();
+				// Get Santri List
+				$data['student'] = $this->M_mtest->pGetAllStudents();
+
+				foreach ($data['student'] as $student) {
+					# code...
+					// Set Santri Name
+					$score['santri'] = $student['nama'];
+					// Set Incremental Number
+					$m = 0;
+					foreach ($data['subject'] as $subject) {
+						# code...
+						// Get Santri Final Score
+						$santriscore = $this->M_mtest->pGetScore($student['nis'], $subject['id_jns_pelajaran']);
+						// Set Subject Score and check if student didn't have any score then print 0
+						$score['subject'.++$m] = ($santriscore == NULL) ? 0 : $santriscore['nilai'];
+					}
+					// Insert Student Scores to $allscore
+					array_push($allscore, $score);
+					// Unset $score to
+					unset($score);
+				}
+				// Pass Data to View
+				$data['scores'] = $allscore;
+
 				$html = $this->load->view('mtes/getto', $data, TRUE);
 				$mpdf->use_kwt = true;
 				$mpdf->SetFooter('{PAGENO}');
 				$mpdf->WriteHTML($html,2);
+
+				// Unset Score Array
+				unset($allscore);
 			endforeach;
 		}else{
 			$mpdf->WriteHTML("Data not available",2);
@@ -54,7 +89,41 @@ class Mtest extends CI_Controller {
 			$mpdf->Output(time()."-download-rekap-pelajaran.pdf","D");
 			redirect('mtest');
 	}
-	
+
+	// public function htmlto(){
+	// 	$mpdf = new mPDF('','A4-L');
+	// 	$semester ='1';
+	// 	$id_jns_jadwal ='1';
+	//
+	// 	$css ="<style>
+	// 	table, th, td{
+	// 		border: 1px solid black;
+	// 	}
+	// 	</style>";
+	//
+	// 	$mpdf->WriteHTML($css);
+	//
+	// 	$a = $this->M_mtest->getSemester($semester);
+	// 	if($a == true){
+	// 		$b = $this->M_mtest->getKelas2();
+	// 		$i = 0;
+	// 		foreach($b as $item):
+	// 			if($i != 0){
+	// 				$mpdf->WriteHTML("<pagebreak/>");
+	// 			}
+	// 			$i++;
+	// 			$data['data'] = $this->M_mtest->getNilaiKelas($semester,$id_jns_jadwal);
+	// 			$html = $this->load->view('mtes/getto', $data, TRUE);
+	// 			$mpdf->use_kwt = true;
+	// 			$mpdf->SetFooter('{PAGENO}');
+	// 			$mpdf->WriteHTML($html,2);
+	// 		endforeach;
+	// 	}else{
+	// 		$mpdf->WriteHTML("Data not available",2);
+	// 	}
+	// 		$mpdf->Output(time()."-download-rekap-pelajaran.pdf","D");
+	// 		redirect('mtest');
+	// }
 
 	public function xhtmlto()
 	{
