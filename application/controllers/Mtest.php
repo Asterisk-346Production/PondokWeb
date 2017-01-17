@@ -20,6 +20,13 @@ class Mtest extends CI_Controller {
 		custom_layout($data);
 	}
 
+	public function test(){
+		$data['data'] = $this->M_mtest->pGetScore('000111','1');
+		$data['menu'] ="Mtest";
+		$data['body'] = "blog/welcome_message";
+		custom_layout($data);
+	}
+
 	public function htmlto(){
 		$mpdf = new mPDF('','A4-L');
 		$semester ='1';
@@ -52,7 +59,7 @@ class Mtest extends CI_Controller {
 				// Get Jenis Pelajaran List
 				$data['subject'] = $this->M_mtest->pGetAllSubjects();
 				// Get Santri List
-				$data['student'] = $this->M_mtest->pGetAllStudents();
+				$data['student'] = $this->M_mtest->pGetAllStudents('1');
 
 				foreach ($data['student'] as $student) {
 					# code...
@@ -65,12 +72,12 @@ class Mtest extends CI_Controller {
 						// Get Santri Final Score
 						$santriscore = $this->M_mtest->pGetScore($student['nis'], $subject['id_jns_pelajaran']);
 						// Set Subject Score and check if student didn't have any score then print 0
-						$score['subject'.++$m] = ($santriscore == NULL) ? 0 : $santriscore['nilai'];
+						$score['subject'.++$m] = ($santriscore == NULL) ? 0 : $santriscore[0]['nilai'];
 					}
 					// Insert Student Scores to $allscore
 					array_push($allscore, $score);
 					// Unset $score to
-					unset($score);
+					// unset($score);
 				}
 				// Pass Data to View
 				$data['scores'] = $allscore;

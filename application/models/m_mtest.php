@@ -210,10 +210,17 @@ class M_mtest extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function pGetAllStudents()
+	public function pGetAllStudents($id)
 	{
 		# code...
-		$query = $this->db->get('td_santri');
+		// $query = $this->db->get('td_santri');
+		$this->db->select('td_santri.*');
+		$this->db->from('td_santri');
+		$this->db->join('td_kelas_dtl', 'td_santri.nis = td_kelas_dtl.nis');
+		$this->db->join('td_kelas', 'td_kelas_dtl.id_kelas = td_kelas.id_kelas');
+		$this->db->join('td_kelas_jadwal', 'td_kelas_jadwal.id_kelas = td_kelas_jadwal.id_kelas');
+		$this->db->where('td_kelas_jadwal.id_kelas_jadwal', $id);
+		$query =  $this->db->get();
 		return $query->result_array();
 	}
 
@@ -225,11 +232,13 @@ class M_mtest extends CI_Model {
 		$this->db->join('td_kelas_jadwal as kj', 'kn.id_kelas_jadwal = kj.id_kelas_jadwal');
 		$this->db->where('kn.nis', $student);
 		$this->db->where('kj.id_jns_pelajaran', $subject);
+		$this->db->where('kj.id_jns_jadwal', '1');
+		$this->db->where('kj.id_kelas_jadwal', '1');
 		$query = $this->db->get();
-		if ($query->num_rows() == 1) {
+		// if ($query->num_rows() == 1) {
 			return $query->result_array();
-		} else {
-			return NULL;
-		}
+		// } else {
+			// return NULL;
+		// }
 	}
 }
