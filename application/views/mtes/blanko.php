@@ -19,6 +19,7 @@
     <thead>
       <tr>
         <td>No</td>
+        <td>Nama</td>
         <td>Angka</td>
         <td>Keterangan</td>
       </tr>
@@ -31,17 +32,19 @@
       ?>
         <tr>
           <td><?php echo $i; ?></td>
+          <td><?php echo $item['nama'];?></td>
           <td><?php echo $item['nilai_akhir']; ?></td>
-          <td>Nilai Semester</td>
+          <td><?php echo $item['uraian']; ?></td>
         </tr>
       <?php endforeach; ?>
       <?php
         if($i<40){
           $n=$i;
-          for ($n; $n <= 40; $n++) {
+          for ($n; $n <= $jml_siswa; $n++) {
             ?>
               <tr>
                 <td><?php echo $n; ?></td>
+                <td></td>
                 <td></td>
                 <td></td>
               </tr>

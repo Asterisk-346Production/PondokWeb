@@ -20,6 +20,15 @@ class Mtest extends CI_Controller {
 		custom_layout($data);
 	}
 
+	public function test(){
+		$data['menu'] = "Mtest";
+		$semester ='1';
+		$id_jns_jadwal ='1';
+		$data['data'] = $this->M_mtest->getNilaiKelas($semester,$id_jns_jadwal);
+		$data['body'] = "blog/welcome_message";
+		custom_layout($data);
+	}
+
 	public function htmlto(){
 		$mpdf = new mPDF('','A4-L');
 		$semester ='1';
@@ -42,6 +51,8 @@ class Mtest extends CI_Controller {
 					$mpdf->WriteHTML("<pagebreak/>");
 				}
 				$i++;
+				$data['nm_pelajaran'] = $this->M_mtest->getNamaJenisPelajaran($semester,$id_jns_jadwal);
+				$data['jml_siswa'] =  $this->M_mtest->getgetJumlahSiswa($semester,$id_jns_jadwal);
 				$data['data'] = $this->M_mtest->getNilaiKelas($semester,$id_jns_jadwal);
 				$html = $this->load->view('mtes/getto', $data, TRUE);
 				$mpdf->use_kwt = true;

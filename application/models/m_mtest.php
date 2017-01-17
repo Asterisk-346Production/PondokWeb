@@ -109,6 +109,18 @@ class M_mtest extends CI_Model {
 
 		return $query->result_array();
 	}
+	public function getNamaJenisPelajaran($semester,$id_jns_jadwal){
+		$this->db->distinct();
+		$this->db->select('tr_jenis_pelajaran.uraian');
+		$this->db->from('td_kelas_nilai');
+		$this->db->join('td_kelas_jadwal', 'td_kelas_nilai.id_kelas_jadwal = td_kelas_jadwal.id_kelas_jadwal');
+		$this->db->join('td_santri', 'td_kelas_nilai.nis = td_santri.nis');
+		$this->db->join('tr_jenis_pelajaran', 'td_kelas_jadwal.id_jns_pelajaran = tr_jenis_pelajaran.id_jns_pelajaran');
+		$this->db->join('tr_jenis_jadwal', 'td_kelas_jadwal.id_jns_jadwal = tr_jenis_jadwal.id_jns_jadwal');
+		$this->db->where('td_kelas_jadwal.semester', $semester);
+		$this->db->where('td_kelas_jadwal.id_jns_jadwal', $id_jns_jadwal);
+		$query = $this->db->get();
+	}
 
 	public function getNilaiKelas($semester,$id_jns_jadwal)
 	{
@@ -121,7 +133,14 @@ class M_mtest extends CI_Model {
 		$this->db->where('td_kelas_jadwal.semester', $semester);
 		$this->db->where('td_kelas_jadwal.id_jns_jadwal', $id_jns_jadwal);
 		$query = $this->db->get();
+		// $fix =  $query->result_array();
+		// $i = 0;
+		// foreach ( $fix as $key) {
+		// 	$arr[$i] = array('nama'=> $key['nama'], array($key['uraian'] =>$key['uraian'] = $key['nilai_akhir']));
+		// 	$i++;
+		// }
 		return $query->result_array();
+		// return $arr;
 		// $this->db->join('Table', 'table.column = table.column', 'left');
 		// $this->db->where('td_kelas_jadwal.id_kelas_jadwal', $id_kelas_jadwal);
 
@@ -131,10 +150,12 @@ class M_mtest extends CI_Model {
 
 		// $this->M_mtest->getNilaiBlanko2($semester, $item['uraian'], $dataitem['uraian']);
 
-		$this->db->select('td_kelas_nilai.nilai_akhir');
+		$this->db->select('td_kelas_nilai.nilai_akhir,td_santri.nama, tr_jenis_jadwal.uraian');
 		$this->db->from('td_kelas_jadwal');
 		// $this->db->join('td_kelas', 'td_kelas_jadwal.id_kelas = td_kelas.id_kelas');
 		$this->db->join('td_kelas_nilai', 'td_kelas_jadwal.id_kelas_jadwal = td_kelas_nilai.id_kelas_jadwal');
+		$this->db->join('td_santri', 'td_kelas_nilai.nis = td_santri.nis', 'left');
+		$this->db->join('tr_jenis_jadwal', 'td_kelas_jadwal.id_jns_jadwal = tr_jenis_jadwal.id_jns_jadwal');
 		// $this->db->join('tr_jenis_kelas', 'td_kelas.id_jns_kelas = tr_jenis_kelas.id_jns_kelas');
 		// $this->db->where('td_kelas_jadwal.id_kelas', $id_kelas);
 		// $this->db->where('td_kelas_jadwal.semester', $semester);
@@ -142,6 +163,25 @@ class M_mtest extends CI_Model {
 		$this->db->where('td_kelas_jadwal.id_kelas_jadwal', $id_kelas_jadwal);
 		$query =$this->db->get();
 		return $query->result_array(); 	
+	}
+
+	public function getJumlahSiswa($id_kelas_jadwal){
+
+		// $this->M_mtest->getNilaiBlanko2($semester, $item['uraian'], $dataitem['uraian']);
+
+		$this->db->select('td_kelas_nilai.nilai_akhir,td_santri.nama, tr_jenis_jadwal.uraian');
+		$this->db->from('td_kelas_jadwal');
+		// $this->db->join('td_kelas', 'td_kelas_jadwal.id_kelas = td_kelas.id_kelas');
+		$this->db->join('td_kelas_nilai', 'td_kelas_jadwal.id_kelas_jadwal = td_kelas_nilai.id_kelas_jadwal');
+		$this->db->join('td_santri', 'td_kelas_nilai.nis = td_santri.nis', 'left');
+		$this->db->join('tr_jenis_jadwal', 'td_kelas_jadwal.id_jns_jadwal = tr_jenis_jadwal.id_jns_jadwal');
+		// $this->db->join('tr_jenis_kelas', 'td_kelas.id_jns_kelas = tr_jenis_kelas.id_jns_kelas');
+		// $this->db->where('td_kelas_jadwal.id_kelas', $id_kelas);
+		// $this->db->where('td_kelas_jadwal.semester', $semester);
+		// $this->db->where('td_kelas_jadwal.id_jns_pelajaran', $id_jns_pelajaran);
+		$this->db->where('td_kelas_jadwal.id_kelas_jadwal', $id_kelas_jadwal);
+		$query =$this->db->get();
+		return $query->num_rows(); 	
 	}
 
 	public function getNilaiBlanko($tahun_ajaran, $kelas, $pelajaran){

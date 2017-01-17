@@ -5,7 +5,7 @@
     <thead>
       <tr>
         <td>Santri</td>
-        <?php foreach($data as $items):?>
+        <?php foreach($nm_pelajaran as $items):?>
         <td><?php echo $items['uraian'];?></td>
       <?php endforeach; ?>
       </tr>
