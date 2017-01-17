@@ -129,9 +129,9 @@
             <?php $no=0; foreach ($M_data_santri_nilai_detail as $data): ?>
               <tr>
                 <td><?php echo ++$no; ?></td>
-                <td><?php echo $data['jenis_jadwal']; ?></td>
-                <td><?php echo $data['nm_pelajaran']; ?></td>
-                <td><?php echo $data['nilai_akhir']; ?></td>
+                <td><?php echo $data['nis']; ?></td>
+                <td><?php echo $data['nis']; ?></td>
+                <td><?php echo $data['nis']; ?></td>
                 <td><div class="btn-group">
                   <a class="btn btn-success" href="<?php echo base_url().'data_akademik/santri_nilai/updateTdSantriNilai/'.$data['nis']; ?>"><i class="icon_pencil-edit"></i></a>
                   <a class="btn btn-danger" href="<?php echo base_url().'data_akademik/santri_nilai/deleteSantriNilai/'.$data['nis']; ?>"><i class="icon_close_alt2"></i></a>
@@ -157,10 +157,10 @@
             <?php $no=0; foreach ($M_data_santri_nilai_detail as $data): ?>
               <tr>
                 <td><?php echo ++$no; ?></td>
-                <td><?php echo $data['santri']; ?></td>
+                <td><?php echo $data['nis']; ?></td>
                 <td><?php echo $data['nisn']; ?></td>
                 <td><?php echo $data['nis']; ?></td>
-                <td><?php echo $data['pelajaran']; ?></td>
+                <td><?php echo $data['nis']; ?></td>
                 <td><div class="btn-group">
                   <a class="btn btn-success" href="<?php echo base_url().'data_akademik/santri_nilai/updateTdSantriNilai/'.$data['nis']; ?>"><i class="icon_pencil-edit"></i></a>
                   <a class="btn btn-danger" href="<?php echo base_url().'data_akademik/santri_nilai/deleteSantri/'.$data['nis']; ?>"><i class="icon_close_alt2"></i></a>

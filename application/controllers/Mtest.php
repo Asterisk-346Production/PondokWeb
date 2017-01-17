@@ -20,7 +20,43 @@ class Mtest extends CI_Controller {
 		custom_layout($data);
 	}
 
-	public function htmlto()
+	public function htmlto(){
+		$mpdf = new mPDF('','A4-L');
+		$semester ='1';
+		$id_jns_jadwal ='1';
+
+		$css ="<style>
+		table, th, td{
+			border: 1px solid black;
+		}
+		</style>";
+
+		$mpdf->WriteHTML($css);
+
+		$a = $this->M_mtest->getSemester($semester);
+		if($a == true){
+			$b = $this->M_mtest->getKelas2();
+			$i = 0;
+			foreach($b as $item):
+				if($i != 0){
+					$mpdf->WriteHTML("<pagebreak/>");
+				}
+				$i++;
+				$data['data'] = $this->M_mtest->getNilaiKelas($semester,$id_jns_jadwal);
+				$html = $this->load->view('mtes/getto', $data, TRUE);
+				$mpdf->use_kwt = true;
+				$mpdf->SetFooter('{PAGENO}');
+				$mpdf->WriteHTML($html,2);
+			endforeach;
+		}else{
+			$mpdf->WriteHTML("Data not available",2);
+		}
+			$mpdf->Output(time()."-download-rekap-pelajaran.pdf","D");
+			redirect('mtest');
+	}
+	
+
+	public function xhtmlto()
 	{
 		$mpdf = new mPDF('', 'A4-L');
 

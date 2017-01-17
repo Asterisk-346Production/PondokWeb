@@ -110,6 +110,23 @@ class M_mtest extends CI_Model {
 		return $query->result_array();
 	}
 
+	public function getNilaiKelas($semester,$id_jns_jadwal)
+	{
+		$this->db->select('td_kelas_nilai.nilai_akhir, td_santri.nis, td_santri.nama,tr_jenis_pelajaran.uraian,tr_jenis_jadwal.uraian as uraian_jj ');
+		$this->db->from('td_kelas_nilai');
+		$this->db->join('td_kelas_jadwal', 'td_kelas_nilai.id_kelas_jadwal = td_kelas_jadwal.id_kelas_jadwal');
+		$this->db->join('td_santri', 'td_kelas_nilai.nis = td_santri.nis');
+		$this->db->join('tr_jenis_pelajaran', 'td_kelas_jadwal.id_jns_pelajaran = tr_jenis_pelajaran.id_jns_pelajaran');
+		$this->db->join('tr_jenis_jadwal', 'td_kelas_jadwal.id_jns_jadwal = tr_jenis_jadwal.id_jns_jadwal');
+		$this->db->where('td_kelas_jadwal.semester', $semester);
+		$this->db->where('td_kelas_jadwal.id_jns_jadwal', $id_jns_jadwal);
+		$query = $this->db->get();
+		return $query->result_array();
+		// $this->db->join('Table', 'table.column = table.column', 'left');
+		// $this->db->where('td_kelas_jadwal.id_kelas_jadwal', $id_kelas_jadwal);
+
+	}
+
 	public function getNilaiBlanko2($id_kelas_jadwal){
 
 		// $this->M_mtest->getNilaiBlanko2($semester, $item['uraian'], $dataitem['uraian']);
