@@ -19,7 +19,7 @@ class Rapor_model extends CI_Model{
       $this->db->join('tr_jenis_pelajaran as jp', 'sn.id_jns_pelajaran = jp.id_jns_pelajaran');
       $this->db->where('sn.nis', $santri);
       $this->db->where('kn.id_kelas_jadwal', $ta);
-      $query = $this->db->get('', $take, $start);
+      $query = $this->db->get('');
       return $query->result_array();
   }
 

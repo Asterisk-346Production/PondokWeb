@@ -45,26 +45,18 @@ class Rapor extends CI_Controller{
     $nilai = $this->Rapor_model->getCountNilai($kelas_jadwal, $santri);
     $data['santri'] = $this->Rapor_model->getSantri($santri);
     if($nilai > 0){
-      if($nilai < 5){
-        $data['nilai1'] = '';
-        $data['nilai2'] = $this->Rapor_model->getCountNilai($kelas_jadwal, $santri, 0, $nilai);
-        $data['pos'] = 'less';
-      } elseif ($nilai == 5) {
-        # code...
-        $data['pos'] = 'same';
-        $data['nilai1'] = '';
-        $data['nilai2'] = $this->Rapor_model->getCountNilai($kelas_jadwal, $santri, 0, $nilai);
+      if($nilai <= 5){
+        $data['nilai1'] = [];
+        $data['nilai2'] = $this->Rapor_model->getNilai($kelas_jadwal, $santri, 0, $nilai);
       } else {
         # code...
         if($nilai % 2 == 1){
-          $data['pos'] = 'more-odd';
-          $data['nilai1'] = $this->Rapor_model->getCountNilai($kelas_jadwal, $santri, 0, (($nilai+5)/2));
-          $data['nilai2'] = $this->Rapor_model->getCountNilai($kelas_jadwal, $santri, ((($nilai+5)/2)-1), (($nilai+5)/2));
+          $data['nilai1'] = $this->Rapor_model->getNilai($kelas_jadwal, $santri, 0, ($nilai + 5) / 2);
+          $data['nilai2'] = $this->Rapor_model->getNilai($kelas_jadwal, $santri, ($nilai + 5) / 2 - 1, ($nilai + 5) / 2);
         } else {
           # code...
-          $data['pos'] = 'more-even';
-          $data['nilai1'] = $this->Rapor_model->getCountNilai($kelas_jadwal, $santri, 0, (($nilai + 6)/2));
-          $data['nilai2'] = $this->Rapor_model->getCountNilai($kelas_jadwal, $santri, ((($nilai+6)/2)-1), (($nilai+4)/2));
+          $data['nilai1'] = $this->Rapor_model->getNilai($kelas_jadwal, $santri, 0, ($nilai + 6) / 2);
+          $data['nilai2'] = $this->Rapor_model->getNilai($kelas_jadwal, $santri, ($nilai + 6) / 2 - 1, ($nilai + 4) / 2);
         }
       }
       $html = $this->load->view('dataAkademik/rapor/rapor', $data, TRUE);
