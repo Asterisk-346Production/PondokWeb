@@ -22,7 +22,12 @@ class Rapor extends CI_Controller{
   public function getRapor()
   {
     #code
-    $mpdf = new mPDF('','A3');
+    $mpdf = new mPDF('utf-8','A3');
+    $mpdf->autoScriptToLang = true;
+    $mpdf->autoLangToFont = true;
+    $mpdf->baseScript = 1;
+    $mpdf->autoArabic = true;
+
     $semester ='1';
     $id_jns_jadwal ='1';
 
