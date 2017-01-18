@@ -69,7 +69,7 @@
         <br />
         <div class="row">
           <div class="col-md-12">
-            <?php echo form_open('rapor/getRapor'); ?>
+            <?php echo form_open('data_akademik/rapor/getRapor'); ?>
             <div class="row">
               <div class="ccol-md-12">
                 <input type="hidden" id="idSantri" name="idSantri" value="<?php echo $data['nis']; ?>" />
