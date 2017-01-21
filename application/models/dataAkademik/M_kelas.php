@@ -13,6 +13,31 @@ class M_kelas extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('td_kelas');
 		$this->db->join('tr_jenis_kelas','td_kelas.id_jns_kelas = tr_jenis_kelas.id_jns_kelas');
+		$this->db->join('td_kelas_dtl', 'td_kelas_dtl.id_kelas = td_kelas_dtl.id_kelas');
+		$this->db->join('td_tahun_ajaran', 'td_tahun_ajaran.id_ta = td_kelas.id_ta');
+		$query =  $this->db->get();
+		return $query->result_array();
+	}
+
+		public function selectTdKelasWhereId($id){
+		$this->db->select('td_kelas.*, td_tahun_ajaran.tgl_awal as ta_tgl_awal, td_tahun_ajaran.tgl_akhir as ta_tgl_akhir,tr_jenis_kelas.uraian,td_tahun_ajaran.tahun_awal, td_tahun_ajaran.tahun_akhir');
+		$this->db->from('td_kelas');
+		$this->db->join('tr_jenis_kelas','td_kelas.id_jns_kelas = tr_jenis_kelas.id_jns_kelas');
+		// $this->db->join('td_kelas_dtl', 'td_kelas_dtl.id_kelas = td_kelas_dtl.id_kelas');
+		$this->db->join('td_tahun_ajaran', 'td_tahun_ajaran.id_ta = td_kelas.id_ta');
+		$this->db->where('td_kelas.id_kelas', $id);
+		$query =  $this->db->get();
+		return $query->result_array();
+	}
+
+	public function selectTdKelasWhereSantri($id){
+		$this->db->select('*,td_santri.nama');
+		$this->db->from('td_kelas');
+		$this->db->join('tr_jenis_kelas','td_kelas.id_jns_kelas = tr_jenis_kelas.id_jns_kelas');
+		$this->db->join('td_kelas_dtl', 'td_kelas_dtl.id_kelas = td_kelas_dtl.id_kelas');
+		$this->db->join('td_santri', 'td_kelas_dtl.nis = td_santri.nis');
+		$this->db->join('td_tahun_ajaran', 'td_tahun_ajaran.id_ta = td_kelas.id_ta');
+		$this->db->where('td_kelas.id_kelas', $id);
 		$query =  $this->db->get();
 		return $query->result_array();
 	}

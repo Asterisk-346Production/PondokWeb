@@ -8,6 +8,11 @@ class Kelas extends CI_Controller {
 		parent::__construct();
 		$this->load->model('log/m_log');
 		$this->load->model('dataAkademik/M_kelas');
+		// $this->load->model('dataAkademik/M_santri');
+		$this->load->model('dataAkademik/M_tahun_ajaran');
+		$this->load->model('dataAkademik/M_kelas_detail');
+		$this->load->model('dataAkademik/M_kelas_jadwal');
+		$this->load->model('dataAkademik/M_santri_nilai');
 		$this->load->model('referensi/M_jenis_kelas');
 		if(!$this->session->userdata('logged_in')){
 			redirect();
@@ -21,7 +26,7 @@ class Kelas extends CI_Controller {
 
 		$data['title'] = 'Data Kelas';
 		$data['body'] ='dataAkademik/kelas/select_Kelas';
-		$data['M_data_kelas'] = $this->M_kelas->selectTdkelas();
+		$data['M_kelas'] = $this->M_kelas->selectTdkelas();
 		custom_layout($data);
 	}
 
@@ -33,13 +38,16 @@ class Kelas extends CI_Controller {
 		$data['body'] ='dataAkademik/kelas/insert_Kelas';
 
 		$data['M_jenis_kelas'] = $this->M_jenis_kelas->selectReferensiJeniskelas();
+		$data['M_tahun_ajaran'] $this->M_tahun_ajaran->selectTdTahunAjaran();
 		custom_layout($data);
 	}
 
 	public function doInsertKelas(){
-		$this->form_validation->set_rules('nis', 'nis', 'trim|required');
-		$this->form_validation->set_rules('nisn', 'nisn', 'trim|required');
+		$this->form_validation->set_rules('jumlah', 'jumlah', 'trim|required');
+		$this->form_validation->set_rules('id_ta', 'id_ta', 'trim|required');
 		$this->form_validation->set_rules('id_jns_kelas', 'id_jns_kelas', 'trim|required');
+		$this->form_validation->set_rules('tgl_awal', 'tgl_awal', 'trim|required');
+		$this->form_validation->set_rules('tgl_akhir', 'tgl_akhir', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE ) {
 			$this->session->set_flashdata('error', 'fail to insert data, try insert again');
@@ -59,9 +67,11 @@ class Kelas extends CI_Controller {
 				'keterangan'=>'berhasil',
 				'id_rekam'=>$this->session->userdata('id_user'));
 			$data = array(
-				'nis' => $this->input->post('nis'),
-				'nisn' => $this->input->post('nisn'),
-				'nama' => $this->input->post('nama'),
+				'id_ta' => $this->input->post('itd_ta'),
+				'jumlah' => $this->input->post('jumlah'),
+				'tgl_awal' => $this->input->post('tgl_awal'),
+				'tgl_akhir' => $this->input->post('tgl_akhir'),
+				'id_jns_kelas' => $this->input->post('id_jns_kelas')
 				);
 			$this->M_kelas->addTdkelas($data);
 			$this->m_log->recordLog($dataLog);
@@ -78,7 +88,8 @@ class Kelas extends CI_Controller {
 		$data['slug']= $this->uri->segment(4);
 
 		$id = $this->uri->segment(4);
-		$data['m_jenis_kelas']	= $this->M_jenis_kelas->selectReferensiJeniskelas();
+		$data['M_jenis_kelas'] = $this->M_jenis_kelas->selectReferensiJeniskelas();
+		$data['M_tahun_ajaran'] $this->M_tahun_ajaran->selectTdTahunAjaran();
 		$data['m_kelas'] = $this->M_kelas->preUpdateTdkelas($id);
 
 		custom_layout($data);
@@ -87,9 +98,11 @@ class Kelas extends CI_Controller {
 	public function doUpdatekelas(){
 		$nis = $this->input->post('nis');
 
-		$this->form_validation->set_rules('nisn', 'nisn', 'trim|required');
+		$this->form_validation->set_rules('jumlah', 'jumlah', 'trim|required');
+		$this->form_validation->set_rules('id_ta', 'id_ta', 'trim|required');
 		$this->form_validation->set_rules('id_jns_kelas', 'id_jns_kelas', 'trim|required');
-		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+		$this->form_validation->set_rules('tgl_awal', 'tgl_awal', 'trim|required');
+		$this->form_validation->set_rules('tgl_akhir', 'tgl_akhir', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE ) {
 			$this->session->set_flashdata('error', 'fail to insert data, try insert again');
@@ -109,11 +122,11 @@ class Kelas extends CI_Controller {
 				'keterangan'=>'berhasil',
 				'id_rekam'=>$this->session->userdata('id_user'));
 			$data = array(
-				'nisn' => $this->input->post('nisn'),
-				'nama' => $this->input->post('nama'),
-				'nama_ar' => $this->input->post('nama_ar'),
-				'id_jns_kelas' => $this->input->post('id_jns_kelas'),
-				'tempat_lahir' => $this->input->post('tempat_lahir'),
+				'id_ta' => $this->input->post('itd_ta'),
+				'jumlah' => $this->input->post('jumlah'),
+				'tgl_awal' => $this->input->post('tgl_awal'),
+				'tgl_akhir' => $this->input->post('tgl_akhir'),
+				'id_jns_kelas' => $this->input->post('id_jns_kelas')
 				);
 			$this->M_kelas->updateTdKelas($nis,$data);
 			$this->m_log->recordLog($dataLog);
@@ -142,6 +155,24 @@ class Kelas extends CI_Controller {
 		redirect();
 	}
 
+	public function detail(){
+		$id = $this->uri->segment(4);
+		$data['menu'] ="Akademik";
+		$data['submenu'] = "Detail List Santri";
+
+		$data['title'] = 'Data Nilai Santri';
+		$data['body'] = 'dataAkademik/kelas/select_kelas_detail';
+
+		// $data['M_data_santri'] = $this->M_santri->preUpdateTdSantri($id);
+		// $data['M_data_santri_nilai_detail'] = $this->M_santri_nilai->selectTdSantriNilaiWhere($id);
+		$data['M_data_kelas'] = $this->M_kelas->selectTdKelasWhereId($id);
+		$data['M_data_kelas_list_santri'] = $this->M_kelas->selectTdKelasWhereSantri($id);
+		$data['M_data_kelas_jadwal'] = $this->M_kelas_jadwal->allSelectRelationTdKelasJadwalWhere2($id);
+		$data['forSemesterTA'] = $this->M_kelas_jadwal->selectTdKelasJadwal(); // will fix later
+		// $data['M_data_santri'] =
+
+		custom_layout($data);
+	}
 }
 
 /* End of file Kelas.php */

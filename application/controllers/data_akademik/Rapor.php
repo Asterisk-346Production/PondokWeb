@@ -32,8 +32,10 @@ class Rapor extends CI_Controller{
     $id_jns_jadwal ='1';
 
     $css ="<style>
-    table, th, td{
-      border: 1px solid black;
+    table, td,th{
+      border: 0.1px solid black;
+      padding : 0px;
+      margin: 0px;
     }
     </style>";
 
