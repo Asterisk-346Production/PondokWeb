@@ -233,12 +233,12 @@ class M_mtest extends CI_Model {
 		$this->db->where('kn.nis', $student);
 		$this->db->where('kj.id_jns_pelajaran', $subject);
 		$this->db->where('kj.id_jns_jadwal', '1');
-		$this->db->where('kj.id_kelas_jadwal', '1');
+		// $this->db->where('kj.id_kelas_jadwal', '1');
 		$query = $this->db->get();
-		// if ($query->num_rows() == 1) {
+		if ($query->num_rows() == 1) {
 			return $query->result_array();
-		// } else {
-			// return NULL;
-		// }
+		} else {
+			return NULL;
+		}
 	}
 }
