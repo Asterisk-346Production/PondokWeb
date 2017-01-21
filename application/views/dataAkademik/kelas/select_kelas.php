@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <section class="panel">
       <header class="panel-heading">
-        <a class="btn btn-primary" href="<?php echo base_url().'data_akademik/santri/addKelas/'; ?>"><i class="icon_plus_alt2"></i> Tambah Data Kelas</a>
+        <a class="btn btn-primary" href="<?php echo base_url().'data_akademik/kelas/addKelas/'; ?>"><i class="icon_plus_alt2"></i> Tambah Data Kelas</a>
       </header>
       <div class="panel-body">
         <table class="table table-striped table-advance table-hover border-top" id="sample_2">
@@ -25,7 +25,7 @@
                 <td><?php echo $data['tgl_awal'];?></td>
                 <td><?php echo $data['tgl_akhir'];?></td>
                 <td><div class="btn-group">
-                  <!-- <a class="btn btn-success" href="<?php echo base_url().'data_akademik/santri/updateSantri/'.$data['nis']; ?>"><i class="icon_pencil-edit"></i></a> -->
+                  <!-- <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelad/updateSantri/'.$data['nis']; ?>"><i class="icon_pencil-edit"></i></a> -->
                   <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelas/detail/'.$data['id_kelas']; ?>"><i class="icon_pencil-edit"></i></a>
                   <a class="btn btn-danger" href="<?php echo base_url().'data_akademik/kelas/deleteKelas/'.$data['id_kelas']; ?>"><i class="icon_close_alt2"></i></a>
                 </div></td>

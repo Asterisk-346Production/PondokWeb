@@ -39,6 +39,13 @@ class M_santri extends CI_Model {
 		$this->db->where('nis', $nis);
 		$this->db->delete('td_santri');
 	}
+
+	public function santriHasNotClass(){
+		$querying = "select td_santri.nis,td_santri.nama from td_santri where not exists(select nis from td_kelas_dtl where td_kelas_dtl.nis = td_santri.nis)";
+		
+		$query  = $this->db->query($querying);
+		return $query->result_array();
+	}
 }
 
 /* End of file M_santri.php */

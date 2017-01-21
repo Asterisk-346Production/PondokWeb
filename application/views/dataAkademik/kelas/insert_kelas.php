@@ -7,12 +7,11 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Tahun Ajaran</label>
             <div class="col-sm-10">
-              <select name="id_jns_ruangan" required id="id_jns_ruangan" class="form-control m-bot15">
+              <select name="id_ta" required id="id_ta" class="form-control m-bot15">
                 <?php foreach ($M_tahun_ajaran as $data) {
-                   echo '<option value="'.$data['id_ta'].'">'.$data['tahun_awal'].' - '.$data['tahun_akhir'];'</option>';
+                   echo '<option value="'.$data['id_ta'].'">'.$data['tahun_awal'].' - '.$data['tahun_akhir'].'</option>';
                 } ?>
               </select>
-              <span class="help-block"><?php //echo form_error('idtype'); ?></span>
           </div>
         </div>
         <div class="form-group">
@@ -23,7 +22,6 @@
                    echo '<option value="'.$data['id_jns_kelas'].'">'.$data['uraian'].'</option>';
                 } ?>
               </select>
-              <span class="help-block"><?php //echo form_error('idtype'); ?></span>
           </div>
         </div>
         <div class="form-group">

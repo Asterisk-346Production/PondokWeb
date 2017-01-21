@@ -13,7 +13,7 @@ class M_kelas extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('td_kelas');
 		$this->db->join('tr_jenis_kelas','td_kelas.id_jns_kelas = tr_jenis_kelas.id_jns_kelas');
-		$this->db->join('td_kelas_dtl', 'td_kelas_dtl.id_kelas = td_kelas_dtl.id_kelas');
+		// $this->db->join('td_kelas_dtl', 'td_kelas_dtl.id_kelas = td_kelas_dtl.id_kelas');
 		$this->db->join('td_tahun_ajaran', 'td_tahun_ajaran.id_ta = td_kelas.id_ta');
 		$query =  $this->db->get();
 		return $query->result_array();

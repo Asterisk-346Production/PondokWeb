@@ -30,7 +30,7 @@ class Tahun_ajaran extends CI_Controller {
 		$data['title'] = "Insert Tahun AJaran";
 		$data['menu'] = "Akademik";
 		$data['submenu'] = "Ac_TahunAjaran";
-		$data['body'] = "data_akademik/tahun_ajaran/insert_tahun_ajaran";
+		$data['body'] = "dataAkademik/tahun_ajaran/insert_Tahun_ajaran";
 		custom_layout($data);
 	}
 
@@ -67,7 +67,7 @@ class Tahun_ajaran extends CI_Controller {
 				'tgl_awal' => $tanggal_awal,
 				'tgl_akhir' => $tanggal_akhir
 				);
-			$this->M_jenis_jam->addTdTahunAjaran($data);
+			$this->M_tahun_ajaran->addTdTahunAjaran($data);
 			$this->m_log->recordLog($dataLog);
 
 			redirect('data_akademik/tahun_ajaran');
@@ -78,7 +78,7 @@ class Tahun_ajaran extends CI_Controller {
 		$data['title'] = "Update Tahun Ajaran";
 		$data['menu'] = "Akdemik";
 		$data['submenu'] = "Ac_TahunAjaran";
-		$data['body'] = "dataAkademik/tahun_ajaran/update_tahun_ajaran";
+		$data['body'] = "dataAkademik/tahun_ajaran/update_Tahun_ajaran";
 
 		$data['slug']= $this->uri->segment(4);
 		$id = $this->uri->segment(4);
@@ -120,7 +120,7 @@ class Tahun_ajaran extends CI_Controller {
 				'tgl_awal' => $tanggal_awal,
 				'tgl_akhir' => $tanggal_akhir
 				);
-			$this->M_jenis_jam->updateTdTahunAjaran($data,$id);
+			$this->M_tahun_ajaran->updateTdTahunAjaran($data,$id);
 			$this->m_log->recordLog($dataLog);
 
 			redirect('data_akademik/tahun_ajaran');
