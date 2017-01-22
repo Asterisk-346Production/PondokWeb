@@ -44,10 +44,12 @@ class Kelas extends CI_Controller {
 	}
 
 	public function addKelasDetail(){
-		$id =  $this->uri->segment(4);
+		// $id =  $this->uri->segment(4);
 		$data['slug'] =  $this->uri->segment(4);
 		$data['menu'] = "Akademik";
 		$data['submenu'] ="Ac_Kelas";
+
+		$id['slug'] = $this->uri->segment(4);
 
 		$data['title'] = "Add Data Kelas Detail";
 		$data['body'] = 'dataAkademik/kelas/insert_kelas_detail';
@@ -57,11 +59,21 @@ class Kelas extends CI_Controller {
 	}
 
 	public function doInsertKelasDetail(){
-		$data['data'] = $this->input->post('FeatureCodes');
-		print_r($data);
-		$data['menu'] ="Mtest";
-		$data['body'] = "blog/welcome_message";
-		custom_layout($data); 
+		$data['data'] = $this->input->post('myField');
+		$id = $this->input->post('id');
+		$tampung = explode(',',$data['data']);
+		foreach ($tampung as $masuk) {
+			$data = array(
+				'nis' =>  $masuk,
+				'id_kelas' => $id
+				);
+			$this->M_kelas_detail->addTdKelasDetail($data);
+		}
+
+		redirect('data_akademik/kelas/detail/'.$id.'');
+		// $data['menu'] ="Mtest";
+		// $data['body'] = "blog/welcome_message";
+		// custom_layout($data); 
 	} 
 
 	public function doInsertKelas(){

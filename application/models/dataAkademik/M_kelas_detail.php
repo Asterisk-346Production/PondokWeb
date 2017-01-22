@@ -30,7 +30,7 @@ class M_kelas_detail extends CI_Model {
 	}
 
 	public function addTdKelasDetail($data){
-		$this->db->insert('td_kelas_detail', $data);
+		$this->db->insert('td_kelas_dtl', $data);
 	}
 
 	public function updateTdKelasDetail($id,$data){
