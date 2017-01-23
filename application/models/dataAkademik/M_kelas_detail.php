@@ -10,7 +10,7 @@ class M_kelas_detail extends CI_Model {
 		}
 
 	public function selectTdKelasDetail($id){
-		$this->db->select('*');
+		$this->db->select('td_santri.nis, td_santri.nama');
 		$this->db->from('td_kelas_dtl');
 		$this->db->join('td_kelas', 'td_kelas_dtl.id_kelas = td_kelas.id_kelas');
 		$this->db->join('td_santri', 'td_kelas_dtl.nis = td_santri.nis');

@@ -121,7 +121,7 @@
         </table>
       </div>
       <div id="kelas_jadwal" class="tab-pane">
-        <table class="table table-striped table-advance table-hover border-top" id="sample_2">
+        <table class="table table-striped table-advance table-hover border-top" id="sample_3">
           <thead>
             <tr>
               <th>No</th>
@@ -149,7 +149,8 @@
                 <td><div class="btn-group">
                   <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelas/updateTdSantriNilai/'.$data['id_kelas_jadwal']; ?>"><i class="icon_pencil-edit"></i></a>
                   <a class="btn btn-danger" href="<?php echo base_url().'data_akademik/kelas/deleteSantriNilai/'.$data['id_kelas_jadwal']; ?>"><i class="icon_close_alt2"></i></a>
-                </div></td>
+                </div>
+                </td>
               </tr>
             <?php endforeach; ?>
           </tbody>
@@ -159,4 +160,8 @@
   </div>
 </section>
 </div>
-</div>
+
+<!-- datatable -->
+<script type="text/javascript" src="<?php echo base_url('assets/adminLte/assets/data-tables/jquery.dataTables.js')?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/adminLte/assets/data-tables/DT_bootstrap.js')?>"></script>
+<script src="<?php echo base_url('assets/adminLte/js/dynamic-table.js')?>"></script>

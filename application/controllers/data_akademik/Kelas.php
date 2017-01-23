@@ -14,6 +14,12 @@ class Kelas extends CI_Controller {
 		$this->load->model('dataAkademik/M_kelas_jadwal');
 		$this->load->model('dataAkademik/M_santri_nilai');
 		$this->load->model('referensi/M_jenis_kelas');
+		$this->load->model('referensi/M_jenis_pelajaran');
+		$this->load->model('referensi/M_jenis_hari');
+		$this->load->model('referensi/M_jenis_jam');
+		$this->load->model('referensi/M_jenis_jadwal');
+		$this->load->model('dataAkademik/M_ruangan');
+		$this->load->model('referensi/M_jenis_ruangan');
 		$this->load->model('log/M_log');
 		if(!$this->session->userdata('logged_in')){
 			redirect();
@@ -49,13 +55,33 @@ class Kelas extends CI_Controller {
 		$data['menu'] = "Akademik";
 		$data['submenu'] ="Ac_Kelas";
 
-		$id['slug'] = $this->uri->segment(4);
-
 		$data['title'] = "Add Data Kelas Detail";
 		$data['body'] = 'dataAkademik/kelas/insert_kelas_detail';
 		$data['M_santri_list'] = $this->M_santri->santriHasNotClass();
 		custom_layout($data);
 
+	}
+
+	public function addKelasJadwal(){
+		$data['slug'] =  $this->uri->segment(4);
+		$data['menu'] = "Akademik";
+		$data['submenu'] ="Ac_Kelas";
+
+		$data['title'] = "Add Data Kelas Detail";
+		// $data['body'] = 'dataAkademik/kelas/insert_kelas_jadwal';
+		$data['body'] = 'blog/testing';
+
+		$data['M_jenis_pelajaran'] = $this->M_jenis_pelajaran->selectReferensiJenisPelajaran();
+		$data['M_ruangan'] = $this->M_ruangan->selectTdRuangan();
+		$data['M_jenis_jadwal'] = $this->M_jenis_jadwal->selectReferensiJenisJadwal();
+		$data['M_jenis_hari'] = $this->M_jenis_hari->selectReferensiJenisHari();
+		$data['M_jenis_jam'] = $this->M_jenis_jam->selectReferensiJenisJam();
+
+		custom_layout($data);
+	}
+
+	public function doInsertKelasJadwal(){
+		redirect();
 	}
 
 	public function doInsertKelasDetail(){
@@ -90,8 +116,17 @@ class Kelas extends CI_Controller {
 				'tgl_akhir' => $this->input->post('tgl_akhir'),
 				'id_jns_kelas' => $this->input->post('id_jns_kelas')
 				);
-			$this->M_kelas->addTdkelas($data);
-				redirect('data_akademik/Kelas');
+
+		$dataLog = array(
+				'id_proses'=>'1',
+				'nama_proses'=>'insert data',
+				'nama_form' => 'data_akademik : kelas',
+				'keterangan'=>'berhasil',
+				'id_rekam'=>$this->session->userdata('id_user'));
+
+		$this->m_log->recordLog($dataLog);
+		$this->M_kelas->addTdkelas($data);
+		redirect('data_akademik/Kelas');
 
 		// if ($this->form_validation->run() == FALSE ) {
 		// 	$this->session->set_flashdata('error', 'fail to insert data, try insert again');
