@@ -48,7 +48,7 @@ function SelectSort(SelList)
 
           $('#Features').change(function(event) {
 
-            if ($(this).val().length > 1) {
+            if ($(this).val().length > 150) {
 
               $(this).val(last_valid_selection);
             } else {
@@ -74,16 +74,16 @@ function SelectSort(SelList)
                     </select>
                 </td>
                 <td align="center" valign="middle">
-                    <input class="btn btn-primary btn-lg btn-block" type="Button" value="Add >>" style="width:100px" onClick="SelectMoveRows(document.Example.Features,document.Example.FeatureCodes)"><br>
+                    <input id="to-right" name ="to-right" class="btn btn-primary btn-lg btn-block" type="Button" value="Add >>" style="width:100px" onClick="SelectMoveRows(document.Example.Features,document.Example.FeatureCodes)"><br>
                     <br>
-                    <input class="btn btn-primary btn-lg btn-block" type="Button" value="<< Remove" style="width:100px" onClick="SelectMoveRows(document.Example.FeatureCodes,document.Example.Features)">
+                    <input id="to-left" name="to-left" class="btn btn-primary btn-lg btn-block" type="Button" value="<< Remove" style="width:100px" onClick="SelectMoveRows(document.Example.FeatureCodes,document.Example.Features)">
                 </td>
                 <td>
                     <select id="FeatureCodes" name="FeatureCodes" class="form-control" size="9" MULTIPLE" >
                     <!-- onchange="getCombo(this)" -->
                     <!-- <option value ="1">000117 - Roni</option> -->
                     </select>
-                    <textarea type="text" id="myField" name="myField" class="form-control" value=""></textarea>
+                    <textarea type="text" id="myField" name="myField" class="form-control" value="" disabled="true"></textarea>
                     <input name="id" type="hidden" id="id" value="<?php echo $slug; ?>">
                 </td>
             </tr>
@@ -95,21 +95,6 @@ function SelectSort(SelList)
     </section>
   </div>
 </div>
-<!-- <script>
-    $('#FeatureCodes').on('DOMNodeInserted', function(){ 
-      var values = $("#FeatureCodes > option").map(function() {
-        return $(this).val();
-      }).get().join(',');
-      $('#myField').val(values);
-});
-</script>
-<script>
-  $(document).ready(function(){
-   if($('#myField option').size() ==null && $('#myField option').size() == 0 ){
-      $('#myField').val(null);
-   }
-});
-</script> -->
 <script>
     $('#FeatureCodes').on('DOMNodeInserted', function(){ 
       var values = $("#FeatureCodes > option").map(function() {
@@ -121,4 +106,7 @@ function SelectSort(SelList)
         $('#myField').val("");
       }
 });
+    $('#to-left').click(function(){
+    $('#myField').val('');
+  });
 </script>

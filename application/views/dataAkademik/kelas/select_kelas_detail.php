@@ -38,7 +38,7 @@
               <div class="btn-group">
                 <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelas/updateKelas/'.$data['id_kelas']; ?>"><i class="icon_pencil-edit"></i>&nbsp;Update Daftar Santri</a>
                 <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelas/addKelasDetail/'.$data['id_kelas']; ?>"><i class="icon-plus-sign"></i>&nbsp;Tambah Santri ke Dalam Kelas</a>
-                <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelas/addTdKelasJadwal'; ?>"><i class="icon-plus-sign"></i>&nbsp;Buat Jadwal Kelas</a>
+                <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelas/addKelasJadwal/'.$data['id_kelas']; ?>"><i class="icon-plus-sign"></i>&nbsp;Buat Jadwal Kelas</a>
                  <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelas/addTdKelasWali'; ?>"><i class="icon-plus-sign"></i>&nbsp;Buat Wali Kelas</a>
               </div>
             </td>
