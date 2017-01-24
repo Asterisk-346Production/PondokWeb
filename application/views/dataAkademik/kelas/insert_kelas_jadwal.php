@@ -52,40 +52,43 @@
       </div>
     </div>
     <!-- edit here tommorrow -->
-    <?php 
-    $i = 0;
-    foreach ($M_jenis_hari as $jh_hari) { 
-      $i++;?>
-      <div class="row">
-        <label class="col-sm-3 control-label"><?php echo $jh_hari['uraian']; ?></label>
-        <input name="id_jns_hari<?php echo $i; ?>" type="hidden" id="id_jns_hari<?php echo $i; ?>" value="<?php echo $jh_hari['id_jns_hari']; ?>">
-        <div class="col-sm-9">
-          <div class="form-group">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label class="col-sm-4 control-label">Jenis Jadwal</label>
-                <div class="col-sm-8">
-                <select name="id_jns_hari<?php echo $i; ?>" required id="id_jns_hari<?php echo $i; ?>" class="form-control m-bot15">
-                    <?php foreach ($M_jenis_jam as $jj_list) {
-                     echo '<option value="'.$jj_list['id_jns_jam'].'">'.$jj_list['uraian'].'</option>';
-                   } ?>
-                 </select>
-                 <span class="help-block"><?php echo form_error('id_jns_jam'); ?></span>
-               </div>
-             </div>
-           </div>
-           <div class="col-sm-6">
-            <div class="form-group">
-              <div class="col-sm-12">
-                <input name="jumlah_jam<?php echo $i; ?>" type="text" required="required" class="form-control" id="jumlah_jam<?php echo $i; ?>" maxlength="3" placeholder="Jumlah Jam">
-                <span class="help-block"><?php echo form_error('jumlah_jam'); ?></span>
+    <div class="form-group">
+      <label class="control-label col-lg-2" for="inputSuccess">Checkboxes and radios</label>
+      <div class="col-lg-10">
+      <?php foreach ($M_jenis_hari as $jh_list):?>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="combo[]" value="1">
+            <?php echo $jh_list['uraian']; ?>
+            <div class="col-sm-9">
+              <div class ="form-group">
+                <div class ="col-sm-6">
+                  <div clas ="form-group">
+                    <label>Jenis Jam</label>
+                    <div class ="col-sm-8">
+                      <select name ="jenis_jam<?php echo $jh_list['id_jns_hari']; ?>" required id="jenis_jam<?php echo $jh_list['id_jns_hari']; ?>">
+                        <?php foreach ($M_jenis_jam as $jj_list) {
+                          echo '<option value="'.$jj_list['id_jns_jadwal'].'">'.$jj_list['jam_awal'].':'.$jj_list['menit_awal'].' - '.$jj_list['jam_akhir'].':'.$jj_list['menit_akhir'].'</option>';
+                        } ?>
+                      </select>
+                      <!-- <span class="help-block"><?php //echo form_error('jenis_jam'); ?></span> -->
+                    </div>
+                  </div>
+                </div>
+                <div clas ="col-sm-6">
+                  <div class="form-group">
+                    <div class="col-sm-12">
+                      <input name="jumlah_jam<?php echo $jh_list['id_jns_hari']; ?>" type="text" required="required" class="form-control" id="jumlah_jam<?php echo $jh_list['id_jns_hari']; ?>" maxlength="3" placeholder="Jumlah Jam">
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </label>
         </div>
+      <?php endforeach; ?>
       </div>
     </div>
-    <?php } ?>
     <?php echo form_submit(array('id' => 'submit', 'class' => 'btn btn-primary btn-lg btn-block', 'value' => 'Simpan')); ?>
     <?php echo form_close(); ?>
   </div>

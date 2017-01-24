@@ -68,8 +68,8 @@ class Kelas extends CI_Controller {
 		$data['submenu'] ="Ac_Kelas";
 
 		$data['title'] = "Add Data Kelas Detail";
-		$data['body'] = 'dataAkademik/kelas/insert_kelas_jadwal';
-		// $data['body'] = 'blog/testing';
+		// $data['body'] = 'dataAkademik/kelas/insert_kelas_jadwal';
+		$data['body'] = 'blog/testing';
 
 		$data['M_jenis_pelajaran'] = $this->M_jenis_pelajaran->selectReferensiJenisPelajaran();
 		$data['M_ruangan'] = $this->M_ruangan->selectTdRuangan();
@@ -81,7 +81,17 @@ class Kelas extends CI_Controller {
 	}
 
 	public function doInsertKelasJadwal(){
-		redirect();
+		$data['slug'] =  $this->uri->segment(4);
+		$data['menu'] = "Akademik";
+		$data['submenu'] ="Ac_Kelas";
+
+		$data['title'] = "Add Data Kelas Detail";
+		$data['body'] = 'blog/welcome_message';
+
+		$data['data'] = $this->input->post('combo');
+		// print_r($data['data']);
+
+		custom_layout($data);
 	}
 
 	public function doInsertKelasDetail(){

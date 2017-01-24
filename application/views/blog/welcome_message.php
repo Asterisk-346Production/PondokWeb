@@ -9,3 +9,16 @@
 	<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 </div>
 	<?php var_dump($data); ?>
+
+	<?php
+	$i = 0;
+	foreach ($data as $datax) {
+	 	$i++;
+	 	$data =  $this->input->post('combox'.$datax);
+	 	if($data == null){
+	 		continue;
+	 	}else{
+	 		echo $data.'<br/>';
+	 	}
+	 } 
+	 ?>
