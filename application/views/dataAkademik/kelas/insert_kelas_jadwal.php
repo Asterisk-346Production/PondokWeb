@@ -68,7 +68,7 @@
                     <div class ="col-sm-8">
                       <select name ="jenis_jam<?php echo $jh_list['id_jns_hari']; ?>" required id="jenis_jam<?php echo $jh_list['id_jns_hari']; ?>">
                         <?php foreach ($M_jenis_jam as $jj_list) {
-                          echo '<option value="'.$jj_list['id_jns_jadwal'].'">'.$jj_list['jam_awal'].':'.$jj_list['menit_awal'].' - '.$jj_list['jam_akhir'].':'.$jj_list['menit_akhir'].'</option>';
+                          echo '<option value="'.$jj_list['id_jns_jam'].'">'.$jj_list['jam_awal'].':'.$jj_list['menit_awal'].' - '.$jj_list['jam_akhir'].':'.$jj_list['menit_akhir'].'</option>';
                         } ?>
                       </select>
                       <!-- <span class="help-block"><?php //echo form_error('jenis_jam'); ?></span> -->

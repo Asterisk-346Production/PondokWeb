@@ -26,7 +26,7 @@
                 <td><?php echo $data['tgl_akhir'];?></td>
                 <td><div class="btn-group">
                   <!-- <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelad/updateSantri/'.$data['nis']; ?>"><i class="icon_pencil-edit"></i></a> -->
-                  <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelas/detail/'.$data['id_kelas']; ?>"><i class="icon_pencil-edit"></i></a>
+                  <a class="btn btn-success" href="<?php echo base_url().'data_akademik/kelas/detail/'.$data['id_kelas']; ?>"><i class="icon_pencil-edit"></i>&nbsp; Detail</a>
                   <a class="btn btn-danger" href="<?php echo base_url().'data_akademik/kelas/deleteKelas/'.$data['id_kelas']; ?>"><i class="icon_close_alt2"></i></a>
                 </div></td>
               </tr>
