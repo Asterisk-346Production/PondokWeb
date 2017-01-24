@@ -68,8 +68,8 @@ class Kelas extends CI_Controller {
 		$data['submenu'] ="Ac_Kelas";
 
 		$data['title'] = "Add Data Kelas Detail";
-		// $data['body'] = 'dataAkademik/kelas/insert_kelas_jadwal';
-		$data['body'] = 'blog/testing';
+		$data['body'] = 'dataAkademik/kelas/insert_kelas_jadwal';
+		// $data['body'] = 'blog/testing';
 
 		$data['M_jenis_pelajaran'] = $this->M_jenis_pelajaran->selectReferensiJenisPelajaran();
 		$data['M_ruangan'] = $this->M_ruangan->selectTdRuangan();
