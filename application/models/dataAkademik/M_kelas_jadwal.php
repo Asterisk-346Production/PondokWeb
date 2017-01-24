@@ -117,6 +117,16 @@ class M_kelas_jadwal extends CI_Model {
 	 	return $query->result_array();
 	}
 
+	public function deleteTdKelasJadwalonKelas($id){
+		$this->db->where('id_kelas', $id);
+		$this->db->delete('td_kelas_jadwal');
+	}
+
+		public function deleteTdKelasDtlJadwalonKelas($id){
+		$this->db->where('id_kelas', $id);
+		$this->db->delete('td_kelas_jadwal_dtl');
+	}
+
 }
 
 /* End of file M_kelas_jadwal.php */

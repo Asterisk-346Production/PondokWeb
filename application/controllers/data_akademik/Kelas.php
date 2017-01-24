@@ -86,12 +86,84 @@ class Kelas extends CI_Controller {
 		$data['submenu'] ="Ac_Kelas";
 
 		$data['title'] = "Add Data Kelas Detail";
-		$data['body'] = 'blog/welcome_message';
+		// $data['body'] = 'blog/welcome_message';
 
-		$data['data'] = $this->input->post('combo');
-		// print_r($data['data']);
+		// $data['data'] = $this->input->post('combo');
+		$listCombo = $this->input->post('combo');
+		// $i = 0;
+		foreach ($listCombo as $data) {
+			// $i++;
+			if($data == null){
 
-		custom_layout($data);
+				continue;
+
+			}else{
+
+				$cekIsi = $this->input->post('jenis_jam'.$data);
+
+				if($cekIsi == null){
+
+					continue;
+
+				}else{
+
+					$this->form_validation->set_rules('semester', 'semester', 'trim|required');
+					$this->form_validation->set_rules('id_jns_jadwal', 'id_jns_jadwal', 'trim|required');
+					$this->form_validation->set_rules('id_jns_ruangan', 'id_jns_ruangan', 'trim|required');
+					$this->form_validation->set_rules('id_jns_pelajaran', 'id_jns_pelajaran', 'trim|required');
+
+					if ($this->form_validation->run() == FALSE) {
+						
+						$dataLog = array(
+							'id_proses'=>'1',
+							'nama_proses'=>'insert data',
+							'nama_form' => 'data_akademik : kelas jadwal detail',
+							'keterangan'=>'gagal di validasi',
+							'id_rekam'=>$this->session->userdata('id_user'));
+						$this->m_log->recordLog($dataLog);
+
+						$this->session->set_flashdata('error', 'some field is error, please try again');
+						redirect('data_akademik/kelas/addKelasJadwal/'.$this->input->post('id'));
+					} else {
+
+						$dataHedaer = array(
+							'semester'=> $this->input->post('semester'),
+							'id_jns_pelajaran' => $this->inpust->post('id_jns_pelajaran'),
+							'id_jns_jadwal' => $this->input->post('id_jns_jadwal'),
+							'id_ruangan' => $this->input->post('id_ruangan'),
+							'tgl_ujian' => $this->input->post('tgl_ujian'),
+							'id_kelas' => $this->input->post('id'));
+						$lastId = $this->M_kelas_jadwal->addTdKelasJadwal($dataHedaer);
+
+						$dataLog1 = array(
+							'id_proses'=>'1',
+							'nama_proses'=>'insert data',
+							'nama_form' => 'data_akademik : kelas jadwal',
+							'keterangan'=>'berhasil',
+							'id_rekam'=>$this->session->userdata('id_user'));
+						$this->m_log->recordLog($dataLog1);
+
+						$dataDetail =array(
+							'id_kelas_jadwal' => $lastId,
+							'id_jns_hari' => $this->input->post($data),
+							'id_jns_jam' => $this->input->post('jns_jam'.$data),
+							'jml_jam' => $this->input->post('jumlah_jam').$data);
+						$this->M_kelas_jadwal->addTdKelasJadwalDetail($dataDetail);
+
+						$dataLog2 = array(
+							'id_proses'=>'1',
+							'nama_proses'=>'insert data',
+							'nama_form' => 'data_akademik : kelas jadwal detail',
+							'keterangan'=>'berhasil',
+							'id_rekam'=>$this->session->userdata('id_user'));
+						$this->m_log->recordLog($dataLog2);
+
+						redirect('data_akademik/kelas/detail'.$this->input->post('id'));
+					}
+				}
+			}
+		}
+		// custom_layout($data);
 	}
 
 	public function doInsertKelasDetail(){
@@ -120,19 +192,19 @@ class Kelas extends CI_Controller {
 		$this->form_validation->set_rules('id_jns_kelas', 'id_jns_kelas', 'reequired');
 
 		$data = array(
-				'id_ta' => $this->input->post('id_ta'),
-				'jumlah' => $this->input->post('jumlah'),
-				'tgl_awal' => $this->input->post('tgl_awal'),
-				'tgl_akhir' => $this->input->post('tgl_akhir'),
-				'id_jns_kelas' => $this->input->post('id_jns_kelas')
-				);
+			'id_ta' => $this->input->post('id_ta'),
+			'jumlah' => $this->input->post('jumlah'),
+			'tgl_awal' => $this->input->post('tgl_awal'),
+			'tgl_akhir' => $this->input->post('tgl_akhir'),
+			'id_jns_kelas' => $this->input->post('id_jns_kelas')
+			);
 
 		$dataLog = array(
-				'id_proses'=>'1',
-				'nama_proses'=>'insert data',
-				'nama_form' => 'data_akademik : kelas',
-				'keterangan'=>'berhasil',
-				'id_rekam'=>$this->session->userdata('id_user'));
+			'id_proses'=>'1',
+			'nama_proses'=>'insert data',
+			'nama_form' => 'data_akademik : kelas',
+			'keterangan'=>'berhasil',
+			'id_rekam'=>$this->session->userdata('id_user'));
 
 		$this->m_log->recordLog($dataLog);
 		$this->M_kelas->addTdkelas($data);
@@ -232,12 +304,14 @@ class Kelas extends CI_Controller {
 		$this->M_kelas->deletekelas($id);
 
 		$dataLog = array(
-				'id_proses'=>'1',
-				'nama_proses'=>'delete data',
-				'nama_form' => 'data_akademik : kelas',
-				'keterangan'=>'berhasil',
-				'id_rekam'=>$this->session->userdata('id_user'));
+			'id_proses'=>'1',
+			'nama_proses'=>'delete data',
+			'nama_form' => 'data_akademik : kelas',
+			'keterangan'=>'berhasil',
+			'id_rekam'=>$this->session->userdata('id_user'));
 		$this->m_log->recordLog($dataLog);
+
+		//mega function delete here
 
 		redirect('data_akademik/Kelas');
 	}

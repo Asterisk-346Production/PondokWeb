@@ -15,10 +15,12 @@
 	foreach ($data as $datax) {
 	 	$i++;
 	 	$data =  $this->input->post('combox'.$datax);
-	 	if($data == null){
+	 	$cekisi = $this->input->post('jenis_jam'.$datax);
+	 	if($data == null && $cekisi == null){
 	 		continue;
 	 	}else{
 	 		echo $data.'<br/>';
+	 		echo $cekisi.'<br/>';
 	 	}
 	 } 
 	 ?>

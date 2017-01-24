@@ -3,7 +3,7 @@
       <section class="panel">
         <header class="panel-heading">Insert Kelas Jadwal</header>
         <div class="panel-body">
-          <?php echo form_open(base_url('data_akademik/kelas/doInsertKelas'), 'class="form-horizontal "'); ?>
+          <?php echo form_open(base_url('data_akademik/kelas/doInsertKelasJadwal'), 'class="form-horizontal "'); ?>
           <div class="form-group">
             <label class="col-sm-2 control-label">Jenis Pelajaran</label>
             <div class="col-sm-10">
@@ -47,19 +47,19 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">Tanggal Ujian</label>
       <div class="col-sm-10">
-        <input name="tgl_ujian" type="date" required="required" class="form-control" id="tgl_ujian" maxlength="60">
+        <input name="tgl_ujian" type="date" class="form-control" id="tgl_ujian" maxlength="60">
         <span class="help-block"><?php echo form_error('tgl_ujian'); ?></span>
       </div>
     </div>
     <!-- edit here tommorrow -->
     <div class="form-group">
-      <label class="control-label col-lg-2" for="inputSuccess">Checkboxes and radios</label>
+      <label class="control-label col-lg-2" for="inputSuccess">Detail Hari</label>
       <div class="col-lg-10">
       <?php foreach ($M_jenis_hari as $jh_list):?>
         <div class="checkbox">
           <div class ="form-group">
             <div class="col-md-2">
-              <input type="checkbox" name="combo[]" value="1">
+              <input type="checkbox" id="combo<?php echo $jh_list['id_jns_hari']; ?>" name="combo[]" value="<?php echo $jh_list['id_jns_hari']; ?>">
               <label><?php echo $jh_list['uraian']; ?></label>
             </div>
             <div class="col-md-10">
@@ -69,7 +69,8 @@
                     <label>Jenis Jam</label>
                   </div>
                   <div class ="col-sm-8">
-                    <select name ="jenis_jam<?php echo $jh_list['id_jns_hari']; ?>" required id="jenis_jam<?php echo $jh_list['id_jns_hari']; ?>">
+                    <select name ="jenis_jam<?php echo $jh_list['id_jns_hari']; ?>" required class="form-control" disabled ="true" id="jenis_jam<?php echo $jh_list['id_jns_hari']; ?>">
+                    <option value ="">---</option>
                       <?php foreach ($M_jenis_jam as $jj_list) {
                         echo '<option value="'.$jj_list['id_jns_jam'].'">'.$jj_list['jam_awal'].':'.$jj_list['menit_awal'].' - '.$jj_list['jam_akhir'].':'.$jj_list['menit_akhir'].'</option>';
                       } ?>
@@ -78,12 +79,18 @@
                   </div>
                 </div>
                 <div class ="col-sm-6">
-                  <input name="jumlah_jam<?php echo $jh_list['id_jns_hari']; ?>" type="text" required="required" class="form-control" id="jumlah_jam<?php echo $jh_list['id_jns_hari']; ?>" maxlength="3" placeholder="Jumlah Jam">
+                  <input name="jumlah_jam<?php echo $jh_list['id_jns_hari']; ?>" type="number" disabled="true" class="form-control" id="jumlah_jam<?php echo $jh_list['id_jns_hari']; ?>" maxlength="3" placeholder="Jumlah Jam">
                 </div>
               </div>
             </div>
           </div>
         </div>
+  <script type="text/javascript">
+      $("#combo<?php echo $jh_list['id_jns_hari']; ?>").change(function(){
+     $("#jumlah_jam<?php echo $jh_list['id_jns_hari']; ?>").prop("disabled", !$(this).is(':checked'));
+     $("#jenis_jam<?php echo $jh_list['id_jns_hari']; ?>").prop("disabled",!$(this).is(':checked'));
+  });
+    </script>
       <?php endforeach; ?>
       </div>
     </div>
@@ -93,8 +100,9 @@
 </section>
 </div>
 </div>
-  <!-- <script type="text/javascript">
-    $('#to-left').click(function(){
-    $('#myField').val('');
-  });
+<!--   <script type="text/javascript">
+    $('#combo1').change(function(){
+   $("#jumlah_jam1").prop("disabled", !$(this).is(':checked'));
+   $("#jenis_jam1").prop("disabled",!$(this).is(':checked'));
+});
   </script> -->
