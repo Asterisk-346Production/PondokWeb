@@ -37,6 +37,10 @@ class M_ruangan extends CI_Model {
 		$this->db->delete('td_ruangan');
 	}
 
+	public function addTdRuanganJadwal($data){
+		$this->db->insert('td_ruangan_jadwal', $data);
+	}
+
 
 }
 

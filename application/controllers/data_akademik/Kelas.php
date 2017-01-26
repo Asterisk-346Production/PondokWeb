@@ -80,6 +80,15 @@ class Kelas extends CI_Controller {
 		custom_layout($data);
 	}
 
+	public function addKelasWali(){
+		$data['slug'] =  $this->uri->segment(4);
+		$data['menu'] = "Akademik";
+		$data['submenu'] ="Ac_Kelas";
+
+		$data['title'] = "Add Data kelas Wali";
+		// $data['body'] = ""
+	}
+
 	public function doInsertKelasJadwal(){
 		$listCombo = $this->input->post('combo');
 		// $i = 0;
@@ -132,6 +141,11 @@ class Kelas extends CI_Controller {
 							'id_jns_jam' => $this->input->post('jenis_jam'.$data),
 							'jml_jam' => $this->input->post('jumlah_jam'.$data));
 						$this->M_kelas_jadwal->addTdKelasJadwalDetail($dataDetail);
+
+						$dataRuangan = array(
+							'id_ruangan' => $this->input->post('id_ruangan'),
+							'id_kelas_jadwal' => $lastId);
+						$this->M_ruangan->addTdRuanganJadwal($dataRuangan);
 
 						$dataLog2 = array(
 							'id_proses'=>'1',

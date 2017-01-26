@@ -106,7 +106,7 @@ class M_kelas_jadwal extends CI_Model {
 		$this->db->join('td_kelas_jadwal_dtl', 'td_kelas_jadwal.id_kelas_jadwal = td_kelas_jadwal_dtl.id_kelas_jadwal');
 		$this->db->join('td_ruangan_jadwal', 'td_kelas_jadwal.id_kelas_jadwal = td_ruangan_jadwal.id_kelas_jadwal');
 		$this->db->join('td_ruangan', 'td_ruangan_jadwal.id_ruangan = td_ruangan.id_ruangan');
-		$this->db->join('tr_jenis_ruangan', 'td_ruangan.id_jns_ruangan = tr_jenis_ruangan.id_jns_ruangan', 'left');
+		$this->db->join('tr_jenis_ruangan', 'td_ruangan.id_jns_ruangan = tr_jenis_ruangan.id_jns_ruangan');
 		$this->db->join('td_kelas', 'td_kelas_jadwal.id_kelas = td_kelas.id_kelas');
 		$this->db->join('tr_jenis_jadwal', 'td_kelas_jadwal.id_jns_jadwal = tr_jenis_jadwal.id_jns_jadwal');
 		$this->db->join('tr_hari', 'td_kelas_jadwal_dtl.id_jns_hari = tr_hari.id_jns_hari');
