@@ -81,35 +81,37 @@ class Kelas extends CI_Controller {
 	}
 
 	public function doInsertKelasJadwal(){
-		$data['slug'] =  $this->uri->segment(4);
-		$data['menu'] = "Akademik";
-		$data['submenu'] ="Ac_Kelas";
-
-		$data['title'] = "Add Data Kelas Detail";
-		// $data['body'] = 'blog/welcome_message';
-
-		// $data['data'] = $this->input->post('combo');
 		$listCombo = $this->input->post('combo');
 		// $i = 0;
-		foreach ($listCombo as $data) {
-			// $i++;
-			if($data == null){
-
-				continue;
-
-			}else{
-
+		if($listCombo){
+			foreach ($listCombo as $data) {
 				$cekIsi = $this->input->post('jenis_jam'.$data);
 
 				if($cekIsi == null){
-
 					continue;
-
 				}else{
+					$this->form_validation->set_rules('semester', 'semester', 'trim|required');
+					$this->form_validation->set_rules('id_jns_jadwal', 'id_jns_jadwal', 'trim|required');
+					$this->form_validation->set_rules('id_ruangan', 'id_ruangan', 'trim|required');
+					$this->form_validation->set_rules('id_jns_pelajaran', 'id_jns_pelajaran', 'trim|required');
 
-					$dataHedaer = array(
+					if ($this->form_validation->run() == FALSE) {
+
+						$dataLog = array(
+							'id_proses'=>'1',
+							'nama_proses'=>'insert data',
+							'nama_form' => 'data_akademik : kelas jadwal detail',
+							'keterangan'=>'gagal di validasi',
+							'id_rekam'=>$this->session->userdata('id_user'));
+						$this->m_log->recordLog($dataLog);
+
+						$this->session->set_flashdata('error', 'some field is error, please try again');
+						redirect('data_akademik/kelas/addKelasJadwal/'.$this->input->post('id'));
+					} else {
+
+						$dataHedaer = array(
 							'semester'=> $this->input->post('semester'),
-							'id_jns_pelajaran' => $this->inpust->post('id_jns_pelajaran'),
+							'id_jns_pelajaran' => $this->input->post('id_jns_pelajaran'),
 							'id_jns_jadwal' => $this->input->post('id_jns_jadwal'),
 							'id_ruangan' => $this->input->post('id_ruangan'),
 							'tgl_ujian' => $this->input->post('tgl_ujian'),
@@ -126,9 +128,9 @@ class Kelas extends CI_Controller {
 
 						$dataDetail =array(
 							'id_kelas_jadwal' => $lastId,
-							'id_jns_hari' => $this->input->post($data),
-							'id_jns_jam' => $this->input->post('jns_jam'.$data),
-							'jml_jam' => $this->input->post('jumlah_jam').$data);
+							'id_jns_hari' => $data,
+							'id_jns_jam' => $this->input->post('jenis_jam'.$data),
+							'jml_jam' => $this->input->post('jumlah_jam'.$data));
 						$this->M_kelas_jadwal->addTdKelasJadwalDetail($dataDetail);
 
 						$dataLog2 = array(
@@ -138,11 +140,11 @@ class Kelas extends CI_Controller {
 							'keterangan'=>'berhasil',
 							'id_rekam'=>$this->session->userdata('id_user'));
 						$this->m_log->recordLog($dataLog2);
-
-						redirect('data_akademik/kelas/detail'.$this->input->post('id'));
+					}
 				}
 			}
 		}
+		redirect('data_akademik/kelas/detail/'.$this->input->post('id'));
 		// custom_layout($data);
 	}
 
@@ -161,8 +163,8 @@ class Kelas extends CI_Controller {
 		redirect('data_akademik/kelas/detail/'.$id.'');
 		// $data['menu'] ="Mtest";
 		// $data['body'] = "blog/welcome_message";
-		// custom_layout($data); 
-	} 
+		// custom_layout($data);
+	}
 
 	public function doInsertKelas(){
 		$this->form_validation->set_rules('id_ta', 'id_ta', 'required');
