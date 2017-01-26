@@ -107,26 +107,7 @@ class Kelas extends CI_Controller {
 
 				}else{
 
-					$this->form_validation->set_rules('semester', 'semester', 'trim|required');
-					$this->form_validation->set_rules('id_jns_jadwal', 'id_jns_jadwal', 'trim|required');
-					$this->form_validation->set_rules('id_jns_ruangan', 'id_jns_ruangan', 'trim|required');
-					$this->form_validation->set_rules('id_jns_pelajaran', 'id_jns_pelajaran', 'trim|required');
-
-					if ($this->form_validation->run() == FALSE) {
-						
-						$dataLog = array(
-							'id_proses'=>'1',
-							'nama_proses'=>'insert data',
-							'nama_form' => 'data_akademik : kelas jadwal detail',
-							'keterangan'=>'gagal di validasi',
-							'id_rekam'=>$this->session->userdata('id_user'));
-						$this->m_log->recordLog($dataLog);
-
-						$this->session->set_flashdata('error', 'some field is error, please try again');
-						redirect('data_akademik/kelas/addKelasJadwal/'.$this->input->post('id'));
-					} else {
-
-						$dataHedaer = array(
+					$dataHedaer = array(
 							'semester'=> $this->input->post('semester'),
 							'id_jns_pelajaran' => $this->inpust->post('id_jns_pelajaran'),
 							'id_jns_jadwal' => $this->input->post('id_jns_jadwal'),
@@ -159,7 +140,6 @@ class Kelas extends CI_Controller {
 						$this->m_log->recordLog($dataLog2);
 
 						redirect('data_akademik/kelas/detail'.$this->input->post('id'));
-					}
 				}
 			}
 		}

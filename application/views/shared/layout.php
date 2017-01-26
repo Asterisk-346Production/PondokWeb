@@ -132,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <span class="menu-arrow arrow_carrot-right"></span>
                         </a>
                         <ul class="sub">
-                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Hari" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_hari">Referensi - Hari</a></li>
+                            <li class="<?php echo $menu == "Referensi" && $submenu == "R_Hari" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_hari">Referensi - Hari</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Beasiswa" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_beasiswa">Referensi - Beasiswa</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Jadwal" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_jadwal">Referensi - Jadwal</a></li>
                             <li class="<?php echo $menu == "Referensi" && $submenu == "R_Jam" ? "active" : "" ?>"><a href="<?php echo base_url(''); ?>./referensi/referensi_jenis_jam">Referensi - Jam</a></li>
